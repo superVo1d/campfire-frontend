@@ -1,0 +1,43 @@
+.navbar {
+  $navbar: &;
+
+  background-color: var(--separator);
+  margin: 0 auto;
+  padding: 0.4rem;
+  border-radius: 4.9rem;
+  width: fit-content;
+
+  & > div {
+    display: flex;
+    position: relative;
+  }
+
+  .tab-line {
+    position: absolute;
+    left: 0;
+    height: 4.5rem;
+    width: 4.5rem;
+    background-color: #fff;
+    border-radius: 50%;
+  }
+
+  &__button {
+    position: relative;
+    height: 4.5rem;
+    width: 4.5rem;
+  }
+
+  &_dark #{$navbar}__button {
+    mix-blend-mode: difference;
+  }
+}
+
+.icon {
+  background-color: var(--main-color);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2.3rem;
+  height: 2.3rem;
+}

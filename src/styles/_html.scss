@@ -1,0 +1,71 @@
+@use 'mixins' as *;
+@use 'variables/colors' as *;
+@use 'variables/typography' as *;
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  height: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--background);
+  display: grid;
+  color: var(--main-color);
+  font-family: GraphikLC, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  height: 100%;
+  line-height: 1;
+  margin: 0;
+}
+
+button,
+input[type="submit"],
+input[type="reset"] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.light-theme {
+  --background: #fff;
+  --main-color: #000;
+  --separator: #{$cultured};
+}
+
+.dark-theme {
+  --background: #000;
+  --main-color: #fff;
+  --separator: #{$chinese-black};
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 500;
+}
+
+h1 {
+  @include font($font-h1);
+}
+
+h2 {
+  @include font($font-h2);
+
+  letter-spacing: -0.32px;
+}
+
+h3 {
+  @include font($font-h3);
+}

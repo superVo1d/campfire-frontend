@@ -1,0 +1,26 @@
+<div class="find-yours">
+  <h1 class="title">Найти своих в&nbsp;Setters</h1>
+  <swiper-container
+    #swiperRef
+    centered-slides="true"
+    initial-slide="1"
+    slides-per-view="auto"
+    space-between="-12"
+    autoplay-delay="2500"
+    autoplay-disable-on-interaction="false"
+    loop="true"
+    init="false"
+  >
+    <swiper-slide *ngFor="let slide of slides; index as i" [class]="{ 'swiper-slide-active': i === 1}">
+      <div class="card">
+        <div class="card__interface">
+          <div class="name">
+            <h3>{{slide.title}}</h3>
+          </div>
+          <app-button class="card__button" [iconPath]="'assets/media/icons/arrowRightLarge.svg'"></app-button>
+        </div>
+        <div class="card__background" [style.background-image]="'url(' + slide.photo + ')'"></div>
+      </div>
+    </swiper-slide>
+  </swiper-container>
+</div>

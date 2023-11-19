@@ -1,0 +1,47 @@
+@use '../../../../../styles/mixins' as *;
+@use '../../../../../styles/variables/colors' as *;
+@use '../../../../../styles/variables/typography' as *;
+
+.stats {
+  border-radius: 1.2rem;
+  background: var(--separator);
+  margin: 2rem;
+  padding: 2rem 1.6rem;
+
+  &__title {
+    display: flex;
+    font-weight: 500;
+    justify-content: space-between;
+
+    .icon {
+      background-color: var(--main-color);
+      height: 14px;
+      width: 14px;
+    }
+  }
+
+  &__description {
+    @include font($font-caption);
+
+    margin-top: 0.5rem;
+    opacity: 0.5;
+  }
+
+  &__progress {
+    margin-top: 1.6rem;
+    position: relative;
+    height: 8px;
+
+    &:after {
+      background: $vivid-orange;
+      border-radius: 4px;
+      box-shadow: 0 0 5px 5px rgba(255 145 84 / 20%);
+      content: '';
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 20%;
+    }
+  }
+}

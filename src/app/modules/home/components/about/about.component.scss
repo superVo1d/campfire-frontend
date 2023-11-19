@@ -1,0 +1,31 @@
+@use '../../../../../styles/mixins' as *;
+@use '../../../../../styles/variables/colors' as *;
+@use '../../../../../styles/variables/typography' as *;
+
+.about {
+  border-radius: 1.2rem;
+  background: var(--separator);
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem;
+  padding: 2rem 1.6rem;
+
+  &__button {
+    align-self: flex-end;
+    margin-bottom: -0.3rem;
+  }
+
+  &__title {
+    display: flex;
+    font-weight: 500;
+    justify-content: space-between;;
+  }
+
+  &__description {
+    @include font($font-caption);
+
+    margin-top: 0.9rem;
+    max-width: 22.5rem;
+    opacity: 0.5;
+  }
+}

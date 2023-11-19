@@ -1,0 +1,85 @@
+@use '../../../../../styles/mixins' as *;
+@use '../../../../../styles/variables/typography' as *;
+
+.find-yours {
+  margin: 2rem 0 2.8rem;
+}
+
+.title {
+  @include font($font-h1);
+
+  margin: 2rem;
+}
+
+swiper-container {
+  cursor: grab;
+  height: 20rem;
+  max-width: 100vw;
+  width: 100%;
+}
+
+swiper-slide {
+  height: 20rem;
+  position: relative;
+  width: 20rem;
+
+  &.swiper-slide-active {
+    .card {
+      height: 20rem;
+      width: 20rem;
+    }
+
+    .card__interface {
+      opacity: 1;
+    }
+  }
+}
+
+.card {
+  border-radius: 1.2rem;
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: height 0.2s ease-in-out, width 0.2s ease-in-out;
+  height: 160px;
+  width: 160px;
+
+  .name {
+    mix-blend-mode: difference;
+    color: #fff;
+  }
+
+  &__button {
+    align-self: flex-end;
+  }
+
+  &__background {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgba(211 211 211 / 20%);
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__interface {
+    display: flex;
+    justify-content: space-between;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    padding: 1.6rem;
+    position: relative;
+    transition: opacity 0.2s ease-in-out;
+    z-index: 1;
+
+    h3 {
+      mix-blend-mode: difference;
+    }
+  }
+}

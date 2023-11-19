@@ -1,0 +1,6 @@
+@use 'sass:list';
+
+@mixin font($font-typography) {
+  font-size: list.nth($font-typography, 1);
+  line-height: list.nth($font-typography, 2);
+}

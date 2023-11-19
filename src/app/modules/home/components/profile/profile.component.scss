@@ -1,0 +1,40 @@
+@use '../../../../../styles/mixins' as *;
+@use '../../../../../styles/variables/typography' as *;
+
+.profile {
+  display: flex;
+  margin: 2rem;
+
+  &__picture {
+    background: url(https://s3-alpha-sig.figma.com/img/4b0f/0bcd/9c1fcd82f37f5a8360eaabd65ff2d2a8?Expires=1701043200&Signature=h5ueFNYQgcUc5Cxr9BiS4PKRZNxwvMY3BHZVZbkuFm7pJ~CpDLJ-HIPZZvFhOnQY1Vk-asYcrovf4gTEblWYuEWuOErhQLyB2QUZjwylygDZshtq1ztYoxYw7n8RikbPYOaLSQELWZlSmCqLu11fZ4ShvNDesvTgL5X-1-g1Q94UnE7G7eQjYbxxxXc87JjKhzTWPmjAaPsG4JRy4AbAoiS5LPpNNxgSZlOoJNQCFXhmHylnEdyQJwR9rlKp~8vQLwJpPgHXNBTgxFQ-YONF8uzb7eBQcOCZeIaXDO9n30~fQkOA8M676OyebVMxOyY1ske~pdPJ5pUrJwphSEew9w__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4) no-repeat center;
+    background-size: cover;
+    border-radius: 50%;
+    height: 6rem;
+    width: 6rem;
+  }
+
+  &__name {
+    margin-left: 0.8rem;
+    margin-top: 0.9rem;
+  }
+}
+
+.author {
+  @include font($font-h3);
+
+  display: flex;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+
+  .icon {
+    height: 14px;
+    margin-left: 6px;
+    width: 14px;
+  }
+}
+
+.status {
+  @include font($font-caption);
+
+  opacity: 0.5;
+}

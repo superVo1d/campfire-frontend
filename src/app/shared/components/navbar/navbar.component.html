@@ -1,0 +1,14 @@
+<div [ngClass]="{'navbar': true, 'navbar_dark': darkMode}">
+  <div>
+    <div class="tab-line"></div>
+    <a routerLink="/" class="navbar__button">
+      <app-icon class="icon" [path]="'assets/media/icons/home.svg'"></app-icon>
+    </a>
+    <a routerLink="/navigator" class="navbar__button">
+      <app-icon class="icon" [path]="'assets/media/icons/compass.svg'"></app-icon>
+    </a>
+    <a routerLink="/likes" class="navbar__button">
+      <app-icon class="icon" [path]="'assets/media/icons/like.svg'"></app-icon>
+    </a>
+  </div>
+</div>
