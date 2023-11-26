@@ -1,0 +1,48 @@
+@use '../../../../../styles/mixins' as *;
+@use '../../../../../styles/variables/colors' as *;
+@use '../../../../../styles/variables/typography' as *;
+
+.cards {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 1.5rem 2rem;
+}
+
+.card {
+  padding-bottom: 113.8%;
+  position: relative;
+  border-radius: 1.6rem;
+  overflow: hidden;
+
+  &__content {
+    color: #fff;
+    height: 100%;
+    padding: 1.6rem;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+  }
+
+  &__label {
+    @include font($font-caption);
+
+    background-color: $vivid-orange;
+    border-radius: 2rem;
+    bottom: 1rem;
+    padding: 0.5rem;
+    position: absolute;
+    right: 1rem;
+  }
+
+  &__background {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}

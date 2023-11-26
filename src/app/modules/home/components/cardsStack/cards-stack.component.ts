@@ -4,15 +4,15 @@ import { SwiperContainer } from 'swiper/element';
 import { data } from '../../../../mocks/profiles';
 
 @Component({
-  selector: 'app-find-yours',
-  templateUrl: './find-yours.component.html',
-  styleUrls: ['./find-yours.component.scss'],
+  selector: 'app-cards-stack',
+  templateUrl: './cards-stack.component.html',
+  styleUrls: ['./cards-stack.component.scss'],
 })
-export class FindYoursComponent implements AfterViewInit {
+export class CardsStackComponent implements AfterViewInit {
   @ViewChild('swiperRef')
     swiperRef!: ElementRef<SwiperContainer>;
 
-  slides: { title: string; photo: string; }[] = data;
+  cards: { title: string; photo: string; }[] = data;
 
   private swiper: Swiper;
 

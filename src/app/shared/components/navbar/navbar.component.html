@@ -1,14 +1,9 @@
-<div [ngClass]="{'navbar': true, 'navbar_dark': darkMode}">
+<div class="navbar">
   <div>
-    <div class="tab-line"></div>
-    <a routerLink="/" class="navbar__button">
-      <app-icon class="icon" [path]="'assets/media/icons/home.svg'"></app-icon>
-    </a>
-    <a routerLink="/navigator" class="navbar__button">
-      <app-icon class="icon" [path]="'assets/media/icons/compass.svg'"></app-icon>
-    </a>
-    <a routerLink="/likes" class="navbar__button">
-      <app-icon class="icon" [path]="'assets/media/icons/like.svg'"></app-icon>
-    </a>
+    <ng-container *ngFor="let item of paths">
+      <a [routerLink]="item.path" class="navbar__button" routerLinkActive="active" [routerLinkActiveOptions]="{exact: item.path === ''}">
+        <app-icon class="icon" [path]="item.icon"></app-icon>
+      </a>
+    </ng-container>
   </div>
 </div>

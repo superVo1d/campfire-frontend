@@ -1,0 +1,35 @@
+@use '../../../../styles/mixins' as *;
+@use '../../../../styles/variables/colors' as *;
+@use '../../../../styles/variables/typography' as *;
+
+.tabs {
+  border-radius: 1.8rem;
+  border: 1px solid var(--separator);
+  display: flex;
+  margin: 1.5rem 2rem;
+  padding: 0.4rem;
+  gap: 0.4rem;
+
+  @include font($font-caption);
+
+  &__button {
+    border-radius: 1.6rem;
+    color: var(--main-color);
+    padding: 0.6rem 1.2rem;
+    text-align: center;
+    text-decoration: none;
+    width: calc(50% - 0.4rem / 2);
+
+    & > span {
+      opacity: 0.5;
+    }
+
+    &.active {
+      background-color: var(--separator);
+
+      & > span {
+        opacity: 1;
+      }
+    }
+  }
+}

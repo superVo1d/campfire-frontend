@@ -7,6 +7,16 @@
   border-radius: 4.9rem;
   width: fit-content;
 
+  .icon {
+    background-color: var(--main-color);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 2.3rem;
+    height: 2.3rem;
+  }
+
   & > div {
     display: flex;
     position: relative;
@@ -25,19 +35,14 @@
     position: relative;
     height: 4.5rem;
     width: 4.5rem;
-  }
 
-  &_dark #{$navbar}__button {
-    mix-blend-mode: difference;
+    &.active {
+      background: #fff;
+      border-radius: 50%;
+    }
   }
 }
 
-.icon {
-  background-color: var(--main-color);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 2.3rem;
-  height: 2.3rem;
+.dark-theme .navbar .icon {
+  mix-blend-mode: difference;
 }

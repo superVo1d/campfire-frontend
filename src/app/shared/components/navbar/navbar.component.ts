@@ -1,19 +1,26 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ThemeService } from '../../services/theme.service';
-import { ThemeType } from '../../../@types/theme';
+import { Component, ViewEncapsulation } from '@angular/core';
+
+const paths = [
+  {
+    path: '',
+    icon: 'assets/media/icons/home.svg',
+  },
+  {
+    path: 'navigator',
+    icon: 'assets/media/icons/compass.svg',
+  },
+  {
+    path: 'likes',
+    icon: 'assets/media/icons/like.svg',
+  },
+];
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
-export class NavbarComponent implements OnInit {
-  private themeService = inject(ThemeService);
-
-  public darkMode = false;
-
-  ngOnInit() {
-    this.darkMode = this.themeService.getActiveTheme() === ThemeType.dark;
-  }
+export class NavbarComponent {
+  public paths: { path: string; icon: string; }[] = paths;
 }

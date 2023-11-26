@@ -1,0 +1,8 @@
+<div class="tabs">
+  <ng-container *ngFor="let item of paths">
+    <a [routerLink]="item.path" class="tabs__button" [routerLinkActive]="'active'"
+       [routerLinkActiveOptions]="{exact: true}">
+      <span>{{item.name}}</span>
+    </a>
+  </ng-container>
+</div>
