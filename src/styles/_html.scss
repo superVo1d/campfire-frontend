@@ -1,6 +1,5 @@
 @use 'mixins' as *;
-@use 'variables/colors' as *;
-@use 'variables/typography' as *;
+@use 'variables/variables' as *;
 
 *{
   box-sizing: border-box;
@@ -15,9 +14,11 @@ html {
 }
 
 body {
+  --acsent-color: #{$ferrari-red};
+
   background-color: var(--background);
-  display: grid;
   color: var(--main-color);
+  display: grid;
   font-family: GraphikLC, sans-serif;
   font-size: 1.6rem;
   font-weight: 400;
@@ -30,23 +31,25 @@ button,
 input[type="submit"],
 input[type="reset"] {
   background: none;
-  color: inherit;
   border: none;
-  padding: 0;
-  font: inherit;
+  color: inherit;
   cursor: pointer;
+  font: inherit;
   outline: inherit;
+  padding: 0;
 }
 
 .light-theme {
   --background: #fff;
   --main-color: #000;
+  --main-color-50: rgb(0 0 0 / 50%);
   --separator: #{$cultured};
 }
 
 .dark-theme {
   --background: #000;
   --main-color: #fff;
+  --main-color-50: rgb(255 255 255 / 50%);
   --separator: #{$chinese-black};
 }
 

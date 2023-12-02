@@ -1,7 +1,7 @@
-@use '../../../../../styles/mixins' as *;
-@use '../../../../../styles/variables/colors' as *;
-@use '../../../../../styles/variables/global' as *;
-@use '../../../../../styles/variables/typography' as *;
+@use 'mixins' as *;
+@use 'variables/colors' as *;
+@use 'variables/global' as *;
+@use 'variables/typography' as *;
 
 .cards-stack {
   display: flex;
@@ -12,8 +12,8 @@
 }
 
 swiper-container {
-  width: calc(100% - 4rem);
   height: 63rem;
+  width: calc(100% - 4rem);
 }
 
 ::ng-deep {
@@ -33,17 +33,32 @@ swiper-slide {
   display: flex;
   flex-direction: column;
   height: 100%;
-  position: absolute;
   overflow: hidden;
+  position: absolute;
   top: 0;
   width: 100%;
+
+  &::before {
+    background-color: rgba(253 37 0 / 50%);
+    border-radius: 50%;
+    content: "";
+    display: block;
+    filter: blur(100px);
+    height: 20rem;
+    left: -10%;
+    position: absolute;
+    top: 18rem;
+    width: 20rem;
+  }
 
   &__interface {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    width: 100%;
     padding: 2rem;
+    position: relative;
+    width: 100%;
+    z-index: 1;
 
     h1 {
       margin-bottom: 0.8rem;
@@ -66,7 +81,7 @@ swiper-slide {
     margin-top: auto;
 
     &::ng-deep.button {
-      background: $vivid-orange;
+      background: var(--acsent-color);
       height: 6rem;
       width: 6rem;
 
@@ -76,5 +91,11 @@ swiper-slide {
         width: 2.3rem;
       }
     }
+  }
+}
+
+:host-context(.light-theme) {
+  .card::before {
+    content: none;
   }
 }

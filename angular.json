@@ -13,6 +13,7 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
+          "displayBlock": true,
           "style": "scss"
         }
       },
@@ -38,6 +39,11 @@
             "styles": [
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles/"
+              ]
+            },
             "scripts": []
           },
           "configurations": {

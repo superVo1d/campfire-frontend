@@ -1,6 +1,6 @@
-@use '../../../../../styles/mixins' as *;
-@use '../../../../../styles/variables/colors' as *;
-@use '../../../../../styles/variables/typography' as *;
+@use 'mixins' as *;
+@use 'variables/colors' as *;
+@use 'variables/typography' as *;
 
 .cards {
   display: grid;
@@ -10,10 +10,10 @@
 }
 
 .card {
-  padding-bottom: 113.8%;
-  position: relative;
   border-radius: 1.6rem;
   overflow: hidden;
+  padding-bottom: 113.8%;
+  position: relative;
 
   &__content {
     color: #fff;
@@ -27,7 +27,7 @@
   &__label {
     @include font($font-caption);
 
-    background-color: $vivid-orange;
+    background-color: var(--acsent-color);
     border-radius: 2rem;
     bottom: 1rem;
     padding: 0.5rem;
@@ -36,13 +36,13 @@
   }
 
   &__background {
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    height: 100%;
+    left: 0;
     position: absolute;
     top: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
   }
 }

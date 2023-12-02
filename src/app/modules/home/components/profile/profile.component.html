@@ -1,10 +1,10 @@
 <div class="profile">
-  <div class="profile__picture"></div>
+  <div class="profile__picture" [style.background-image]="'url(' + user.photo + ')'"></div>
   <div class="profile__name">
     <div class="author">
-      <span>Женя</span>
+      <span>{{ user.name }}</span>
       <app-icon class="icon" [path]="'assets/media/icons/arrowRight.svg'"></app-icon>
     </div>
-    <div class="status">Setters</div>
+    <div class="status">{{ user.hub }}</div>
   </div>
 </div>

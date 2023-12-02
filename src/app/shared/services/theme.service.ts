@@ -14,6 +14,14 @@ export class ThemeService {
   private bodyClassService = inject(BodyClassService);
 
   constructor() {
+    // let theme;
+    //
+    // if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    //   //
+    // }
+
+    console.log('isLightTheme', this.telegramService);
+
     this.setTheme(this.telegramService.isLightTheme() ? ThemeType.light : ThemeType.dark);
   }
 

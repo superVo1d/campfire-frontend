@@ -1,14 +1,14 @@
-@use '../../../../styles/mixins' as *;
-@use '../../../../styles/variables/colors' as *;
-@use '../../../../styles/variables/typography' as *;
+@use 'mixins' as *;
+@use 'variables/colors' as *;
+@use 'variables/typography' as *;
 
 .tabs {
-  border-radius: 1.8rem;
   border: 1px solid var(--separator);
+  border-radius: 1.8rem;
   display: flex;
+  gap: 0.4rem;
   margin: 1.5rem 2rem;
   padding: 0.4rem;
-  gap: 0.4rem;
 
   @include font($font-caption);
 
@@ -27,7 +27,7 @@
     &.active {
       background-color: var(--separator);
 
-      & > span {
+      > span {
         opacity: 1;
       }
     }

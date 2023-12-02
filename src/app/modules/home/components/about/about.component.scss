@@ -1,10 +1,9 @@
-@use '../../../../../styles/mixins' as *;
-@use '../../../../../styles/variables/colors' as *;
-@use '../../../../../styles/variables/typography' as *;
+@use 'mixins';
+@use 'variables/typography';
 
 .about {
-  border-radius: 1.2rem;
   background: var(--separator);
+  border-radius: 1.2rem;
   display: flex;
   justify-content: space-between;
   margin: 2rem;
@@ -22,10 +21,10 @@
   }
 
   &__description {
-    @include font($font-caption);
+    @include mixins.font(typography.$font-caption);
 
+    color: var(--main-color-50);
     margin-top: 0.9rem;
     max-width: 22.5rem;
-    opacity: 0.5;
   }
 }

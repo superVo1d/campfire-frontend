@@ -1,8 +1,32 @@
-@use '../../../../../styles/mixins' as *;
-@use '../../../../../styles/variables/typography' as *;
+@use 'mixins' as *;
+@use 'variables/typography' as *;
 
 .find-yours {
   margin: 2rem 0 2.8rem;
+  position: relative;
+
+  &::before {
+    background-image: url("data:image/svg+xml,%3Csvg width='390' height='571' viewBox='0 0 390 571' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg filter='url(%23filter0_f_552_79)'%3E%3Ccircle cx='99.5' cy='295.5' r='75.5' fill='%23FD2500'/%3E%3C/g%3E%3Cg filter='url(%23filter1_f_552_79)'%3E%3Ccircle cx='289.5' cy='275.5' r='75.5' fill='%23FD2500'/%3E%3C/g%3E%3Cdefs%3E%3Cfilter id='filter0_f_552_79' x='-176' y='20' width='551' height='551' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeFlood flood-opacity='0' result='BackgroundImageFix'/%3E%3CfeBlend mode='normal' in='SourceGraphic' in2='BackgroundImageFix' result='shape'/%3E%3CfeGaussianBlur stdDeviation='100' result='effect1_foregroundBlur_552_79'/%3E%3C/filter%3E%3Cfilter id='filter1_f_552_79' x='14' y='0' width='551' height='551' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeFlood flood-opacity='0' result='BackgroundImageFix'/%3E%3CfeBlend mode='normal' in='SourceGraphic' in2='BackgroundImageFix' result='shape'/%3E%3CfeGaussianBlur stdDeviation='100' result='effect1_foregroundBlur_552_79'/%3E%3C/filter%3E%3C/defs%3E%3C/svg%3E%0A");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    content: "";
+    display: block;
+    height: 60rem;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 80%;
+    transform: translateY(-50%);
+    width: 100%;
+    z-index: -1;
+  }
+}
+
+:host-context(.light-theme) {
+  .find-yours::before {
+    content: none;
+  }
 }
 
 .title {
@@ -18,6 +42,55 @@ swiper-container {
   width: 100%;
 }
 
+.card {
+  border-radius: 1.2rem;
+  height: 160px;
+  left: 50%;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: height 0.2s ease-in-out, width 0.2s ease-in-out;
+  width: 160px;
+
+  .name {
+    color: #fff;
+    mix-blend-mode: difference;
+  }
+
+  &__button {
+    align-self: flex-end;
+  }
+
+  &__background {
+    background-color: rgba(211 211 211 / 20%);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  &__interface {
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+    opacity: 0;
+    padding: 1.6rem;
+    position: relative;
+    transition: opacity 0.2s ease-in-out;
+    width: 100%;
+    z-index: 1;
+
+    h3 {
+      mix-blend-mode: difference;
+    }
+  }
+}
+
 swiper-slide {
   height: 20rem;
   position: relative;
@@ -31,55 +104,6 @@ swiper-slide {
 
     .card__interface {
       opacity: 1;
-    }
-  }
-}
-
-.card {
-  border-radius: 1.2rem;
-  overflow: hidden;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  transition: height 0.2s ease-in-out, width 0.2s ease-in-out;
-  height: 160px;
-  width: 160px;
-
-  .name {
-    mix-blend-mode: difference;
-    color: #fff;
-  }
-
-  &__button {
-    align-self: flex-end;
-  }
-
-  &__background {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: rgba(211 211 211 / 20%);
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-  }
-
-  &__interface {
-    display: flex;
-    justify-content: space-between;
-    opacity: 0;
-    height: 100%;
-    width: 100%;
-    padding: 1.6rem;
-    position: relative;
-    transition: opacity 0.2s ease-in-out;
-    z-index: 1;
-
-    h3 {
-      mix-blend-mode: difference;
     }
   }
 }

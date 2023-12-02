@@ -4,12 +4,19 @@ import { HomePageComponent } from './pages/home/home.page';
 import { LikesPageComponent } from './pages/likes/index/index.page';
 import { NavigatorPageComponent } from './pages/navigator/navigator.page';
 import { LikesYouPageComponent } from './pages/likes/you/you.page';
+import { LikesLayoutComponent } from './layouts/likes-layout.component';
 
 export const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'navigator', component: NavigatorPageComponent },
-  { path: 'likes', component: LikesPageComponent },
-  { path: 'likes/you', component: LikesYouPageComponent },
+  {
+    path: 'likes',
+    component: LikesLayoutComponent,
+    children: [
+      { path: '', component: LikesPageComponent },
+      { path: 'you', component: LikesYouPageComponent },
+    ],
+  },
 ];
 
 @NgModule({

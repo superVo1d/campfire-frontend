@@ -27,6 +27,7 @@
     "@angular/router": "^16.2.0",
     "ngx-device-detector": "^6.0.2",
     "rxjs": "~7.8.0",
+    "stylelint-scss": "^5.3.1",
     "swiper": "^11.0.4",
     "telegram-webapps-types": "^1.0.5",
     "tslib": "^2.3.0",
@@ -54,6 +55,11 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "prettier": "^3.1.0",
+    "stylelint": "^15.11.0",
+    "stylelint-config-prettier-scss": "^1.0.0",
+    "stylelint-config-standard-scss": "^11.1.0",
+    "stylelint-order": "^6.0.3",
     "typescript": "^5.1.6"
   }
 }
