@@ -1,7 +1,16 @@
 <div class="navbar">
   <div>
     <ng-container *ngFor="let item of paths">
-      <a [routerLink]="item.path" class="navbar__button" routerLinkActive="active" [routerLinkActiveOptions]="{exact: item.path === ''}">
+      <a [routerLink]="item.path"
+         class="navbar__button"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{
+            matrixParams: 'ignored',
+            queryParams: 'ignored',
+            paths: item.path === '' ? 'exact' : 'subset',
+            fragment: 'ignored'
+         }"
+      >
         <app-icon class="icon" [path]="item.icon"></app-icon>
       </a>
     </ng-container>

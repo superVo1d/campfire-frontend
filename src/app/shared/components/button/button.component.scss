@@ -8,3 +8,21 @@
   padding: 0.8rem;
   width: 4.8rem;
 }
+
+:host {
+  &.back app-icon {
+    height: 1.6rem;
+    transform: rotate(180deg);
+  }
+
+  &.eye app-icon {
+    width: 2.2rem;
+  }
+
+  &.dark-mode {
+    .button {
+      background-color: var(--separator);
+      color: var(--main-color);
+    }
+  }
+}

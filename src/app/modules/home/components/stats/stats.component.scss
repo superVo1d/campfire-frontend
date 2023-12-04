@@ -5,8 +5,15 @@
 .stats {
   background: var(--separator);
   border-radius: 1.2rem;
+  display: block;
   margin: 2rem;
   padding: 2rem 1.6rem;
+
+  &:link,
+  &:visited {
+    color: inherit;
+    text-decoration: none;
+  }
 
   &__title {
     display: flex;

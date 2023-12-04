@@ -1,10 +1,10 @@
 <div class="profile">
-  <div class="profile__picture" [style.background-image]="'url(' + user.photo + ')'"></div>
+  <app-userpic class="profile__picture" [path]="user.photo"></app-userpic>
   <div class="profile__name">
-    <div class="author">
+    <a class="author" [routerLink]="[ '', { outlets: { modal: 'modal/settings' } } ]">
       <span>{{ user.name }}</span>
       <app-icon class="icon" [path]="'assets/media/icons/arrowRight.svg'"></app-icon>
-    </div>
+    </a>
     <div class="status">{{ user.hub }}</div>
   </div>
 </div>

@@ -1,26 +1,36 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomePageComponent } from './pages/home/home.page';
-import { LikesPageComponent } from './pages/likes/index/index.page';
-import { NavigatorPageComponent } from './pages/navigator/navigator.page';
-import { LikesYouPageComponent } from './pages/likes/you/you.page';
-import { LikesLayoutComponent } from './layouts/likes-layout.component';
+import { HomePageComponent, LikesPageComponent, LikesYouPageComponent, NavigatorPageComponent } from './pages';
+import { LikesLayoutComponent } from './layouts';
+import { ModalComponent } from '../../shared/components';
+import { SettingsComponent } from './components';
 
 export const routes: Routes = [
-  { path: '', component: HomePageComponent },
+  { path: '', component: HomePageComponent, pathMatch: 'full' },
   { path: 'navigator', component: NavigatorPageComponent },
   {
     path: 'likes',
     component: LikesLayoutComponent,
     children: [
       { path: '', component: LikesPageComponent },
-      { path: 'you', component: LikesYouPageComponent },
-    ],
+      { path: 'you', component: LikesYouPageComponent }
+    ]
   },
+  {
+    path: 'modal',
+    outlet: 'modal',
+    component: ModalComponent,
+    children: [
+      {
+        path: 'settings',
+        component: SettingsComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class HomeRoutingModule {}

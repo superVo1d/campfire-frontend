@@ -1,4 +1,12 @@
-<button class="button">
+<a class="button" [routerLink]="link" *ngIf='link else buttonElement'>
   <app-icon *ngIf="iconPath" [path]="iconPath"></app-icon>
   {{ text }}
-</button>
+</a>
+
+<ng-template #buttonElement>
+  <button class="button">
+    <app-icon *ngIf="iconPath" [path]="iconPath"></app-icon>
+    {{ text }}
+  </button>
+</ng-template>
+

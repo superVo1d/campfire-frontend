@@ -24,9 +24,11 @@
 .author {
   @include mixins.font(typography.$font-h3);
 
+  color: inherit;
   display: flex;
   font-weight: 500;
   margin-bottom: 0.5rem;
+  text-decoration: none;
 
   .icon {
     background-color: var(--main-color);

@@ -1,0 +1,6 @@
+<div *ngIf="label" class='label'>{{ label }}</div>
+<div *ngIf='textarea' class='textarea-wrapper'>
+  <div [class]='["input", "input_textarea"]' contenteditable='true' (input)="onChange($event)"></div>
+  <span class='input__counter' contenteditable='false'>{{ length + '/' + max }}</span>
+</div>
+<input *ngIf='!textarea' class='input' [type]='type' [(ngModel)]='value'/>
