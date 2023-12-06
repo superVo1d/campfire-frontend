@@ -2,9 +2,10 @@ import { inject, Injectable } from '@angular/core';
 import { ThemeType } from '../../@types/theme';
 import { TelegramService } from './telegram.service';
 import { BodyClassService } from './body-class.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class ThemeService {
   private activeTheme: ThemeType = ThemeType.light;
@@ -13,14 +14,14 @@ export class ThemeService {
 
   private bodyClassService = inject(BodyClassService);
 
-  constructor() {
-    // let theme;
-    //
-    // if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    //   //
-    // }
+  private route = inject(ActivatedRoute);
 
-    console.log('isLightTheme', this.telegramService);
+  constructor() {
+    this.route.queryParams.subscribe((queryParams) => {
+      if (queryParams['theme'] === ThemeType.dark) {
+        this.setTheme(ThemeType.dark);
+      }
+    });
 
     this.setTheme(this.telegramService.isLightTheme() ? ThemeType.light : ThemeType.dark);
   }

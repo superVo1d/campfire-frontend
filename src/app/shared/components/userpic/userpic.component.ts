@@ -12,6 +12,5 @@ export class UserpicComponent {
   @Input()
   public set path(imageUrl: string) {
     this._path = `url("${imageUrl}")`;
-    console.log(this._path);
   }
 }

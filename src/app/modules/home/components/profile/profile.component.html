@@ -1,10 +1,10 @@
 <div class="profile">
   <app-userpic class="profile__picture" [path]="user.photo"></app-userpic>
   <div class="profile__name">
-    <a class="author" [routerLink]="[ '', { outlets: { modal: 'modal/settings' } } ]">
+    <button class="author" (click)='openSettings()'>
       <span>{{ user.name }}</span>
       <app-icon class="icon" [path]="'assets/media/icons/arrowRight.svg'"></app-icon>
-    </a>
+    </button>
     <div class="status">{{ user.hub }}</div>
   </div>
 </div>

@@ -25,6 +25,10 @@ body {
   height: 100%;
   line-height: 2rem;
   margin: 0;
+
+  &.modal {
+    overflow: hidden;
+  }
 }
 
 button,

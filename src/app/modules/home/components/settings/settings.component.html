@@ -1,6 +1,6 @@
 <div class='settings'>
   <div class='settings__header'>
-    <app-button class="back" iconPath="assets/media/icons/arrowRight.svg" [link]="['', { outlets: {modal: null}}]"/>
+    <app-button class="back" iconPath="assets/media/icons/arrowRight.svg" (click)='close()'/>
     <div class='profile'>
       <app-userpic class='profile__picture' [path]="user.photo"></app-userpic>
       <div class='profile__name'>{{ user.nickname }}</div>

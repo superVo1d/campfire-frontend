@@ -1,20 +1,20 @@
 @use 'mixins';
 @use 'variables/typography';
 
+:host {
+  display: block;
+  height: 100%;
+}
+
 .settings {
-  animation: slide-in 0.3s ease-in-out;
   background: var(--background);
   height: 100%;
   padding: 2rem;
-  transition: transform 0.3s ease-in-out;
   width: 100%;
   will-change: transform;
 
-  &_visible {
-    transform: translateX(0) scale(1);
-  }
-
   &__header {
+    align-items: flex-start;
     display: grid;
     grid-template-columns: auto 1fr auto;
     justify-content: space-between;
@@ -43,17 +43,5 @@
       color: var(--main-color-50);
       margin-top: 1.6rem;
     }
-  }
-}
-
-@keyframes slide-in {
-  from {
-    transform: translateX(110%) scale(0.8);
-    visibility: hidden;
-  }
-
-  to {
-    transform: translateX(0) scale(1);
-    visibility: visible;
   }
 }
