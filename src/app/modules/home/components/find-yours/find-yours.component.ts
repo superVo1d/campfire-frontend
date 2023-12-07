@@ -6,13 +6,13 @@ import { data } from '../../../../mocks/profiles';
 @Component({
   selector: 'app-find-yours',
   templateUrl: './find-yours.component.html',
-  styleUrls: ['./find-yours.component.scss'],
+  styleUrls: ['./find-yours.component.scss']
 })
 export class FindYoursComponent implements AfterViewInit {
   @ViewChild('swiperRef')
-    swiperRef!: ElementRef<SwiperContainer>;
+  swiperRef!: ElementRef<SwiperContainer>;
 
-  slides: { title: string; photo: string; }[] = data;
+  cards: { title: string; photo: string; id: string }[] = data;
 
   private swiper: Swiper;
 

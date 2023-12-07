@@ -17,4 +17,15 @@ export class ButtonComponent {
   @Input() public link: string | any[] | null | undefined;
 
   @HostBinding('class.dark-mode') @Input() isDarkTheme = false;
+
+  @HostBinding('class.active') @Input() isClicked = false;
+
+  handleClick($event: Event) {
+    this.isClicked = true;
+
+    if (this.onClick) {
+      $event.preventDefault();
+      this.onClick();
+    }
+  }
 }

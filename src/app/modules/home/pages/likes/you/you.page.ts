@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
   templateUrl: './you.page.html',
-  styleUrls: ['./you.page.scss'],
+  styleUrls: ['./you.page.scss']
 })
-export class LikesYouPageComponent {
-
-}
+export class LikesYouPageComponent {}

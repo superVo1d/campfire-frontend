@@ -1,30 +1,35 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomePageComponent, LikesPageComponent, LikesYouPageComponent, NavigatorPageComponent } from './pages';
+import {
+  HomePageComponent,
+  LikesPageComponent,
+  LikesYouPageComponent,
+  NavigatorPageComponent,
+  UserPageComponent
+} from './pages';
 import { LikesLayoutComponent } from './layouts';
-import { ModalComponent } from '../../shared/components';
-import { SettingsComponent } from './components';
 
 export const routes: Routes = [
   { path: '', component: HomePageComponent, pathMatch: 'full' },
-  { path: 'navigator', component: NavigatorPageComponent },
+  {
+    path: 'navigator',
+    children: [
+      {
+        path: '',
+        component: NavigatorPageComponent
+      },
+      {
+        path: ':userId',
+        component: UserPageComponent
+      }
+    ]
+  },
   {
     path: 'likes',
     component: LikesLayoutComponent,
     children: [
       { path: '', component: LikesPageComponent },
       { path: 'you', component: LikesYouPageComponent }
-    ]
-  },
-  {
-    path: 'modal',
-    outlet: 'modal',
-    component: ModalComponent,
-    children: [
-      {
-        path: 'settings',
-        component: SettingsComponent
-      }
     ]
   }
 ];

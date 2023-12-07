@@ -43,6 +43,11 @@ input[type="reset"] {
   padding: 0;
 }
 
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
 .light-theme {
   --background: #fff;
   --main-color: #000;
@@ -65,6 +70,10 @@ h3 {
 
 h1 {
   @include font($font-h1);
+}
+
+h1 + p {
+  margin-top: 0.8rem;
 }
 
 h2 {

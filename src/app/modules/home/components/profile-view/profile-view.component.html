@@ -1,0 +1,11 @@
+<app-button class="back-button back" iconPath="assets/media/icons/arrowRight.svg" [onClick]='onClickBack' [link]="'../'"/>
+
+<div class='profile'>
+  <div class="profile__photo" [style.background-image]="'url(' + user.photo + ')'"></div>
+  <div class="profile__description">
+    <h1>{{ user.title }}</h1>
+    <p>Ищу новых друзей для общения, встреч и развлечений. Открыт для интересных бесед, совместных хобби и ярких впечатлений. Давайте познакомимся! Ищу новых друзей для общения, встреч и развлечений. Открыт для интересных бесед, совместных хобби и ярких впечатлений. Давайте познакомимся!</p>
+  </div>
+</div>
+
+<app-button class="like like-button" [iconPath]="'assets/media/icons/like.svg'" />

@@ -79,18 +79,6 @@ swiper-slide {
     display: inline-block;
     margin-left: auto;
     margin-top: auto;
-
-    &::ng-deep.button {
-      background: var(--acsent-color);
-      height: 6rem;
-      width: 6rem;
-
-      app-icon {
-        background: #fff;
-        height: 2.3rem;
-        width: 2.3rem;
-      }
-    }
   }
 }
 

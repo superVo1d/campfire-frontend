@@ -5,11 +5,15 @@
       <app-userpic class='profile__picture' [path]="user.photo"></app-userpic>
       <div class='profile__name'>{{ user.nickname }}</div>
     </div>
-    <app-button class="eye" iconPath="assets/media/icons/eye.svg" [isDarkTheme]='true'/>
+    <app-button class="eye" iconPath="assets/media/icons/eye.svg" [isDarkTheme]='true' (click)='openPreview()'/>
   </div>
   <div class='settings__fields'>
     <app-input-text class='settings__input' label="Имя"></app-input-text>
     <app-input-text class='settings__input' label="Обо мне" [textarea]='true'></app-input-text>
     <app-input-text class='settings__input' type="number" label="Возраст"></app-input-text>
   </div>
+</div>
+
+<div class='preview' *ngIf='isPreviewOpen'>
+  <app-profile-view [user]="getUserPreview()" (clickBackEvent)='closePreview()'></app-profile-view>
 </div>

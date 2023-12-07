@@ -5,3 +5,4 @@ export { FindYoursComponent } from './find-yours/find-yours.component';
 export { ProfileComponent } from './profile/profile.component';
 export { SettingsComponent } from './settings/settings.component';
 export { StatsComponent } from './stats/stats.component';
+export { ProfileViewComponent } from './profile-view/profile-view.component';

@@ -20,6 +20,20 @@
     width: 2.2rem;
   }
 
+  &.like {
+    .button {
+      background: var(--acsent-color);
+      height: 6rem;
+      width: 6rem;
+
+      app-icon {
+        background: #fff;
+        height: 2.3rem;
+        width: 2.3rem;
+      }
+    }
+  }
+
   &.dark-mode {
     .button {
       background-color: var(--separator);

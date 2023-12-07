@@ -6,13 +6,13 @@ import { data } from '../../../../mocks/profiles';
 @Component({
   selector: 'app-cards-stack',
   templateUrl: './cards-stack.component.html',
-  styleUrls: ['./cards-stack.component.scss'],
+  styleUrls: ['./cards-stack.component.scss']
 })
 export class CardsStackComponent implements AfterViewInit {
   @ViewChild('swiperRef')
-    swiperRef!: ElementRef<SwiperContainer>;
+  swiperRef!: ElementRef<SwiperContainer>;
 
-  cards: { title: string; photo: string; }[] = data;
+  cards: { title: string; photo: string; id: string }[] = data;
 
   private swiper: Swiper;
 

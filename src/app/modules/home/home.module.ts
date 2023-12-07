@@ -8,12 +8,19 @@ import {
   ProfileComponent,
   SettingsComponent,
   StatsComponent,
-  FindYoursComponent
+  FindYoursComponent,
+  ProfileViewComponent
 } from './components';
 import { register } from 'swiper/element/bundle';
 import { SharedComponentsModule } from '../../shared/shared.module';
 import { LikesLayoutComponent } from './layouts';
-import { HomePageComponent, LikesPageComponent, LikesYouPageComponent, NavigatorPageComponent } from './pages';
+import {
+  HomePageComponent,
+  LikesPageComponent,
+  LikesYouPageComponent,
+  NavigatorPageComponent,
+  UserPageComponent
+} from './pages';
 import { ReactiveFormsModule } from '@angular/forms';
 
 register();
@@ -31,7 +38,9 @@ register();
     NavigatorPageComponent,
     CardsComponent,
     CardsStackComponent,
-    SettingsComponent
+    SettingsComponent,
+    ProfileViewComponent,
+    UserPageComponent
   ],
   imports: [CommonModule, HomeRoutingModule, SharedComponentsModule, ReactiveFormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

@@ -15,22 +15,21 @@ export class ModalService {
   ) {}
 
   open<C>(ModalContent: Type<C>) {
-    this.modalContentRef = createComponent<C>(ModalContent, {
+    const modalContentRef = createComponent<C>(ModalContent, {
       environmentInjector: this.injector
     });
 
     this.componentRef = createComponent(ModalComponent, {
       environmentInjector: this.injector,
-      projectableNodes: [[this.modalContentRef.location.nativeElement]]
+      projectableNodes: [[modalContentRef.location.nativeElement]]
     });
 
     document.body.appendChild(this.componentRef.location.nativeElement);
     this.appRef.attachView(this.componentRef.hostView);
-    this.appRef.attachView(this.modalContentRef.hostView);
+    this.appRef.attachView(modalContentRef.hostView);
   }
 
   close() {
-    this.modalContentRef.destroy();
     this.componentRef.destroy();
   }
 }

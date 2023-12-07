@@ -1,11 +1,11 @@
 <div class="cards">
   <ng-container *ngFor="let card of cards">
-    <div class="card">
+    <a class="card" [routerLink]="'/navigator/' + card.id">
       <div class="card__content">
         <div class="card__title">{{ card.title }}</div>
         <div *ngIf="card.match" class="card__label">Мэтч!</div>
       </div>
       <div class="card__background" [style.background-image]="'url(' + card.photo + ')'"></div>
-    </div>
+    </a>
   </ng-container>
 </div>

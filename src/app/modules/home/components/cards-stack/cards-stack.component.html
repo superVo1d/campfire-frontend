@@ -10,14 +10,14 @@
     init="false"
   >
     <swiper-slide *ngFor="let card of cards; index as i">
-      <div class="card">
+      <a class="card" [routerLink]="card.id">
         <div class="card__background" [style.background-image]="'url(' + card.photo + ')'"></div>
         <div class="card__interface">
           <h1>{{card.title}}</h1>
           <p>Ищу новых друзей для общения, встреч и развлечений. Открыт для интересных бесед, совместных хобби и ярких впечатлений. Давайте познакомимся! Ищу новых друзей для общения, встреч и развлечений. Открыт для интересных бесед, совместных хобби и ярких впечатлений. Давайте познакомимся!</p>
-          <app-button class="card__button" [iconPath]="'assets/media/icons/like.svg'" />
+          <app-button class="like card__button" [iconPath]="'assets/media/icons/like.svg'" />
         </div>
-      </div>
+      </a>
     </swiper-slide>
   </swiper-container>
 </div>
