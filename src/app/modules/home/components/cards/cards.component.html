@@ -3,7 +3,7 @@
     <a class="card" [routerLink]="'/navigator/' + card.id">
       <div class="card__content">
         <div class="card__title">{{ card.title }}</div>
-        <div *ngIf="card.match" class="card__label">Мэтч!</div>
+        <div *ngIf="card?.match" class="card__label">Мэтч!</div>
       </div>
       <div class="card__background" [style.background-image]="'url(' + card.photo + ')'"></div>
     </a>

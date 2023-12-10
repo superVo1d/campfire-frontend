@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { Swiper } from 'swiper/types';
 import { SwiperContainer } from 'swiper/element';
 import { data } from '../../../../mocks/profiles';
+import { UsersInterface } from '../../../../@types/users';
 
 @Component({
   selector: 'app-find-yours',
@@ -12,7 +13,7 @@ export class FindYoursComponent implements AfterViewInit {
   @ViewChild('swiperRef')
   swiperRef!: ElementRef<SwiperContainer>;
 
-  cards: { title: string; photo: string; id: string }[] = data;
+  cards: UsersInterface[] = data;
 
   private swiper: Swiper;
 

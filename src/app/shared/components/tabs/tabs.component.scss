@@ -5,12 +5,18 @@
 .tabs {
   border: 1px solid var(--separator);
   border-radius: 1.8rem;
-  display: flex;
-  gap: 0.4rem;
   margin: 1.5rem 2rem;
   padding: 0.4rem;
+  position: relative;
 
   @include font($font-caption);
+
+  &__container {
+    display: flex;
+    gap: 0.4rem;
+    position: relative;
+    z-index: 1;
+  }
 
   &__button {
     border-radius: 1.6rem;
@@ -20,16 +26,23 @@
     text-decoration: none;
     width: calc(50% - 0.4rem / 2);
 
-    & > span {
+    > span {
       opacity: 0.5;
     }
 
     &.active {
-      background-color: var(--separator);
-
       > span {
         opacity: 1;
       }
     }
   }
+}
+
+.tab {
+  background: var(--separator);
+  border-radius: 1.6rem;
+  height: calc(100% - 0.8rem);
+  position: absolute;
+  top: 0.4rem;
+  transition: left .5s cubic-bezier(.35,0,.25,1);
 }

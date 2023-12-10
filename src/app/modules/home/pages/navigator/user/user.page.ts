@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { data } from '../../../../../mocks/profiles';
-import { ProfileInterface } from '../../../../../@types/profile';
+import { UsersInterface } from '../../../../../@types/users';
 
 @Component({
   templateUrl: './user.page.html',
@@ -10,7 +10,7 @@ import { ProfileInterface } from '../../../../../@types/profile';
 export class UserPageComponent implements OnInit {
   userId: string | null;
 
-  user: ProfileInterface;
+  user: UsersInterface;
 
   private route = inject(ActivatedRoute);
 

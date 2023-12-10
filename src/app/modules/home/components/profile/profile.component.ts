@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core';
 import { UserInterface } from '../../../../@types/user';
 import { data } from '../../../../mocks/user';
 import { ModalService } from '../../../../shared/services/modal.service';
-import { ModalTypes } from '../../../../@types/modal';
 import { SettingsComponent } from '../settings/settings.component';
 
 @Component({

@@ -1,40 +1,38 @@
-import { ProfileInterface } from '../@types/profile';
+import { MatchType, UsersInterface } from '../@types/users';
 
-export const data: ProfileInterface[] = [
+export const data: UsersInterface[] = [
   {
     id: '1',
     title: 'Миша, 16',
-    photo: '/assets/media/mocks/mock-photo-1.png',
-    match: false
+    photo: '/assets/media/mocks/mock-photo-1.png'
   },
   {
     id: '2',
     title: 'Аня, 17',
     photo: '/assets/media/mocks/mock-photo-2.png',
-    match: false
+    match: MatchType.your
   },
   {
     id: '3',
     title: 'Лена, 32',
     photo: '/assets/media/mocks/mock-photo-3.png',
-    match: true
+    match: MatchType.mutual
   },
   {
     id: '4',
     title: 'Женя, 33',
     photo: '/assets/media/mocks/mock-photo-4.png',
-    match: false
+    match: MatchType.you
   },
   {
     id: '5',
     title: 'Лена, 25',
     photo: '/assets/media/mocks/mock-photo-5.png',
-    match: true
+    match: MatchType.mutual
   },
   {
     id: '6',
     title: 'Катя, 24',
-    photo: '/assets/media/mocks/mock-photo-6.png',
-    match: false
+    photo: '/assets/media/mocks/mock-photo-6.png'
   }
 ];

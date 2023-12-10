@@ -4,14 +4,14 @@ export default trigger('openClose', [
   state(
     'void',
     style({
-      transform: 'translateX(110%) scale(0.8)'
+      transform: 'translateX(100%)'
     })
   ),
   state(
     'open',
     style({
-      transform: 'translateX(0) scale(1)'
+      transform: 'translateX(0)'
     })
   ),
-  transition('void <=> open', [animate('0.3s')])
+  transition('void <=> open', [animate('0.3s ease-in-out')])
 ]);

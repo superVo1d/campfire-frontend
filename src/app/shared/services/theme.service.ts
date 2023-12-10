@@ -23,7 +23,7 @@ export class ThemeService {
       }
     });
 
-    this.setTheme(this.telegramService.isLightTheme() ? ThemeType.light : ThemeType.dark);
+    this.setTheme(this.telegramService.theme ? ThemeType.light : ThemeType.dark);
   }
 
   public getActiveTheme(): ThemeType {

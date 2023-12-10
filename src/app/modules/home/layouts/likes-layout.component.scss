@@ -1,5 +1,12 @@
-@use 'variables/global' as *;
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 
-.likes-page {
-  margin-bottom: $bottom-offset;
+.cards-container {
+  flex-grow: 1;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
 }

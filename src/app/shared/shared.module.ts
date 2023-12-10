@@ -36,4 +36,4 @@ import {
     InputTextComponent
   ]
 })
-export class SharedComponentsModule {}
+export class SharedModule {}

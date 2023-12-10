@@ -11,9 +11,16 @@
   top: 0;
 }
 
+.back {
+  left: 2rem;
+  position: fixed;
+  top: 2rem;
+  z-index: 2;
+}
+
 .settings {
   background: var(--background);
-  height: 100%;
+  min-height: 100%;
   padding: 2rem;
   width: 100%;
   will-change: transform;
@@ -24,6 +31,10 @@
     grid-template-columns: auto 1fr auto;
     justify-content: space-between;
     margin-bottom: 5.4rem;
+
+    > div {
+      min-width: 4.8rem;
+    }
   }
 
   &__input {

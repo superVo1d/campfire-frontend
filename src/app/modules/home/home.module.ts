@@ -12,16 +12,11 @@ import {
   ProfileViewComponent
 } from './components';
 import { register } from 'swiper/element/bundle';
-import { SharedComponentsModule } from '../../shared/shared.module';
-import { LikesLayoutComponent } from './layouts';
-import {
-  HomePageComponent,
-  LikesPageComponent,
-  LikesYouPageComponent,
-  NavigatorPageComponent,
-  UserPageComponent
-} from './pages';
+import { SharedModule } from '../../shared/shared.module';
+import { HomePageComponent, LikesPageComponent, NavigatorPageComponent, UserPageComponent } from './pages';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LikesLayoutComponent } from './layouts/likes-layout.component';
+import { LikesYouPageComponent } from './pages/likes/you/likes-you.page';
 
 register();
 
@@ -32,17 +27,17 @@ register();
     HomePageComponent,
     StatsComponent,
     AboutComponent,
-    LikesLayoutComponent,
     LikesPageComponent,
-    LikesYouPageComponent,
     NavigatorPageComponent,
     CardsComponent,
     CardsStackComponent,
     SettingsComponent,
     ProfileViewComponent,
-    UserPageComponent
+    UserPageComponent,
+    LikesLayoutComponent,
+    LikesYouPageComponent
   ],
-  imports: [CommonModule, HomeRoutingModule, SharedComponentsModule, ReactiveFormsModule],
+  imports: [CommonModule, HomeRoutingModule, SharedModule, ReactiveFormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class HomeModule {}

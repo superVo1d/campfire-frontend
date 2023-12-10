@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  templateUrl: './you.page.html',
-  styleUrls: ['./you.page.scss']
+  templateUrl: './likes-you.page.html',
+  styleUrls: ['./likes-you.page.scss']
 })
 export class LikesYouPageComponent {}

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ProfileInterface } from '../../../../@types/profile';
+import { UsersInterface } from '../../../../@types/users';
 
 @Component({
   selector: 'app-profile-view',
@@ -7,7 +7,7 @@ import { ProfileInterface } from '../../../../@types/profile';
   styleUrls: ['./profile-view.component.scss']
 })
 export class ProfileViewComponent {
-  @Input() user: ProfileInterface;
+  @Input() profile: UsersInterface;
 
   @Output() clickBackEvent = new EventEmitter();
 

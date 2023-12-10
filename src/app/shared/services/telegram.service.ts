@@ -8,20 +8,24 @@ declare global {
 }
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class TelegramService {
-  readonly tg: TelegramWebApps.WebApp | null;
+  readonly _tg: TelegramWebApps.WebApp;
 
   constructor() {
-    this.tg = window.Telegram ? window.Telegram.WebApp : null;
+    this._tg = window.Telegram.WebApp;
   }
 
-  public getInitData() {
-    return this.tg;
+  get initDataUnsafe() {
+    return this._tg.initDataUnsafe;
   }
 
-  public isLightTheme() {
-    return this.tg?.colorScheme === 'light';
+  get initData() {
+    return this._tg.initData;
+  }
+
+  get theme() {
+    return this._tg.colorScheme === 'light';
   }
 }
