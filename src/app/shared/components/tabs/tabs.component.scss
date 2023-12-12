@@ -46,3 +46,44 @@
   top: 0.4rem;
   transition: left .5s cubic-bezier(.35,0,.25,1);
 }
+
+:host.navbar {
+  .tabs {
+    $navbar: &;
+
+    background-color: var(--separator);
+    border: none;
+    border-radius: 4.9rem;
+    margin: 0 auto;
+    padding: 0.4rem;
+    width: fit-content;
+
+    .icon {
+      background-color: var(--main-color);
+      height: 2.3rem;
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 2.3rem;
+    }
+
+    &__button {
+      height: 4.5rem;
+      position: relative;
+      width: 4.5rem;
+    }
+  }
+
+  .tab {
+    background-color: #fff;
+    border-radius: 50%;
+    height: 4.5rem;
+    top: 0.4rem;
+  }
+}
+
+:host-context(.dark-theme) :host.navbar .tabs__container {
+  mix-blend-mode: difference;
+}
+

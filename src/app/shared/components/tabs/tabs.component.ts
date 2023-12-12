@@ -1,21 +1,11 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  inject,
-  Input,
-  OnInit,
-  ViewChild,
-  ViewEncapsulation
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostBinding, inject, Input, OnInit, ViewChild } from '@angular/core';
 import { TabsInterface } from '../../../@types/tabs';
-import { NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-tabs',
   templateUrl: './tabs.component.html',
-  styleUrls: ['./tabs.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./tabs.component.scss']
 })
 export class TabsComponent implements OnInit, AfterViewInit {
   @Input()
@@ -25,24 +15,53 @@ export class TabsComponent implements OnInit, AfterViewInit {
 
   @ViewChild('tab') tab: ElementRef<HTMLDivElement>;
 
+  @HostBinding('class.navbar') @Input() navbar;
+
   private router = inject(Router);
 
   public activeTabIndex = 0;
 
+  constructor(private route: ActivatedRoute) {}
+
   ngOnInit() {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.activeTabIndex = this.paths.map((item) => item.path).indexOf(event.url);
+        this.activeTabIndex = this.getActiveTabIndex(event.url);
         this.switchTab();
       }
     });
 
-    this.activeTabIndex = this.paths.map((item) => item.path).indexOf(this.router.url);
+    this.activeTabIndex = this.getActiveTabIndex(this.router.url);
   }
 
   ngAfterViewInit() {
     this.switchTab();
   }
+
+  getActiveTabIndex = (url: string): number => {
+    const flag = false;
+    let index = 0;
+    let counter = 0;
+
+    while (!flag && counter < this.paths.length) {
+      const { root = false, path } = this.paths[counter];
+
+      if (root && url === '/') {
+        index = counter;
+        break;
+      }
+
+      if (url.startsWith(path)) {
+        index = counter;
+      }
+
+      counter += 1;
+    }
+
+    // console.log(url, this.paths[index]);
+
+    return index;
+  };
 
   switchTab() {
     const tabElement = this.tab.nativeElement;

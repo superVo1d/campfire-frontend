@@ -1,26 +1,27 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
+import { TabsInterface } from '../../../@types/tabs';
 
 const paths = [
   {
+    root: true,
     path: '',
-    icon: 'assets/media/icons/home.svg'
+    iconPath: 'assets/media/icons/home.svg'
   },
   {
-    path: 'navigator',
-    icon: 'assets/media/icons/compass.svg'
+    path: '/navigator',
+    iconPath: 'assets/media/icons/compass.svg'
   },
   {
-    path: 'likes',
-    icon: 'assets/media/icons/like.svg'
+    path: '/likes',
+    iconPath: 'assets/media/icons/like.svg'
   }
 ];
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-  public paths: { path: string; icon: string }[] = paths;
+  public paths: TabsInterface = paths;
 }

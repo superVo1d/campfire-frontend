@@ -17,11 +17,13 @@ import { HomePageComponent, LikesPageComponent, NavigatorPageComponent, UserPage
 import { ReactiveFormsModule } from '@angular/forms';
 import { LikesLayoutComponent } from './layouts/likes-layout.component';
 import { LikesYouPageComponent } from './pages/likes/you/likes-you.page';
+import { HomeComponent } from './home.component';
 
 register();
 
 @NgModule({
   declarations: [
+    HomeComponent,
     FindYoursComponent,
     ProfileComponent,
     HomePageComponent,

@@ -1,11 +1,14 @@
 :host {
   height: 100%;
+  margin: 0 auto;
+  max-width: 40rem;
+  width: 100%;
 }
 
 .navbar {
-  position: fixed;
   bottom: 2rem;
   left: 0;
+  position: fixed;
   right: 0;
   z-index: 1;
 }

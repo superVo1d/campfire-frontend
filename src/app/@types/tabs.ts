@@ -1,6 +1,9 @@
 export interface TabsItemInterface {
+  root?: boolean;
   path: string;
-  name: string;
+  fullPath?: string;
+  name?: string;
+  iconPath?: string;
 }
 
 export type TabsInterface = Array<TabsItemInterface>;
