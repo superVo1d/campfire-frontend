@@ -14,18 +14,18 @@ export class TelegramService {
   readonly _tg: TelegramWebApps.WebApp;
 
   constructor() {
-    this._tg = window.Telegram.WebApp;
+    this._tg = window.Telegram?.WebApp;
   }
 
   get initDataUnsafe() {
-    return this._tg.initDataUnsafe;
+    return this._tg?.initDataUnsafe;
   }
 
   get initData() {
-    return this._tg.initData;
+    return this._tg?.initData;
   }
 
   get theme() {
-    return this._tg.colorScheme === 'light';
+    return this._tg?.colorScheme === 'light';
   }
 }

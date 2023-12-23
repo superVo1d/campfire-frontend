@@ -1,10 +1,10 @@
-<a class="button" [routerLink]="link" *ngIf='link else buttonElement' (click)='handleClick($event)'>
+<a class="button" [routerLink]="link" *ngIf='link else buttonElement' (click)="handleClick($event)">
   <app-icon *ngIf="iconPath" [path]="iconPath"></app-icon>
   {{ text }}
 </a>
 
 <ng-template #buttonElement>
-  <button class="button" (click)='handleClick($event)'>
+  <button [type]="type" class="button" (click)="handleClick($event)">
     <app-icon *ngIf="iconPath" [path]="iconPath"></app-icon>
     {{ text }}
   </button>

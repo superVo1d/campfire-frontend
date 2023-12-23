@@ -1,7 +1,5 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { TelegramWebApps } from 'telegram-webapps-types';
-import WebAppInitData = TelegramWebApps.WebAppInitData;
 // import { initData as initDataMock } from '../../mocks/telegram';
 
 @Injectable({
@@ -18,7 +16,7 @@ export class ApiService {
       Authorization: `Bearer ${initData}`
     });
 
-    const requestOptions = { headers: headers };
+    const requestOptions = { headers };
 
     return this.http.get(`${this._apiBaseUrl}/user`, requestOptions);
   }

@@ -3,6 +3,8 @@
 
 :host {
   display: block;
+  margin: 0 auto;
+  max-width: 40rem;
   height: 100%;
 }
 
@@ -28,12 +30,16 @@
   &__header {
     align-items: flex-start;
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: 1fr auto 1fr;
     justify-content: space-between;
     margin-bottom: 5.4rem;
 
     > div {
       min-width: 4.8rem;
+
+      &:nth-child(3) {
+        display: flex;
+      }
     }
   }
 
@@ -58,6 +64,13 @@
 
       color: var(--main-color-50);
       margin-top: 1.6rem;
+    }
+
+    &__submit {
+      @include mixins.font(typography.$font-caption);
+
+      display: inline-block;
+      margin-left: auto;
     }
   }
 }

@@ -1,12 +1,12 @@
-import { Component, Input, Optional } from '@angular/core';
-import { NgControl } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { AbstractControl, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-input-text',
   templateUrl: './input-text.component.html',
   styleUrls: ['./input-text.component.scss']
 })
-export class InputTextComponent {
+export class InputTextComponent implements OnInit {
   @Input() type: 'text' | 'number' = 'text';
 
   @Input() textarea = false;
@@ -15,14 +15,15 @@ export class InputTextComponent {
 
   @Input() max = 500;
 
-  value = '';
+  @Input() control;
 
-  length = this.value.length;
+  public length = 0;
 
-  constructor(@Optional() private readonly _ngControl?: NgControl) {}
+  ngOnInit() {
+    this.length = this.control.value.length;
+  }
 
   onChange($event: Event) {
-    this.value = ($event.target as Element).innerHTML;
-    this.length = this.value.length;
+    this.length = this.control.value.length;
   }
 }

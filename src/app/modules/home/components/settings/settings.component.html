@@ -1,22 +1,24 @@
 <app-button class="back" iconPath="assets/media/icons/arrowRight.svg" (click)='close()'/>
 
 <div class='settings'>
-  <div class='settings__header'>
-    <div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class='settings__header'>
+      <div>
+      </div>
+      <div class='profile' (click)='openPreview()'>
+        <app-userpic class='profile__picture' [path]="user.photo"></app-userpic>
+        <div class='profile__name'>{{ user.nickname }}</div>
+      </div>
+      <div>
+        <app-button class='profile__submit secondary' text='Сохранить' type='submit'  [isDarkTheme]='true'/>
+      </div>
     </div>
-    <div class='profile'>
-      <app-userpic class='profile__picture' [path]="user.photo"></app-userpic>
-      <div class='profile__name'>{{ user.nickname }}</div>
+    <div class='settings__fields'>
+        <app-input-text class='settings__input' label="Имя" [control]='form.controls["name"]'></app-input-text>
+        <app-input-text class='settings__input' label="Обо мне" [textarea]='true' [control]='form.controls["about"]'></app-input-text>
+        <app-input-text class='settings__input' type="number" label="Возраст" [control]='form.controls["age"]'></app-input-text>
     </div>
-    <div>
-      <app-button class="eye" iconPath="assets/media/icons/eye.svg" [isDarkTheme]='true' (click)='openPreview()'/>
-    </div>
-  </div>
-  <div class='settings__fields'>
-    <app-input-text class='settings__input' label="Имя"></app-input-text>
-    <app-input-text class='settings__input' label="Обо мне" [textarea]='true'></app-input-text>
-    <app-input-text class='settings__input' type="number" label="Возраст"></app-input-text>
-  </div>
+  </form>
 </div>
 
 <div class='preview' *ngIf='isPreviewOpen'>

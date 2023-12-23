@@ -4,12 +4,14 @@ export default trigger('openClose', [
   state(
     'void',
     style({
+      opacity: '0',
       transform: 'translateX(100%)'
     })
   ),
   state(
     'open',
     style({
+      opacity: '1',
       transform: 'translateX(0)'
     })
   ),

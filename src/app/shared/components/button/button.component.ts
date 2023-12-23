@@ -12,6 +12,8 @@ export class ButtonComponent {
 
   @Input() public href?: string;
 
+  @Input() public type?: string;
+
   @Input() public onClick?: () => void;
 
   @Input() public link: string | any[] | null | undefined;

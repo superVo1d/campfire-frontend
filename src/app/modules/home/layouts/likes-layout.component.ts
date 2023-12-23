@@ -27,7 +27,6 @@ export class LikesLayoutComponent implements AfterViewInit {
   }
 
   public prepareRoute(outlet: RouterOutlet) {
-    console.log(outlet.activatedRouteData['animation']);
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
 }

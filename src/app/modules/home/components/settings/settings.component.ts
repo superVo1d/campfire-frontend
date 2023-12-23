@@ -20,7 +20,7 @@ export class SettingsComponent implements OnInit {
   ngOnInit() {
     this.form = new FormGroup({
       name: new FormControl(this._user.name, [Validators.required]),
-      about: new FormControl(this._user.age, [Validators.maxLength(500)]),
+      about: new FormControl(this._user.about, [Validators.maxLength(500)]),
       age: new FormControl(this._user.age, [Validators.required, Validators.pattern(/[0-9]*/)])
     });
   }
@@ -58,6 +58,10 @@ export class SettingsComponent implements OnInit {
 
   closePreview = () => {
     this.isPreviewOpen = false;
+  };
+
+  onSubmit = () => {
+    console.log(this.form.value);
   };
 
   close = () => {
