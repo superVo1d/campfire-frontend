@@ -1,11 +1,18 @@
-<app-button class="back-button back" [style]='"secondary"' iconPath="assets/media/icons/arrowRight.svg" [onClick]='previewMode ? onClickBack : close'/>
 
-<div class='profile'>
-  <div class="profile__photo" [style.background-image]="'url(' + profile.photo + ')'"></div>
-  <div class="profile__description">
-    <h1>{{ profile.title }}</h1>
-    <p>Ищу новых друзей для общения, встреч и развлечений. Открыт для интересных бесед, совместных хобби и ярких впечатлений. Давайте познакомимся! Ищу новых друзей для общения, встреч и развлечений. Открыт для интересных бесед, совместных хобби и ярких впечатлений. Давайте познакомимся!</p>
+
+<div class='interface'>
+  <div>
+    <app-button class="back-button back" [style]='"secondary"' iconPath="assets/media/icons/arrowRight.svg" [onClick]='previewMode ? onClickBack : close'/>
+    <app-button *ngIf="!previewMode" class="like like-button" [iconPath]="'assets/media/icons/star.png'" />
   </div>
 </div>
 
-<app-button *ngIf="!previewMode" class="like like-button" [iconPath]="'assets/media/icons/star.png'" />
+<div class='content'>
+  <div class='profile'>
+    <div class="profile__photo" [style.background-image]="'url(' + profile.photo + ')'"></div>
+    <div class="profile__description">
+      <h1>{{ profile.title }}</h1>
+      <p>Ищу новых друзей для общения, встреч и развлечений. Открыт для интересных бесед, совместных хобби и ярких впечатлений. Давайте познакомимся! Ищу новых друзей для общения, встреч и развлечений. Открыт для интересных бесед, совместных хобби и ярких впечатлений. Давайте познакомимся!</p>
+    </div>
+  </div>
+</div>

@@ -28,7 +28,7 @@ body {
   overscroll-behavior: none;
 
   &.modal {
-    overflow: hidden;
+    overflow: clip;
   }
 }
 

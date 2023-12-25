@@ -31,7 +31,10 @@ export class ThemeService {
   }
 
   public setTheme(theme: ThemeType) {
+    this.bodyClassService.removeBodyClass(`${this.activeTheme}-theme`);
+
     this.activeTheme = theme;
+
     this.bodyClassService.addBodyClass(`${theme}-theme`);
   }
 }

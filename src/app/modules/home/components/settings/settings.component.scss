@@ -1,11 +1,12 @@
 @use 'mixins';
+@use 'variables/global';
 @use 'variables/typography';
 
 :host {
   display: block;
   height: 100%;
   margin: 0 auto;
-  max-width: 40rem;
+  max-width: global.$max-width;
 }
 
 .preview {

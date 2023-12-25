@@ -59,7 +59,6 @@ export class SettingsComponent implements OnInit {
   };
 
   closePreview = () => {
-    console.log('closePreview');
     this.isPreviewOpen = false;
   };
 
