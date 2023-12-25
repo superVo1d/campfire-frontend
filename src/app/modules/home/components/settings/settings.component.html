@@ -1,4 +1,4 @@
-<app-button class="back" iconPath="assets/media/icons/arrowRight.svg" (click)='close()'/>
+<app-button class="back" [style]="'secondary'" iconPath="assets/media/icons/arrowRight.svg" (click)='close()'/>
 
 <div class='settings'>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -10,7 +10,7 @@
         <div class='profile__name'>{{ user.nickname }}</div>
       </div>
       <div>
-        <app-button class='profile__submit secondary' text='Сохранить' type='submit'  [isDarkTheme]='true'/>
+        <app-button *ngIf="form.touched" class='profile__submit secondary' text='Сохранить' type='submit'  [isDarkTheme]='true'/>
       </div>
     </div>
     <div class='settings__fields'>
@@ -21,6 +21,6 @@
   </form>
 </div>
 
-<div class='preview' *ngIf='isPreviewOpen'>
-  <app-profile-view [profile]="userPreview" (clickBackEvent)='closePreview()'></app-profile-view>
+<div [ngClass]='{ preview: true, preview_open: isPreviewOpen }'>
+  <app-profile-view [profile]="userPreview" [previewMode]="true" (clickBackEvent)='closePreview()'></app-profile-view>
 </div>

@@ -1,13 +1,23 @@
 .button {
   align-items: center;
-  background: #fff;
+  background-color: transparent;
+  width: auto;
   border-radius: 50%;
   color: #000;
   display: flex;
   height: 4.8rem;
   justify-content: center;
   padding: 0.8rem;
-  width: 4.8rem;
+
+  &.primary {
+    background: #fff;
+    width: 4.8rem;
+  }
+
+  &.secondary {
+    background: #fff;
+    width: 4.8rem;
+  }
 }
 
 :host {

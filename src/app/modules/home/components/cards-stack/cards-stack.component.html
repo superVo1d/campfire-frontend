@@ -2,7 +2,6 @@
   <swiper-container
     #swiperRef
     centered-slides="true"
-    initial-slide="1"
     slides-per-view="auto"
     effect="cards"
     grab-cursor="true"
@@ -15,7 +14,7 @@
         <div class="card__interface">
           <h1>{{card.title}}</h1>
           <p>Ищу новых друзей для общения, встреч и развлечений. Открыт для интересных бесед, совместных хобби и ярких впечатлений. Давайте познакомимся! Ищу новых друзей для общения, встреч и развлечений. Открыт для интересных бесед, совместных хобби и ярких впечатлений. Давайте познакомимся!</p>
-          <app-button class="like card__button" [iconPath]="'assets/media/icons/like.svg'" />
+          <app-button class="like card__button" [style]='"primary"' [iconPath]="'assets/media/icons/star.png'" />
         </div>
       </a>
     </swiper-slide>

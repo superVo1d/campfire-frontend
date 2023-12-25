@@ -5,31 +5,40 @@ import { ModalComponent } from '../components';
   providedIn: 'root'
 })
 export class ModalService {
-  componentRef: ComponentRef<ModalComponent>;
-
-  modalContentRef: ComponentRef<any>;
+  modalRef: ComponentRef<ModalComponent>;
 
   constructor(
     private appRef: ApplicationRef,
     private injector: EnvironmentInjector
   ) {}
 
-  open<C>(ModalContent: Type<C>) {
+  open<C>(ModalContent: Type<C>, modalInputs?: { [name: string]: any }) {
     const modalContentRef = createComponent<C>(ModalContent, {
       environmentInjector: this.injector
     });
 
-    this.componentRef = createComponent(ModalComponent, {
+    if (modalInputs) {
+      Object.keys(modalInputs).map((name) => {
+        modalContentRef.setInput(name, modalInputs[name]);
+      });
+    }
+
+    this.modalRef = createComponent(ModalComponent, {
       environmentInjector: this.injector,
       projectableNodes: [[modalContentRef.location.nativeElement]]
     });
 
-    document.body.appendChild(this.componentRef.location.nativeElement);
-    this.appRef.attachView(this.componentRef.hostView);
+    document.body.appendChild(this.modalRef.location.nativeElement);
+    this.appRef.attachView(this.modalRef.hostView);
+
     this.appRef.attachView(modalContentRef.hostView);
   }
 
+  closeAll() {
+    this.modalRef.destroy();
+  }
+
   close() {
-    this.componentRef.destroy();
+    this.closeAll();
   }
 }

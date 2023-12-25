@@ -1,4 +1,5 @@
 import { Component, HostBinding, Input } from '@angular/core';
+import { ButtonStyleType, ButtonSizeType } from '../../../@types/button';
 
 @Component({
   selector: 'app-button',
@@ -18,9 +19,19 @@ export class ButtonComponent {
 
   @Input() public link: string | any[] | null | undefined;
 
+  @Input() public darkMode = false;
+
   @HostBinding('class.dark-mode') @Input() isDarkTheme = false;
 
   @HostBinding('class.active') @Input() isClicked = false;
+
+  @Input() style: ButtonStyleType;
+
+  @Input() size: ButtonSizeType;
+
+  get classNames(): any[] {
+    return ['button', this.style, { [`size-${this.size}`]: this.size }];
+  }
 
   handleClick($event: Event) {
     this.isClicked = true;

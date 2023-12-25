@@ -13,7 +13,7 @@ const paths = [
   },
   {
     path: '/likes',
-    iconPath: 'assets/media/icons/like.svg'
+    iconPath: 'assets/media/icons/star.png'
   }
 ];
 

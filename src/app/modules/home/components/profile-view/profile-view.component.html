@@ -1,4 +1,4 @@
-<app-button class="back-button back" iconPath="assets/media/icons/arrowRight.svg" [onClick]='onClickBack' [link]="'../'"/>
+<app-button class="back-button back" [style]='"secondary"' iconPath="assets/media/icons/arrowRight.svg" [onClick]='previewMode ? onClickBack : close'/>
 
 <div class='profile'>
   <div class="profile__photo" [style.background-image]="'url(' + profile.photo + ')'"></div>
@@ -8,4 +8,4 @@
   </div>
 </div>
 
-<app-button *ngIf="profile.match" class="like like-button" [iconPath]="'assets/media/icons/like.svg'" />
+<app-button *ngIf="!previewMode" class="like like-button" [iconPath]="'assets/media/icons/star.png'" />

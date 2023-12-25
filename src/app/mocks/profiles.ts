@@ -2,6 +2,11 @@ import { MatchType, UsersInterface } from '../@types/users';
 
 export const data: UsersInterface[] = [
   {
+    id: '0',
+    title: 'Гриша, 26',
+    photo: '/assets/media/images/no-userpic.png'
+  },
+  {
     id: '1',
     title: 'Миша, 16',
     photo: '/assets/media/mocks/mock-photo-1.png'

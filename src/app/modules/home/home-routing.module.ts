@@ -18,17 +18,15 @@ export const routes: Routes = [
       },
       {
         path: 'navigator',
+        component: NavigatorPageComponent,
         children: [
           {
-            path: '',
-            component: NavigatorPageComponent,
-            data: { animation: 1 }
-          },
-          {
             path: ':userId',
-            component: UserPageComponent
+            component: UserPageComponent,
+            data: { animation: 1 }
           }
-        ]
+        ],
+        data: { animation: 1 }
       },
       {
         path: 'likes',
@@ -36,12 +34,12 @@ export const routes: Routes = [
         children: [
           {
             path: '',
-            data: { animation: 3 },
+            data: { animation: 2 },
             component: LikesPageComponent
           },
           {
             path: 'you',
-            data: { animation: 4 },
+            data: { animation: 3 },
             component: LikesYouPageComponent
           }
         ]

@@ -14,7 +14,7 @@ export class ProfileComponent {
 
   private modalService = inject(ModalService);
 
-  openSettings = () => {
-    this.modalService.open(SettingsComponent);
+  openPreview = () => {
+    this.modalService.open(SettingsComponent, { isPreviewOpen: true });
   };
 }

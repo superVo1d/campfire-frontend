@@ -1,4 +1,4 @@
-import { Component, HostBinding, HostListener, inject, OnInit } from '@angular/core';
+import { Component, HostBinding, HostListener, inject, Input, OnInit } from '@angular/core';
 import { UserInterface } from '../../../../@types/user';
 import { data } from '../../../../mocks/user';
 import { ModalService } from '../../../../shared/services/modal.service';
@@ -25,7 +25,9 @@ export class SettingsComponent implements OnInit {
     });
   }
 
-  public isPreviewOpen = false;
+  @Input() isPreviewOpen = false;
+
+  @Input() id = '';
 
   get user(): UserInterface {
     return this._user;
@@ -48,7 +50,7 @@ export class SettingsComponent implements OnInit {
   animationEnded(e: AnimationEvent) {
     /* @ts-ignore */
     if (e.toState === 'void') {
-      this.modalService.close();
+      this.modalService.closeAll();
     }
   }
 
@@ -57,6 +59,7 @@ export class SettingsComponent implements OnInit {
   };
 
   closePreview = () => {
+    console.log('closePreview');
     this.isPreviewOpen = false;
   };
 
