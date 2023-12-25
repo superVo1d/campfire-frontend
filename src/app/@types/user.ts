@@ -1,9 +1,12 @@
-export interface UserInterface {
-  id: string;
+export interface UserViewInterface {
   about?: string;
   age: string;
   name: string;
-  hub: string;
   photo: string;
+}
+
+export interface UserInterface extends UserViewInterface {
+  id: string;
+  hub: string;
   nickname: string;
 }

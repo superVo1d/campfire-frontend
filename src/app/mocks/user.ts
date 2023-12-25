@@ -1,7 +1,7 @@
 export const data = {
   id: '0',
   age: '24',
-  about: 'о себе',
+  about: '',
   name: 'Женя',
   nickname: '@eugen',
   hub: 'Setters',

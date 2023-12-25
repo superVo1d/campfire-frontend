@@ -21,11 +21,11 @@ export class StatsComponent implements OnInit {
   }
 
   ngOnInit() {
-    const fieldsToCount = Object.keys(this.user).filter((item) => item !== 'id');
+    const fieldsToCount = ['name', 'photo', 'about', 'age'];
 
     this._percentage = Math.ceil(
-      fieldsToCount.reduce((value) => {
-        return (value / 100 + 1 / fieldsToCount.length) * 100;
+      fieldsToCount.reduce((value, key) => {
+        return this.user[key] === '' ? value : (value / 100 + 1 / fieldsToCount.length) * 100;
       }, 0)
     );
   }
