@@ -4,12 +4,44 @@
 
 :host {
   display: block;
-  height: 100%;
   margin: 0 auto;
   max-width: global.$max-width;
+  position: relative;
+  z-index: 2;
+}
+
+.content {
+  height: 100%;
+  min-height: 100vh;
+  overflow: scroll;
+
+  &_preview-opened {
+    height: 100vh;
+    overflow: hidden;
+  }
+}
+
+.interface {
+  height: 100%;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  width: 100%;
+
+  > div {
+    height: 100vh;
+    position: sticky;
+    top: 0;
+
+    > * {
+      pointer-events: all;
+    }
+  }
 }
 
 .preview {
+  bottom: 0;
   opacity: 0;
   position: fixed;
   top: 0;
@@ -32,8 +64,7 @@
 
 .settings {
   background: var(--background);
-  min-height: 100%;
-  padding: 2rem;
+  padding: 2rem 2rem global.$bottom-offset;
   width: 100%;
   will-change: transform;
 
