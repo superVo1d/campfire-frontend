@@ -9,8 +9,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss'],
-  animations: [animations]
+  styleUrls: ['./settings.component.scss']
+  // animations: [animations]
 })
 export class SettingsComponent implements OnInit {
   private _user: UserInterface = data;
@@ -43,16 +43,16 @@ export class SettingsComponent implements OnInit {
 
   private modalService = inject(ModalService);
 
-  @HostBinding('@openClose')
-  public animationState = 'open';
-
-  @HostListener('@openClose.done', ['$event'])
-  animationEnded(e: AnimationEvent) {
-    /* @ts-ignore */
-    if (e.toState === 'void') {
-      this.modalService.closeAll();
-    }
-  }
+  // @HostBinding('@openClose')
+  // public animationState = 'open';
+  //
+  // @HostListener('@openClose.done', ['$event'])
+  // animationEnded(e: AnimationEvent) {
+  //   /* @ts-ignore */
+  //   if (e.toState === 'void') {
+  //     this.modalService.closeAll();
+  //   }
+  // }
 
   openPreview = () => {
     this.isPreviewOpen = true;
@@ -66,7 +66,7 @@ export class SettingsComponent implements OnInit {
     console.log(this.form.value);
   };
 
-  close = () => {
-    this.animationState = 'void';
-  };
+  // close = () => {
+  //   this.animationState = 'void';
+  // };
 }

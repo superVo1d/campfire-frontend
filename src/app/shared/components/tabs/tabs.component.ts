@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, HostBinding, inject, Input, OnInit, ViewChild } from '@angular/core';
 import { TabsInterface } from '../../../@types/tabs';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { TelegramService } from '../../services/telegram.service';
 
 @Component({
   selector: 'app-tabs',
@@ -19,7 +20,11 @@ export class TabsComponent implements OnInit, AfterViewInit {
 
   private router = inject(Router);
 
+  private telegramService = inject(TelegramService);
+
   public activeTabIndex = 0;
+
+  private firstRender = true;
 
   constructor(private route: ActivatedRoute) {}
 
@@ -70,6 +75,12 @@ export class TabsComponent implements OnInit, AfterViewInit {
 
     if (!wrapperElement || !activeTabElement) {
       return;
+    }
+
+    if (this.firstRender) {
+      this.firstRender = false;
+    } else {
+      this.telegramService.haptic?.impactOccurred('medium');
     }
 
     const { x: wrapperX } = wrapperElement.getBoundingClientRect();

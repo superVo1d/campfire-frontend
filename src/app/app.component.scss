@@ -1,5 +1,14 @@
 :host {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+  display: grid;
+  height: calc(var(--vh) * 100);
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+main {
+  height: auto;
+  min-height: calc(var(--vh) * 100 + 1px);
 }

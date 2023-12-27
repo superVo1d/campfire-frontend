@@ -1,6 +1,6 @@
 <div>
   <div>
-    <app-button class="back" [style]="'secondary'" iconPath="assets/media/icons/arrowRight.svg" (click)='close()'/>
+    <app-button class="back" [style]="'secondary'" iconPath="assets/media/icons/arrowRight.svg" [link]='"/"'/>
   </div>
 </div>
 
@@ -27,6 +27,6 @@
   </div>
 </div>
 
-<div [ngClass]='{ preview: true, preview_open: isPreviewOpen }'>
+<div *ngIf='isPreviewOpen' class='preview'>
   <app-profile-view [profile]="userPreview" [previewMode]="true" (clickBackEvent)='closePreview()'></app-profile-view>
 </div>

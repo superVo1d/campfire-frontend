@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TelegramWebApps } from 'telegram-webapps-types';
+import { TelegramWebApps } from 'telegram-webapps-types-new';
 
 declare global {
   interface Window {
@@ -11,10 +11,10 @@ declare global {
   providedIn: 'root'
 })
 export class TelegramService {
-  readonly _tg: TelegramWebApps.WebApp;
+  private readonly _tg: TelegramWebApps.WebApp;
 
   constructor() {
-    this._tg = window.Telegram?.WebApp;
+    this._tg = window.Telegram.WebApp;
   }
 
   get initDataUnsafe() {
@@ -27,5 +27,21 @@ export class TelegramService {
 
   get theme() {
     return this._tg?.colorScheme === 'light';
+  }
+
+  get viewportHeight() {
+    return this._tg?.viewportHeight;
+  }
+
+  expand() {
+    this._tg?.expand();
+  }
+
+  get haptic() {
+    return this._tg?.HapticFeedback;
+  }
+
+  onEvent(eventType: TelegramWebApps.EventType, eventHandler: () => void) {
+    this._tg?.onEvent(eventType, eventHandler);
   }
 }

@@ -1,4 +1,4 @@
-<div class="stats" (click)='openSettings()'>
+<a class="stats" [routerLink]='"settings"'>
   <div class="stats__title">
     <span>Заполните профиль</span>
     <app-icon class="icon" [path]="'assets/media/icons/arrowRight.svg'"></app-icon>
@@ -7,4 +7,4 @@
     Заполнено {{ percentage }}%
   </div>
   <div class="stats__progress"></div>
-</div>
+</a>

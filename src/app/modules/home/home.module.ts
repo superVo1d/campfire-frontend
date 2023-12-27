@@ -18,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LikesLayoutComponent } from './layouts/likes-layout.component';
 import { LikesYouPageComponent } from './pages/likes/you/likes-you.page';
 import { HomeComponent } from './home.component';
+import { SettingsPageComponent } from './pages/settings/settings.page';
 
 register();
 
@@ -34,6 +35,7 @@ register();
     CardsComponent,
     CardsStackComponent,
     SettingsComponent,
+    SettingsPageComponent,
     ProfileViewComponent,
     UserPageComponent,
     LikesLayoutComponent,

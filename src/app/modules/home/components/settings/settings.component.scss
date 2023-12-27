@@ -42,17 +42,9 @@
 
 .preview {
   bottom: 0;
-  opacity: 0;
   position: fixed;
   top: 0;
-  transform: translateX(100%);
-  transition: 0.3s ease-in-out;
   z-index: 3;
-
-  &_open {
-    opacity: 1;
-    transform: translateX(0%);
-  }
 }
 
 .back {

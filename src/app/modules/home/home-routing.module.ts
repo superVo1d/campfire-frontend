@@ -4,6 +4,7 @@ import { HomePageComponent, LikesPageComponent, NavigatorPageComponent, UserPage
 import { LikesLayoutComponent } from './layouts/likes-layout.component';
 import { LikesYouPageComponent } from './pages/likes/you/likes-you.page';
 import { HomeComponent } from './home.component';
+import { SettingsPageComponent } from './pages/settings/settings.page';
 
 export const routes: Routes = [
   {
@@ -17,15 +18,18 @@ export const routes: Routes = [
         data: { animation: 0 }
       },
       {
+        path: 'settings',
+        component: SettingsPageComponent,
+        data: { animation: 1 }
+      },
+      {
         path: 'navigator',
         component: NavigatorPageComponent,
-        children: [
-          {
-            path: ':userId',
-            component: UserPageComponent,
-            data: { animation: 1 }
-          }
-        ],
+        data: { animation: 1 }
+      },
+      {
+        path: 'navigator/:userId',
+        component: UserPageComponent,
         data: { animation: 1 }
       },
       {

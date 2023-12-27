@@ -6,8 +6,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-profile-view',
   templateUrl: './profile-view.component.html',
-  styleUrls: ['./profile-view.component.scss'],
-  animations: [animations]
+  styleUrls: ['./profile-view.component.scss']
+  // animations: [animations]
 })
 export class ProfileViewComponent {
   @Input() profile: UsersInterface;
@@ -16,20 +16,15 @@ export class ProfileViewComponent {
 
   @Output() clickBackEvent = new EventEmitter();
 
-  @HostBinding('@openClose')
-  public animationState = 'open';
+  // @HostBinding('@openClose')
+  // public animationState = 'open';
 
-  @HostListener('@openClose.done', ['$event'])
-  animationEnded(e: AnimationEvent) {
-    /* @ts-ignore */
-    if (e.toState === 'void') {
-      this.onClickBack();
-
-      if (!this.previewMode) {
-        this.router.navigate(['/navigator']);
-      }
-    }
-  }
+  // @HostListener('@openClose.done', ['$event'])
+  // animationEnded(e: AnimationEvent) {
+  //   /* @ts-ignore */
+  //   if (e.toState === 'void') {
+  //   }
+  // }
 
   constructor(private router: Router) {}
 
@@ -38,6 +33,10 @@ export class ProfileViewComponent {
   };
 
   close = () => {
-    this.animationState = 'void';
+    this.onClickBack();
+
+    if (!this.previewMode) {
+      this.router.navigate(['/navigator']);
+    }
   };
 }

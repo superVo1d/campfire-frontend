@@ -41,7 +41,7 @@ swiper-slide {
   &::before {
     background-color: rgba(253 37 0 / 50%);
     border-radius: 50%;
-    content: "";
+    content: none;
     display: block;
     filter: blur(100px);
     height: 20rem;

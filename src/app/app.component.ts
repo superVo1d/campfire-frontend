@@ -3,6 +3,7 @@ import { TelegramService } from './shared/services/telegram.service';
 import { BrowserDetectorService } from './shared/services/browser-detector.service';
 import { ThemeService } from './shared/services/theme.service';
 import { ApiService } from './core/services/api.service';
+import { TelegramWebApps } from 'telegram-webapps-types-new';
 
 @Component({
   selector: 'app-root',
@@ -23,8 +24,17 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.browserDetectorService.detectBrowser();
 
-    this.apiService.getUser(this.telegramService.initData).subscribe((data) => {
-      console.log(data);
+    this.telegramService.expand();
+    document.documentElement.style.setProperty('--vh', (this.telegramService.viewportHeight / 100).toString() + 'px');
+
+    this.telegramService.onEvent('viewportChanged', () => {
+      document.documentElement.style.setProperty('--vh', (this.telegramService.viewportHeight / 100).toString() + 'px');
     });
+
+    if (this.telegramService.initData) {
+      this.apiService.getUser(this.telegramService.initData).subscribe((data) => {
+        console.log(data);
+      });
+    }
   }
 }
