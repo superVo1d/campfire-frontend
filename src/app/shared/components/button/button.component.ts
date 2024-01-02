@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 import { ButtonStyleType, ButtonSizeType } from '../../../@types/button';
 
 @Component({
@@ -21,6 +21,8 @@ export class ButtonComponent {
 
   @Input() public darkMode = false;
 
+  @Output() clickEvent = new EventEmitter();
+
   @HostBinding('class.dark-mode') @Input() isDarkTheme = false;
 
   @HostBinding('class.active') @Input() isClicked = false;
@@ -35,6 +37,8 @@ export class ButtonComponent {
 
   handleClick($event: Event) {
     this.isClicked = true;
+
+    this.clickEvent?.emit();
 
     if (this.onClick) {
       $event.preventDefault();

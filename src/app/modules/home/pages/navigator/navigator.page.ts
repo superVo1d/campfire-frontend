@@ -1,6 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { filter, map, mergeMap } from 'rxjs';
+import { filter, map, mergeMap, Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { UserInterface } from '../../../../@types/user';
+import { selectUsers } from '../../../../core/store';
+import { UsersInterface } from '../../../../@types/users';
 
 @Component({
   templateUrl: './navigator.page.html',
@@ -8,6 +12,10 @@ import { filter, map, mergeMap } from 'rxjs';
 })
 export class NavigatorPageComponent {
   public currentUserId: string | null;
+
+  private store = inject(Store);
+
+  cards$: Observable<UsersInterface[]> = this.store.select(selectUsers);
 
   constructor(
     private activatedRoute: ActivatedRoute,

@@ -1,7 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { UsersInterface } from '../../../../../@types/users';
+import { selectUsers } from '../../../../../core/store';
 
 @Component({
   templateUrl: './likes-you.page.html',
   styleUrls: ['./likes-you.page.scss']
 })
-export class LikesYouPageComponent {}
+export class LikesYouPageComponent {
+  private store = inject(Store);
+
+  cards$: Observable<UsersInterface[]> = this.store.select(selectUsers);
+}

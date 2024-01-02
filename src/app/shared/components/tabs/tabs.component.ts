@@ -24,8 +24,6 @@ export class TabsComponent implements OnInit, AfterViewInit {
 
   public activeTabIndex = 0;
 
-  private firstRender = true;
-
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
@@ -75,12 +73,6 @@ export class TabsComponent implements OnInit, AfterViewInit {
 
     if (!wrapperElement || !activeTabElement) {
       return;
-    }
-
-    if (this.firstRender) {
-      this.firstRender = false;
-    } else {
-      this.telegramService.haptic?.impactOccurred('medium');
     }
 
     const { x: wrapperX } = wrapperElement.getBoundingClientRect();

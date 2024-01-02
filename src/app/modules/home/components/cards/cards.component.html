@@ -1,8 +1,8 @@
 <div class="cards">
-  <ng-container *ngFor="let card of cards">
+  <ng-container *ngFor="let card of userCards">
     <a class="card" [routerLink]="'/navigator/' + card.id">
       <div class="card__content">
-        <div class="card__title">{{ card.title }}</div>
+        <div class="card__title">{{ cardTitle(card) }}</div>
         <div *ngIf="card?.match" class="card__label">Мэтч!</div>
       </div>
       <div class="card__background" [style.background-image]="'url(' + card.photo + ')'"></div>

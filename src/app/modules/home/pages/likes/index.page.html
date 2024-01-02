@@ -1,1 +1,3 @@
-<app-cards></app-cards>
+<ng-template *ngIf='(cards$ | async) as cards'>
+  <app-cards *ngIf='cards.length > 0' [cards]='cards'></app-cards>
+</ng-template>

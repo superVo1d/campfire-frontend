@@ -1,13 +1,12 @@
-import { Component, EventEmitter, HostBinding, HostListener, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { UsersInterface } from '../../../../@types/users';
-import animations from '../settings/settings-animations';
 import { Router } from '@angular/router';
+import { ApiService } from '../../../../core/services/api.service';
 
 @Component({
   selector: 'app-profile-view',
   templateUrl: './profile-view.component.html',
   styleUrls: ['./profile-view.component.scss']
-  // animations: [animations]
 })
 export class ProfileViewComponent {
   @Input() profile: UsersInterface;
@@ -16,17 +15,13 @@ export class ProfileViewComponent {
 
   @Output() clickBackEvent = new EventEmitter();
 
-  // @HostBinding('@openClose')
-  // public animationState = 'open';
-
-  // @HostListener('@openClose.done', ['$event'])
-  // animationEnded(e: AnimationEvent) {
-  //   /* @ts-ignore */
-  //   if (e.toState === 'void') {
-  //   }
-  // }
+  private apiService = inject(ApiService);
 
   constructor(private router: Router) {}
+
+  cardTitle(card: UsersInterface) {
+    return card.firstName + (card.lastName || '') + (card.age ? `, ${card.age}` : '');
+  }
 
   onClickBack = (): void => {
     this.clickBackEvent?.emit();
@@ -39,4 +34,8 @@ export class ProfileViewComponent {
       this.router.navigate(['/navigator']);
     }
   };
+
+  like() {
+    this.apiService.likeUser(this.profile.id).subscribe((data) => console.log(data.mutual));
+  }
 }

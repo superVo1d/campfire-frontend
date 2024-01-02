@@ -1,6 +1,6 @@
-<div class="home-page">
+<div class="home-page" *ngIf="(cards$ | async) as cards">
   <app-profile/>
   <app-stats/>
-  <app-find-yours/>
+  <app-find-yours *ngIf="cards.length > 0" [cards]='cards' />
   <app-about/>
 </div>

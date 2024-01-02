@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { UserInterface } from '../../../../@types/user';
-import { data } from '../../../../mocks/user';
-import { ModalService } from '../../../../shared/services/modal.service';
-import { SettingsComponent } from '../settings/settings.component';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { selectUser } from '../../../../core/store';
 
 @Component({
   selector: 'app-profile',
@@ -10,11 +10,7 @@ import { SettingsComponent } from '../settings/settings.component';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent {
-  public user: UserInterface = data;
+  private store = inject(Store);
 
-  private modalService = inject(ModalService);
-
-  openPreview = () => {
-    this.modalService.open(SettingsComponent, { isPreviewOpen: true });
-  };
+  user$: Observable<UserInterface> = this.store.select(selectUser);
 }

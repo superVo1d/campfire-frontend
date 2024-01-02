@@ -20,10 +20,10 @@ export class InputTextComponent implements OnInit {
   public length = 0;
 
   ngOnInit() {
-    this.length = this.control.value.length;
+    this.length = this.control.value?.length;
   }
 
-  onChange($event: Event) {
+  onChange() {
     this.length = this.control.value.length;
   }
 }

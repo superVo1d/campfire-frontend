@@ -8,14 +8,13 @@
     space-between="-12"
     autoplay-delay="2500"
     autoplay-disable-on-interaction="false"
-    loop="true"
     init="false"
   >
-    <swiper-slide *ngFor="let card of cards; index as i" [class]="{ 'swiper-slide-active': i === 1}">
+    <swiper-slide *ngFor="let card of userCards; index as i" [class]="{ 'swiper-slide-active': i === 1}">
       <div class="card">
         <div class="card__interface">
           <div class="name">
-            <h3>{{card.title}}</h3>
+            <h3>{{cardTitle(card)}}</h3>
           </div>
           <app-button class="card__button" [style]="'secondary'" [iconPath]="'assets/media/icons/arrowRightLarge.svg'" [link]="[ '/navigator', card.id]"></app-button>
         </div>

@@ -5,8 +5,12 @@ export enum MatchType {
 }
 
 export interface UsersInterface {
-  id: string;
-  title: string;
-  photo: string;
+  id: number;
+  about?: string;
+  firstName: string;
+  lastName?: string;
+  age?: number;
+  photo?: string;
+  nickname?: string;
   match?: MatchType;
 }

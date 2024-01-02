@@ -4,6 +4,8 @@
   background: var(--background);
   display: block;
   height: 100%;
+  margin: 0 auto;
+  max-width: global.$max-width;
   position: relative;
   z-index: 2;
 }

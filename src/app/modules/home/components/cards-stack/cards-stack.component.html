@@ -5,14 +5,13 @@
     slides-per-view="auto"
     effect="cards"
     grab-cursor="true"
-    loop="true"
     init="false"
   >
-    <swiper-slide *ngFor="let card of cards; index as i">
-      <a class="card" [routerLink]="card.id">
+    <swiper-slide *ngFor="let card of userCards; index as i">
+      <a class="card" [routerLink]="card.id.toString()">
         <div class="card__background" [style.background-image]="'url(' + card.photo + ')'"></div>
         <div class="card__interface">
-          <h1>{{card.title}}</h1>
+          <h1>{{cardTitle(card)}}</h1>
           <p>Ищу новых друзей для общения, встреч и развлечений. Открыт для интересных бесед, совместных хобби и ярких впечатлений. Давайте познакомимся! Ищу новых друзей для общения, встреч и развлечений. Открыт для интересных бесед, совместных хобби и ярких впечатлений. Давайте познакомимся!</p>
           <app-button class="like card__button" [style]='"primary"' [iconPath]="'assets/media/icons/star.png'" />
         </div>

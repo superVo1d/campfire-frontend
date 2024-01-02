@@ -3,7 +3,12 @@ import { TelegramService } from './shared/services/telegram.service';
 import { BrowserDetectorService } from './shared/services/browser-detector.service';
 import { ThemeService } from './shared/services/theme.service';
 import { ApiService } from './core/services/api.service';
-import { TelegramWebApps } from 'telegram-webapps-types-new';
+import { Store } from '@ngrx/store';
+import { loadUser } from './core/store/user.actions';
+import { UserInterface } from './@types/user';
+import { mergeMap, switchMap, tap } from 'rxjs';
+import { initData } from './mocks/telegram';
+import { loadUsers } from './core/store/users.actions';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +21,8 @@ export class AppComponent implements OnInit {
   private telegramService = inject(TelegramService);
 
   private browserDetectorService = inject(BrowserDetectorService);
+
+  private store = inject(Store);
 
   private apiService = inject(ApiService);
 
@@ -31,10 +38,10 @@ export class AppComponent implements OnInit {
       document.documentElement.style.setProperty('--vh', (this.telegramService.viewportHeight / 100).toString() + 'px');
     });
 
-    if (this.telegramService.initData) {
-      this.apiService.getUser(this.telegramService.initData).subscribe((data) => {
-        console.log(data);
-      });
-    }
+    // if (this.telegramService.initData) {
+    this.apiService.auth(initData).subscribe(() => {
+      this.store.dispatch(loadUser());
+      this.store.dispatch(loadUsers());
+    });
   }
 }
