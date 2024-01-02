@@ -1,4 +1,4 @@
-import { MatchType, UsersInterface } from '../@types/users';
+import { UsersInterface } from '../@types/users';
 
 export const data: UsersInterface[] = [
   {
@@ -25,7 +25,7 @@ export const data: UsersInterface[] = [
     about: 'Описание 3',
     age: 17,
     nickname: 'username',
-    match: MatchType.your
+    likesYou: true
   },
   {
     id: 4,
@@ -34,7 +34,8 @@ export const data: UsersInterface[] = [
     about: 'Описание 4',
     age: 32,
     nickname: 'username',
-    match: MatchType.mutual
+    like: true,
+    likesYou: true
   },
   {
     id: 5,
@@ -43,7 +44,7 @@ export const data: UsersInterface[] = [
     about: 'Описание 5',
     age: 33,
     nickname: 'username',
-    match: MatchType.you
+    likesYou: true
   },
   {
     id: 6,
@@ -52,7 +53,8 @@ export const data: UsersInterface[] = [
     about: 'Описание 6',
     age: 25,
     nickname: 'username',
-    match: MatchType.mutual
+    like: true,
+    likesYou: true
   },
   {
     id: 6,

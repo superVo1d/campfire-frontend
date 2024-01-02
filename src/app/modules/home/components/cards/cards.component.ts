@@ -1,8 +1,7 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { data } from '../../../../mocks/profiles';
-import { MatchType, UsersInterface } from '../../../../@types/users';
+import { UsersInterface } from '../../../../@types/users';
 import { NavigationEnd, Router } from '@angular/router';
-import * as _ from 'lodash';
 
 @Component({
   selector: 'app-cards',
@@ -12,35 +11,32 @@ import * as _ from 'lodash';
 export class CardsComponent implements OnInit {
   private _cards: UsersInterface[] = data;
 
-  private listType: MatchType.you | MatchType.your;
+  private displayYouLike: boolean;
 
   private router = inject(Router);
 
   @Input() set cards(_cards: UsersInterface[]) {
-    this._cards = _cards.length < 3 ? _.flatten(Array(2).fill(_cards)) : _cards;
+    console.log(_cards);
+    this._cards = _cards;
   }
 
   ngOnInit() {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.listType = event.url === '/likes' ? MatchType.your : MatchType.you;
+        this.displayYouLike = event.url !== '/likes';
       }
     });
 
-    this.listType = this.router.url === '/likes' ? MatchType.your : MatchType.you;
+    this.displayYouLike = this.router.url !== '/likes';
   }
 
   cardTitle(card) {
-    return card.firstName + ', ' + card.age;
+    return card.firstName + (card.age ? `, ${card.age}` : '');
   }
 
   get userCards() {
-    return this._cards
-      .filter((item) => {
-        return item.match && [this.listType, MatchType.mutual].includes(item.match);
-      })
-      .map((item) => {
-        return { ...item, match: item.match === MatchType.mutual };
-      });
+    return this._cards.filter((item) => {
+      return this.displayYouLike ? item.like : item.likesYou;
+    });
   }
 }
