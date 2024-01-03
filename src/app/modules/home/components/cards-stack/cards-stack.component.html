@@ -13,7 +13,7 @@
         <div class="card__interface">
           <h1>{{cardTitle(card)}}</h1>
           <p>Ищу новых друзей для общения, встреч и развлечений. Открыт для интересных бесед, совместных хобби и ярких впечатлений. Давайте познакомимся! Ищу новых друзей для общения, встреч и развлечений. Открыт для интересных бесед, совместных хобби и ярких впечатлений. Давайте познакомимся!</p>
-          <app-button class="like card__button" [style]='"primary"' [iconPath]="'assets/media/icons/star.png'" />
+          <app-button class="like card__button" [style]='"primary"' [iconPath]="card.like ? 'assets/media/icons/starFilled.png' : 'assets/media/icons/star.png'" />
         </div>
       </a>
     </swiper-slide>

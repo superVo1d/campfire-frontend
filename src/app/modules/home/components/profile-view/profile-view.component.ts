@@ -2,6 +2,8 @@ import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { UsersInterface } from '../../../../@types/users';
 import { Router } from '@angular/router';
 import { ApiService } from '../../../../core/services/api.service';
+import { Store } from '@ngrx/store';
+import { likeUser } from '../../../../core/store/users.actions';
 
 @Component({
   selector: 'app-profile-view',
@@ -17,10 +19,16 @@ export class ProfileViewComponent {
 
   private apiService = inject(ApiService);
 
+  private store = inject(Store);
+
   constructor(private router: Router) {}
 
-  cardTitle(card: UsersInterface) {
-    return card.firstName + (card.lastName || '') + (card.age ? `, ${card.age}` : '');
+  get liked() {
+    return this.profile.like;
+  }
+
+  get cardTitle() {
+    return this.profile.firstName + (this.profile.lastName || '') + (this.profile.age ? `, ${this.profile.age}` : '');
   }
 
   onClickBack = (): void => {
@@ -36,6 +44,7 @@ export class ProfileViewComponent {
   };
 
   like() {
-    this.apiService.likeUser(this.profile.id).subscribe((data) => console.log(data.mutual));
+    this.store.dispatch(likeUser({ id: this.profile.id }));
+    // this.apiService.likeUser(this.profile.id).subscribe((data) => console.log(data.mutual));
   }
 }
