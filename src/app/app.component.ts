@@ -38,10 +38,13 @@ export class AppComponent implements OnInit {
       document.documentElement.style.setProperty('--vh', (this.telegramService.viewportHeight / 100).toString() + 'px');
     });
 
-    // if (this.telegramService.initData) {
-    this.apiService.auth(initData).subscribe(() => {
-      this.store.dispatch(loadUser());
-      this.store.dispatch(loadUsers());
-    });
+    console.log(this.telegramService.initData);
+
+    if (this.telegramService.initData) {
+      this.apiService.auth(this.telegramService.initData).subscribe(() => {
+        this.store.dispatch(loadUser());
+        this.store.dispatch(loadUsers());
+      });
+    }
   }
 }

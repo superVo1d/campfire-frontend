@@ -1,6 +1,10 @@
-<div class="home-page" *ngIf="(cards$ | async) as cards">
-  <app-profile/>
-  <app-stats/>
-  <app-find-yours *ngIf="cards.length > 0" [cards]='cards' />
-  <app-about/>
-</div>
+<ng-container *ngIf="(cards$ | async) as cards">
+  <ng-container *ngIf="(user$ | async) as user">
+    <div class="home-page">
+      <app-profile [user]='user'/>
+      <app-stats/>
+      <app-find-yours *ngIf="cards.length > 0" [cards]='cards' [user]='user' />
+      <app-about/>
+    </div>
+  </ng-container>
+</ng-container>

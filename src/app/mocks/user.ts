@@ -5,8 +5,11 @@ export const data: UserInterface = {
   age: 24,
   about: '',
   firstName: 'Женя',
-  lastName: 'Круто',
+  lastName: 'Лукашин',
   nickname: '@eugen',
-  hub: 'Setters',
+  hub: {
+    hubId: 0,
+    hubName: 'Setters'
+  },
   photo: '/assets/media/mocks/mock-user-photo.png'
 };

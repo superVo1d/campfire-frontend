@@ -8,6 +8,9 @@ export interface UserViewInterface {
 
 export interface UserInterface extends UserViewInterface {
   id: number;
-  hub: string;
+  hub: {
+    hubId: number;
+    hubName: string;
+  };
   nickname: string;
 }

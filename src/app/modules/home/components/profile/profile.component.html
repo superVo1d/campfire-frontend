@@ -1,10 +1,10 @@
-<div class="profile" *ngIf='(user$ | async) as user'>
+<div class="profile">
   <app-userpic class="profile__picture" [path]="user.photo"></app-userpic>
   <div class="profile__name">
     <a class="author" [routerLink]='"settings"'>
       <span>{{ user.firstName }}</span>
       <app-icon class="icon" [path]="'assets/media/icons/arrowRight.svg'"></app-icon>
     </a>
-    <div class="status">{{ user.hub }}</div>
+    <div class="status">{{ user.hub.hubName }}</div>
   </div>
 </div>

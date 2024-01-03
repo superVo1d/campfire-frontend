@@ -3,6 +3,7 @@ import { Swiper } from 'swiper/types';
 import { SwiperContainer } from 'swiper/element';
 import { UsersInterface } from '../../../../@types/users';
 import * as _ from 'lodash';
+import { UserInterface } from '../../../../@types/user';
 
 @Component({
   selector: 'app-find-yours',
@@ -14,6 +15,8 @@ export class FindYoursComponent implements AfterViewInit {
   swiperRef!: ElementRef<SwiperContainer>;
 
   userCards: UsersInterface[];
+
+  @Input() user: UserInterface;
 
   @Input() set cards(_cards: UsersInterface[]) {
     this.userCards = _cards;
