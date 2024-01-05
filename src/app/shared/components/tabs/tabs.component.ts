@@ -61,8 +61,6 @@ export class TabsComponent implements OnInit, AfterViewInit {
       counter += 1;
     }
 
-    // console.log(url, this.paths[index]);
-
     return index;
   };
 
@@ -80,5 +78,9 @@ export class TabsComponent implements OnInit, AfterViewInit {
 
     tabElement.style.width = `${tabWidth}px`;
     tabElement.style.left = `${tabX - wrapperX}px`;
+  }
+
+  handleClick() {
+    this.telegramService.haptic?.impactOccurred('light');
   }
 }

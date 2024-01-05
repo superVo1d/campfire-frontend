@@ -1,11 +1,13 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
-import { UserInterface } from '../../../../@types/user';
-import { data } from '../../../../mocks/user';
-import { ModalService } from '../../../../shared/services/modal.service';
+import { UserEditable, UserInterface } from '../../../../@types/user';
 import { UsersInterface } from '../../../../@types/users';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
 import { selectUser } from '../../../../core/store';
+import { TelegramService } from '../../../../shared/services/telegram.service';
+import { Router } from '@angular/router';
+import { timeout } from 'rxjs';
+import { ApiService } from '../../../../core/services/api.service';
 
 @Component({
   selector: 'app-settings',
@@ -16,6 +18,12 @@ export class SettingsComponent implements OnInit {
   private _user: UserInterface;
 
   private store = inject(Store);
+
+  private telegramService = inject(TelegramService);
+
+  private apiService = inject(ApiService);
+
+  private router = inject(Router);
 
   form: FormGroup;
 
@@ -33,6 +41,10 @@ export class SettingsComponent implements OnInit {
         age: new FormControl(this._user?.age, [Validators.required, Validators.pattern(/[0-9]*/)])
       });
     });
+
+    this.telegramService.setBackButton(() => {
+      this.router.navigate(['..']);
+    });
   }
 
   @Input() isPreviewOpen = false;
@@ -46,22 +58,34 @@ export class SettingsComponent implements OnInit {
   get userPreview(): UsersInterface {
     return {
       id: this._user.id,
-      firstName: this._user.firstName + ', ' + this._user.age,
-      photo: this._user.photo
+      firstName: this.form.get('name')?.value,
+      age: this.form.get('age')?.value,
+      photo: this._user.photo,
+      about: this.form.get('about')?.value
     };
   }
 
-  private modalService = inject(ModalService);
-
   openPreview = () => {
     this.isPreviewOpen = true;
+
+    this.telegramService.setBackButton(() => {
+      this.router.navigate(['/settings']);
+    });
   };
 
   closePreview = () => {
     this.isPreviewOpen = false;
+
+    setTimeout(() => {
+      this.telegramService.setBackButton(() => {
+        this.router.navigate(['..']);
+      });
+    }, 0);
   };
 
   onSubmit = () => {
-    console.log(this.form.value);
+    this.apiService.updateUser(this.form.value as UserEditable).subscribe((data) => {
+      console.log(data);
+    });
   };
 }

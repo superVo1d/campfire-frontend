@@ -14,3 +14,9 @@ export interface UserInterface extends UserViewInterface {
   };
   nickname: string;
 }
+
+export interface UserEditable {
+  about: string;
+  name?: string;
+  age?: number;
+}

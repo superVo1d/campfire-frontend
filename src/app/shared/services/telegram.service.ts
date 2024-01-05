@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { TelegramWebApps } from 'telegram-webapps-types-new';
+import BackButton = TelegramWebApps.BackButton;
+import HapticFeedback = TelegramWebApps.HapticFeedback;
 
 declare global {
   interface Window {
@@ -13,8 +15,13 @@ declare global {
 export class TelegramService {
   private readonly _tg: TelegramWebApps.WebApp;
 
+  private _backButton: TelegramWebApps.BackButton;
+
+  private _backButtonCallback: () => void;
+
   constructor() {
     this._tg = window.Telegram.WebApp;
+    this._backButton = this._tg.BackButton;
   }
 
   get initDataUnsafe() {
@@ -37,8 +44,32 @@ export class TelegramService {
     this._tg?.expand();
   }
 
-  get haptic() {
+  enableClosingConfirmation() {
+    this._tg?.enableClosingConfirmation();
+  }
+
+  get haptic(): HapticFeedback | undefined {
     return this._tg?.HapticFeedback;
+  }
+
+  setBackButton = (callback: () => void): void => {
+    this._backButton.offClick(this._backButtonCallback);
+    this._backButtonCallback = callback;
+
+    this._backButton.show();
+    this._backButton.onClick(() => {
+      this._backButtonCallback();
+      this._backButton.hide();
+    });
+  };
+
+  ready(): void {
+    this._tg?.ready();
+  }
+
+  resetBackButton(): void {
+    this._backButton.offClick(this._backButtonCallback);
+    this._backButton.hide();
   }
 
   onEvent(eventType: TelegramWebApps.EventType, eventHandler: () => void) {

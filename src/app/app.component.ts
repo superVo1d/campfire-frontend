@@ -5,9 +5,6 @@ import { ThemeService } from './shared/services/theme.service';
 import { ApiService } from './core/services/api.service';
 import { Store } from '@ngrx/store';
 import { loadUser } from './core/store/user.actions';
-import { UserInterface } from './@types/user';
-import { mergeMap, switchMap, tap } from 'rxjs';
-import { initData } from './mocks/telegram';
 import { loadUsers } from './core/store/users.actions';
 
 @Component({
@@ -32,18 +29,19 @@ export class AppComponent implements OnInit {
     this.browserDetectorService.detectBrowser();
 
     this.telegramService.expand();
+    this.telegramService.enableClosingConfirmation();
     document.documentElement.style.setProperty('--vh', (this.telegramService.viewportHeight / 100).toString() + 'px');
 
     this.telegramService.onEvent('viewportChanged', () => {
+      this.telegramService.expand();
       document.documentElement.style.setProperty('--vh', (this.telegramService.viewportHeight / 100).toString() + 'px');
     });
-
-    console.log(this.telegramService.initData);
 
     if (this.telegramService.initData) {
       this.apiService.auth(this.telegramService.initData).subscribe(() => {
         this.store.dispatch(loadUser());
         this.store.dispatch(loadUsers());
+        this.telegramService.ready();
       });
     }
   }

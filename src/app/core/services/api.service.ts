@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
-import { UserInterface } from '../../@types/user';
+import { UserEditable, UserInterface } from '../../@types/user';
 import { UsersInterface } from '../../@types/users';
 import { LikeInterface } from '../../@types/like';
 // import { initData as initDataMock } from '../../mocks/telegram';
@@ -50,5 +50,9 @@ export class ApiService {
 
   public likeUser(id: number): Observable<LikeInterface> {
     return this.http.post<LikeInterface>(`${this._apiBaseUrl}/like?id=${id}`, null, this.authOptions);
+  }
+
+  public updateUser(values: UserEditable): Observable<UserInterface> {
+    return this.http.patch<UserInterface>(`${this._apiBaseUrl}/user`, { ...values }, this.authOptions);
   }
 }

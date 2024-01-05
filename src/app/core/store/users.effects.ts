@@ -32,7 +32,6 @@ export class UsersEffects {
       switchMap((action) => {
         return this.apiService.likeUser(action.id).pipe(
           map((data) => {
-            console.log(data.mutual);
             return likeUserSuccess({ id: action.id });
           })
         );

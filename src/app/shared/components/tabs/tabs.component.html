@@ -2,7 +2,7 @@
   <div class='tabs__container'>
     <ng-container *ngFor="let item of paths">
       <a [routerLink]="item.path" class="tabs__button" [routerLinkActive]="'active'"
-         [routerLinkActiveOptions]="{exact: true}">
+         [routerLinkActiveOptions]="{exact: true}" (click)='handleClick()'>
         <span *ngIf='item.name'>{{item.name}}</span>
         <app-icon *ngIf='item.iconPath' class="icon" [path]="item.iconPath"></app-icon>
       </a>

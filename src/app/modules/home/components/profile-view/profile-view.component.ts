@@ -1,9 +1,9 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { UsersInterface } from '../../../../@types/users';
 import { Router } from '@angular/router';
-import { ApiService } from '../../../../core/services/api.service';
 import { Store } from '@ngrx/store';
 import { likeUser } from '../../../../core/store/users.actions';
+import { TelegramService } from '../../../../shared/services/telegram.service';
 
 @Component({
   selector: 'app-profile-view',
@@ -17,11 +17,16 @@ export class ProfileViewComponent {
 
   @Output() clickBackEvent = new EventEmitter();
 
-  private apiService = inject(ApiService);
-
   private store = inject(Store);
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private telegramService: TelegramService
+  ) {
+    this.telegramService.setBackButton(() => {
+      this.close();
+    });
+  }
 
   get liked() {
     return this.profile.like;
@@ -40,11 +45,12 @@ export class ProfileViewComponent {
 
     if (!this.previewMode) {
       this.router.navigate(['/navigator']);
+    } else {
+      this.router.navigate(['/settings']);
     }
   };
 
   like() {
     this.store.dispatch(likeUser({ id: this.profile.id }));
-    // this.apiService.likeUser(this.profile.id).subscribe((data) => console.log(data.mutual));
   }
 }

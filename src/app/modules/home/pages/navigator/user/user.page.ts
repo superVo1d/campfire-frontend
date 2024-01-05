@@ -1,23 +1,27 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, inject, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UsersInterface } from '../../../../../@types/users';
-import { BodyClassService } from '../../../../../shared/services/body-class.service';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { selectUsers } from '../../../../../core/store';
+import { TelegramService } from '../../../../../shared/services/telegram.service';
 
 @Component({
   templateUrl: './user.page.html',
   styleUrls: ['./user.page.scss']
 })
-export class UserPageComponent implements OnInit, OnDestroy {
+export class UserPageComponent implements OnInit {
   userId: number | null;
 
   user: UsersInterface;
 
   private route = inject(ActivatedRoute);
 
-  private bodyClassService = inject(BodyClassService);
+  private router = inject(Router);
+
+  // private bodyClassService = inject(BodyClassService);
+
+  private telegramService = inject(TelegramService);
 
   private store = inject(Store);
 
@@ -36,10 +40,8 @@ export class UserPageComponent implements OnInit, OnDestroy {
       }
     });
 
-    this.bodyClassService.addBodyClass('modal');
-  }
-
-  ngOnDestroy() {
-    this.bodyClassService.removeBodyClass('modal');
+    // this.telegramService.setBackButton(() => {
+    //   this.router.navigate(['..']);
+    // });
   }
 }
