@@ -49,7 +49,11 @@ export class ProfileViewComponent {
     this.onClickBack();
 
     if (!this.previewMode) {
-      this.router.navigate(['/navigator']);
+      this.router.navigate(['/navigator'], {
+        queryParams: {
+          id: this.profile.id
+        }
+      });
     } else {
       this.router.navigate(['/settings']);
     }

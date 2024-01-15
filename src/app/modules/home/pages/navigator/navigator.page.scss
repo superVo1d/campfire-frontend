@@ -1,10 +1,11 @@
 :host {
   display: block;
+  height: 100%;
   min-height: 100%;
 }
 
 .navigator-page {
   background: url('/assets/media/images/background.png') no-repeat center;
   background-size: cover;
-  height: 100vh;
+  height: 100%;
 }
