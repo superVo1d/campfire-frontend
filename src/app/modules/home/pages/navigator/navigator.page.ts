@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, map, mergeMap, Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { UserInterface } from '../../../../@types/user';
 import { selectUsers } from '../../../../core/store';
 import { UsersInterface } from '../../../../@types/users';
 

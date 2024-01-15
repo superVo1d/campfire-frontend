@@ -14,6 +14,7 @@
   &__container {
     display: flex;
     gap: 0.4rem;
+    pointer-events: all;
     position: relative;
     z-index: 1;
   }

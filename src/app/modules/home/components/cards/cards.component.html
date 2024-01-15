@@ -3,7 +3,9 @@
     <a class="card" [routerLink]="'/navigator/' + card.id">
       <div class="card__content">
         <div class="card__title">{{ cardTitle(card) }}</div>
-        <div *ngIf="card.like && card.likesYou" class="card__label">Мэтч!</div>
+        <div *ngIf="card.like && card.likesYou" class="card__label">
+          <app-icon [path]="'assets/media/icons/match.png'"/>
+        </div>
       </div>
       <div class="card__background" [style.background-image]="'url(' + card.photo + ')'"></div>
     </a>

@@ -3,3 +3,8 @@
 .home-page {
   margin-bottom: $bottom-offset;
 }
+
+:host {
+  display: flex;
+  flex-direction: column;
+}

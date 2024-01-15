@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, isDevMode } from '@angular/core';
 import { TelegramService } from './shared/services/telegram.service';
 import { BrowserDetectorService } from './shared/services/browser-detector.service';
 import { ThemeService } from './shared/services/theme.service';
@@ -6,6 +6,7 @@ import { ApiService } from './core/services/api.service';
 import { Store } from '@ngrx/store';
 import { loadUser } from './core/store/user.actions';
 import { loadUsers } from './core/store/users.actions';
+import { initDataMock } from './mocks/telegram';
 
 @Component({
   selector: 'app-root',
@@ -37,12 +38,16 @@ export class AppComponent implements OnInit {
       document.documentElement.style.setProperty('--vh', (this.telegramService.viewportHeight / 100).toString() + 'px');
     });
 
-    if (this.telegramService.initData) {
-      this.apiService.auth(this.telegramService.initData).subscribe(() => {
-        this.store.dispatch(loadUser());
-        this.store.dispatch(loadUsers());
-        this.telegramService.ready();
-      });
+    const initData = isDevMode() ? initDataMock : this.telegramService.initData;
+
+    if (!initData) {
+      return;
     }
+
+    this.apiService.auth(initData).subscribe(() => {
+      this.store.dispatch(loadUser());
+      this.store.dispatch(loadUsers());
+      this.telegramService.ready();
+    });
   }
 }

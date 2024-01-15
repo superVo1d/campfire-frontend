@@ -1,9 +1,9 @@
-import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { Swiper } from 'swiper/types';
 import { SwiperContainer } from 'swiper/element';
 import { UsersInterface } from '../../../../@types/users';
-import * as _ from 'lodash';
 import { UserInterface } from '../../../../@types/user';
+import { ButtonStyleType } from '../../../../@types/button';
 
 @Component({
   selector: 'app-find-yours',
@@ -11,8 +11,10 @@ import { UserInterface } from '../../../../@types/user';
   styleUrls: ['./find-yours.component.scss']
 })
 export class FindYoursComponent implements AfterViewInit {
-  @ViewChild('swiperRef')
-  swiperRef!: ElementRef<SwiperContainer>;
+  ButtonStyleType = ButtonStyleType;
+
+  @ViewChild('swiper')
+  swiper!: ElementRef<SwiperContainer>;
 
   userCards: UsersInterface[];
 
@@ -22,15 +24,12 @@ export class FindYoursComponent implements AfterViewInit {
     this.userCards = _cards;
   }
 
-  private swiper: Swiper;
-
   cardTitle(card: UsersInterface) {
     return card.firstName + (card.age ? `, ${card.age}` : '');
   }
 
   ngAfterViewInit(): void {
-    this.swiperRef.nativeElement.loop = this.userCards.length >= 3;
-    this.swiperRef.nativeElement.initialize();
-    this.swiper = this.swiperRef.nativeElement.swiper;
+    this.swiper.nativeElement.loop = this.userCards.length >= 3;
+    this.swiper.nativeElement.initialize();
   }
 }

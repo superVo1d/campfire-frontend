@@ -1,9 +1,9 @@
-
-
 <div class='interface'>
   <div>
-<!--    <app-button class="back-button back" [style]='"secondary"' iconPath="assets/media/icons/arrowRight.svg" [onClick]='previewMode ? onClickBack : close'/>-->
-    <app-button *ngIf="!previewMode" class="like like-button" [class.active]="liked" (clickEvent)='like()' [iconPath]="liked ? 'assets/media/icons/starFilled.png' : 'assets/media/icons/star.png'" />
+    <div class='interface__buttons-container'>
+      <app-button *ngIf="profile.like && profile.likesYou" class="card__button-message" [style]='ButtonStyleType.primary' [darkMode]='true' [size]='ButtonSizeType.large' [iconPath]="'assets/media/icons/message.png'" (clickEvent)='openChat()'/>
+      <app-button *ngIf="!previewMode" [appLikeButton]='profile' class="like-button" (clickEvent)='like()'/>
+    </div>
   </div>
 </div>
 

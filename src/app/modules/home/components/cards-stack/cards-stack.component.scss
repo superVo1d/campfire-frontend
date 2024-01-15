@@ -3,87 +3,61 @@
 @use 'variables/global' as *;
 @use 'variables/typography' as *;
 
+:host {
+  display: block;
+  height: 100%;
+}
+
 .cards-stack {
+  align-items: center;
   display: flex;
   height: 100%;
   justify-content: center;
   overflow: hidden;
-  padding: 2rem 0;
-}
-
-swiper-container {
-  height: 63rem;
-  width: calc(100% - 4rem);
-}
-
-::ng-deep {
-  .swiper-slide-shadow.swiper-slide-shadow-cards {
-    display: none;
-  }
-}
-
-swiper-slide {
+  padding: 2rem 0 9rem;
   position: relative;
-}
 
-.card {
-  background: var(--background);
-  border-radius: 2rem;
-  color: var(--main-color);
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  overflow: hidden;
-  position: absolute;
-  top: 0;
-  width: 100%;
-
-  &::before {
-    background-color: rgba(253 37 0 / 50%);
-    border-radius: 50%;
-    content: none;
-    display: block;
-    filter: blur(100px);
-    height: 20rem;
-    left: -10%;
-    position: absolute;
-    top: 18rem;
-    width: 20rem;
+  &__container {
+    height: 100%;
+    max-height: 63rem;
+    position: relative;
+    width: calc(100% - 4rem);
+    z-index: 1;
   }
 
-  &__interface {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    padding: 2rem;
-    position: relative;
-    width: 100%;
+  &__card {
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    transform: translate3d(0, 0, 0);
+    transition: all 0.4s ease-in-out;
+    visibility: hidden;
     z-index: 1;
 
-    h1 {
-      margin-bottom: 0.8rem;
+    &.prev,
+    &.next,
+    &.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    &.prev {
+      opacity: 0.5;
+      transform: rotate(-10deg) scale(0.8) translate3d(-20%, -5%, 0);
+    }
+
+    &.next {
+      opacity: 0.5;
+      transform: rotate(8deg) scale(0.8) translate3d(20%, 5%, 0);
+    }
+
+    &.active {
+      transform: rotate(0) scale(1) translate3d(0, 0, 0);
+      z-index: 3;
     }
   }
-
-  &__background {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 30rem;
-    left: 0;
-    top: 0;
-    width: 100%;
-  }
-
-  &__button {
-    display: inline-block;
-    margin-left: auto;
-    margin-top: auto;
-  }
 }
 
-:host-context(.light-theme) {
-  .card::before {
-    content: none;
-  }
-}

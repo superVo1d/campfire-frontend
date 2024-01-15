@@ -6,7 +6,8 @@ import { selectUsers } from '../../../../../core/store';
 
 @Component({
   templateUrl: './likes-you.page.html',
-  styleUrls: ['./likes-you.page.scss']
+  styleUrls: ['./likes-you.page.scss'],
+  selector: 'app-likes-you-page'
 })
 export class LikesYouPageComponent {
   private store = inject(Store);

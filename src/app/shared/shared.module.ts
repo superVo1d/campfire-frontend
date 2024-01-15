@@ -12,10 +12,9 @@ import {
   UserpicComponent,
   InputTextComponent
 } from './components';
-import { ContenteditableValueAccessorModule } from '@tinkoff/angular-contenteditable-accessor';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, ContenteditableValueAccessorModule],
+  imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule],
   declarations: [
     ButtonComponent,
     IconComponent,

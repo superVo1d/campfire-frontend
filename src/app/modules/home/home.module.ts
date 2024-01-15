@@ -19,6 +19,9 @@ import { LikesLayoutComponent } from './layouts/likes-layout.component';
 import { LikesYouPageComponent } from './pages/likes/you/likes-you.page';
 import { HomeComponent } from './home.component';
 import { SettingsPageComponent } from './pages/settings/settings.page';
+import { LikeButtonDirective } from './directives/like-button.directive';
+import { SwiperDirective } from './directives/swiper.directive';
+import { CardComponent } from './components/card/card.component';
 
 register();
 
@@ -39,7 +42,10 @@ register();
     ProfileViewComponent,
     UserPageComponent,
     LikesLayoutComponent,
-    LikesYouPageComponent
+    LikesYouPageComponent,
+    LikeButtonDirective,
+    SwiperDirective,
+    CardComponent
   ],
   imports: [CommonModule, HomeRoutingModule, SharedModule, ReactiveFormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

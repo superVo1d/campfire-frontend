@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { likeUser } from '../../../../core/store/users.actions';
 import { TelegramService } from '../../../../shared/services/telegram.service';
+import { ButtonSizeType, ButtonStyleType } from '../../../../@types/button';
 
 @Component({
   selector: 'app-profile-view',
@@ -11,6 +12,10 @@ import { TelegramService } from '../../../../shared/services/telegram.service';
   styleUrls: ['./profile-view.component.scss']
 })
 export class ProfileViewComponent {
+  ButtonSizeType = ButtonSizeType;
+
+  ButtonStyleType = ButtonStyleType;
+
   @Input() profile: UsersInterface;
 
   @Input() previewMode = false;
@@ -52,5 +57,9 @@ export class ProfileViewComponent {
 
   like() {
     this.store.dispatch(likeUser({ id: this.profile.id }));
+  }
+
+  openChat() {
+    console.log('openChat');
   }
 }

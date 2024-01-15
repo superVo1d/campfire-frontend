@@ -19,7 +19,10 @@
   width: 100%;
 
   > div {
+    align-items: flex-end;
+    display: flex;
     height: 100vh;
+    justify-content: flex-end;
     position: sticky;
     top: 0;
 
@@ -29,20 +32,10 @@
   }
 }
 
-.back-button {
+.interface__buttons-container {
+  display: flex;
+  gap: 1.2rem;
   margin: 2rem;
-  position: absolute;
-  top: 0;
-  z-index: 1;
-}
-
-.like-button {
-  bottom: global.$bottom-offset;
-  margin: 2rem;
-  position: absolute;
-  right: 0;
-  transform: translateY(100%);
-  z-index: 1;
 }
 
 .content {

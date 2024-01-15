@@ -1,9 +1,3 @@
-<!--<div>-->
-<!--  <div>-->
-<!--    <app-button class="back" [style]="'secondary'" iconPath="assets/media/icons/arrowRight.svg" [link]='"/"'/>-->
-<!--  </div>-->
-<!--</div>-->
-
 <div class='content' [ngClass]="{ 'content': true, 'content_preview-opened': isPreviewOpen }">
   <div *ngIf='user' class='settings'>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -15,7 +9,7 @@
           <div class='profile__name'>{{ '@' + user.nickname }}</div>
         </div>
         <div>
-          <app-button *ngIf="form.touched" class='profile__submit secondary' text='Сохранить' type='submit'  [isDarkTheme]='true'/>
+          <app-button *ngIf="form.touched" class='profile__submit' text='Сохранить' type='submit'  [isDarkTheme]='true'/>
         </div>
       </div>
       <div class='settings__fields'>

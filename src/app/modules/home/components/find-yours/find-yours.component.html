@@ -1,7 +1,7 @@
 <div class="find-yours">
   <h1 class="title">Найти своих в&nbsp;{{ user.hub.hubName }}</h1>
   <swiper-container
-    #swiperRef
+    #swiper
     centered-slides="true"
     initial-slide="1"
     slides-per-view="auto"
@@ -16,7 +16,7 @@
           <div class="name">
             <h3>{{cardTitle(card)}}</h3>
           </div>
-          <app-button class="card__button" [style]="'secondary'" [iconPath]="'assets/media/icons/arrowRightLarge.svg'" [link]="[ '/navigator', card.id]"></app-button>
+          <app-button class="card__button" [style]="ButtonStyleType.secondary" [iconPath]="'assets/media/icons/arrowRightLarge.svg'" [link]="[ '/navigator', card.id]"></app-button>
         </div>
         <div class="card__background" [style.background-image]="'url(' + card.photo + ')'"></div>
       </div>

@@ -1,21 +1,11 @@
-import {
-  AfterViewChecked,
-  Component,
-  ElementRef,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-  ViewChild
-} from '@angular/core';
-import { AbstractControl, FormControl } from '@angular/forms';
+import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-input-text',
   templateUrl: './input-text.component.html',
   styleUrls: ['./input-text.component.scss']
 })
-export class InputTextComponent implements OnInit, OnChanges, AfterViewChecked {
+export class InputTextComponent implements OnInit, OnChanges {
   @Input() type: 'text' | 'number' = 'text';
 
   @Input() textarea = false;
@@ -36,23 +26,21 @@ export class InputTextComponent implements OnInit, OnChanges, AfterViewChecked {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['control']) {
+      console.log(changes);
       this.onChange();
     }
   }
 
-  ngAfterViewChecked() {
-    this.onChange();
-  }
-
   autoGrow() {
-    this.textArea.nativeElement.style.height = this.textArea.nativeElement.scrollHeight + 'px';
+    if (this.textarea) {
+      this.textArea.nativeElement.style.height = '1px';
+      this.textArea.nativeElement.style.height = this.textArea.nativeElement.scrollHeight + 'px';
+    }
   }
 
   onChange() {
     this.length = this.control?.value?.length || 0;
 
-    if (this.textarea) {
-      this.autoGrow();
-    }
+    this.autoGrow();
   }
 }

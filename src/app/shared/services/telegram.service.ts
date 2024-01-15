@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { TelegramWebApps } from 'telegram-webapps-types-new';
-import BackButton = TelegramWebApps.BackButton;
 import HapticFeedback = TelegramWebApps.HapticFeedback;
 
 declare global {
@@ -61,6 +60,10 @@ export class TelegramService {
       this._backButtonCallback();
       this._backButton.hide();
     });
+  };
+
+  openTelegramChat = (userName: string) => {
+    this._tg.openTelegramLink(`https://t.me/${userName}`);
   };
 
   ready(): void {

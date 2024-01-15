@@ -1,48 +1,49 @@
-import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
-import { ButtonStyleType, ButtonSizeType } from '../../../@types/button';
+import { Component, EventEmitter, HostBinding, Input, Output, ViewEncapsulation } from '@angular/core';
+import { ButtonSizeType, IButtonProps } from '../../../@types/button';
 
 @Component({
   selector: 'app-button',
   templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss']
+  styleUrls: ['./button.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
-export class ButtonComponent {
-  @Input() public text?: string;
+export class ButtonComponent implements IButtonProps {
+  @Input() public text;
 
-  @Input() public iconPath?: string;
+  @Input() public iconPath;
 
-  @Input() public href?: string;
+  @Input() public href;
 
-  @Input() public type?: string;
+  @Input() public type = 'button';
 
-  @Input() public onClick?: () => void;
-
-  @Input() public link: string | any[] | null | undefined;
+  @Input() public link;
 
   @Input() public darkMode = false;
 
   @Output() clickEvent = new EventEmitter();
 
-  @HostBinding('class.dark-mode') @Input() isDarkTheme = false;
+  @Input() public active;
 
-  @HostBinding('class.active') @Input() isClicked = false;
+  @Input() style;
 
-  @Input() style: ButtonStyleType;
+  @Input() public size = ButtonSizeType.normal;
 
-  @Input() size: ButtonSizeType;
+  @HostBinding('class.dark-mode')
+  get isDarkTheme(): boolean {
+    return this.darkMode;
+  }
+
+  @HostBinding('class.active')
+  get isClicked(): boolean {
+    return this.active;
+  }
 
   get classNames(): any[] {
-    return ['button', this.style, { [`size-${this.size}`]: this.size }];
+    return ['button', this.style || '', this.size && `size-${this.size}`];
   }
 
   handleClick($event: Event) {
-    this.isClicked = true;
-
-    this.clickEvent?.emit();
-
-    if (this.onClick) {
-      $event.preventDefault();
-      this.onClick();
-    }
+    this.active = !this.active;
+    this.clickEvent?.emit($event);
   }
 }

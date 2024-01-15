@@ -5,6 +5,6 @@
       <span>{{ user.firstName }}</span>
       <app-icon class="icon" [path]="'assets/media/icons/arrowRight.svg'"></app-icon>
     </a>
-    <div class="status">{{ user.hub?.hubName }}</div>
+    <div *ngIf="user.hub" class="status">{{ user.hub.hubName }}</div>
   </div>
 </div>

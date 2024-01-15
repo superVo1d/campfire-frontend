@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { importProvidersFrom, Injectable, NgModule } from '@angular/core';
+import { BrowserModule, HAMMER_GESTURE_CONFIG, HammerGestureConfig, HammerModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
@@ -12,6 +12,15 @@ import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './core/store/user.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { UsersEffects } from './core/store/users.effects';
+import * as Hammer from 'hammerjs';
+
+@Injectable()
+export class MyHammerConfig extends HammerGestureConfig {
+  override overrides = <any>{
+    swipe: { direction: Hammer.DIRECTION_ALL },
+    pan: { direction: Hammer.DIRECTION_ALL }
+  };
+}
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,7 +37,13 @@ import { UsersEffects } from './core/store/users.effects';
       maxAge: 25
     })
   ],
-  providers: [],
+  providers: [
+    importProvidersFrom(HammerModule),
+    {
+      provide: HAMMER_GESTURE_CONFIG,
+      useClass: MyHammerConfig
+    }
+  ],
   bootstrap: [AppComponent],
   exports: []
 })

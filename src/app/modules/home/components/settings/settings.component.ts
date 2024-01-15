@@ -6,7 +6,6 @@ import { select, Store } from '@ngrx/store';
 import { selectUser } from '../../../../core/store';
 import { TelegramService } from '../../../../shared/services/telegram.service';
 import { Router } from '@angular/router';
-import { timeout } from 'rxjs';
 import { ApiService } from '../../../../core/services/api.service';
 
 @Component({

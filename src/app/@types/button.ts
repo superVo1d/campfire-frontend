@@ -1,3 +1,21 @@
-export type ButtonStyleType = 'secondary' | 'primary';
+export enum ButtonStyleType {
+  primary = 'primary',
+  secondary = 'secondary'
+}
 
-export type ButtonSizeType = 'small' | 'large';
+export enum ButtonSizeType {
+  normal = 'normal',
+  large = 'large'
+}
+
+export interface IButtonProps {
+  active?: boolean;
+  text?: string;
+  iconPath?: string;
+  href?: string;
+  type?: string;
+  link?: string | any[] | null | undefined;
+  darkMode?: boolean;
+  style?: ButtonStyleType;
+  size?: ButtonSizeType;
+}

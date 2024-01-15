@@ -16,7 +16,6 @@ export class CardsComponent implements OnInit {
   private router = inject(Router);
 
   @Input() set cards(_cards: UsersInterface[]) {
-    console.log(_cards);
     this._cards = _cards;
   }
 

@@ -1,0 +1,11 @@
+<a  [routerLink]="userCard.id.toString()" class="card" (swipe)="onSwipe($event)" (pan)='onPan($event)' #card>
+  <div class="card__background" [style.background-image]="'url(' + userCard.photo + ')'"></div>
+  <div class="card__interface">
+    <h1>{{title}}</h1>
+    <p>{{description}}</p>
+    <div class='card__buttons-container'>
+      <app-button *ngIf="userCard.like && userCard.likesYou" class="card__button-message" [style]='ButtonStyleType.secondary' [darkMode]='true' [size]='ButtonSizeType.large' [iconPath]="'assets/media/icons/message.png'" (clickEvent)='openChat($event)'/>
+      <app-button class="card__button-like" [appLikeButton]='userCard' (clickEvent)='like($event)'/>
+    </div>
+  </div>
+</a>
