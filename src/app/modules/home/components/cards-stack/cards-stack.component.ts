@@ -33,6 +33,10 @@ export class CardsStackComponent implements OnInit {
 
   public userCards: UsersInterface[];
 
+  get totalUsers() {
+    return this.userCards.length;
+  }
+
   ngOnInit(): void {
     this.activatedRoute.queryParams
       .subscribe((params) => {
@@ -40,8 +44,8 @@ export class CardsStackComponent implements OnInit {
 
         if (index !== -1) {
           this.activeIndex = index;
-          this.prevIndex = (((this.activeIndex - 1) % 5) + 5) % 5;
-          this.nextIndex = (this.activeIndex + 1) % 5;
+          this.prevIndex = (((this.activeIndex - 1) % this.totalUsers) + this.totalUsers) % this.totalUsers;
+          this.nextIndex = (this.activeIndex + 1) % this.totalUsers;
         }
       })
       .unsubscribe();
@@ -55,14 +59,14 @@ export class CardsStackComponent implements OnInit {
     switch ($event.direction) {
       case 2:
         this.prevIndex = this.activeIndex;
-        this.activeIndex = (this.activeIndex + 1) % 5;
-        this.nextIndex = (this.activeIndex + 1) % 5;
+        this.activeIndex = (this.activeIndex + 1) % this.totalUsers;
+        this.nextIndex = (this.activeIndex + 1) % this.totalUsers;
 
         break;
       case 4:
         this.nextIndex = this.activeIndex;
-        this.activeIndex = (((this.activeIndex - 1) % 5) + 5) % 5;
-        this.prevIndex = (((this.activeIndex - 1) % 5) + 5) % 5;
+        this.activeIndex = (((this.activeIndex - 1) % this.totalUsers) + this.totalUsers) % this.totalUsers;
+        this.prevIndex = (((this.activeIndex - 1) % this.totalUsers) + this.totalUsers) % this.totalUsers;
 
         break;
       default:
