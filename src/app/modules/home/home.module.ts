@@ -22,6 +22,8 @@ import { SettingsPageComponent } from './pages/settings/settings.page';
 import { LikeButtonDirective } from './directives/like-button.directive';
 import { SwiperDirective } from './directives/swiper.directive';
 import { CardComponent } from './components/card/card.component';
+import { LoaderComponent } from './components/loader/loader.component';
+import { ErrorComponent } from './components/error/error.component';
 
 register();
 
@@ -45,7 +47,9 @@ register();
     LikesYouPageComponent,
     LikeButtonDirective,
     SwiperDirective,
-    CardComponent
+    CardComponent,
+    LoaderComponent,
+    ErrorComponent
   ],
   imports: [CommonModule, HomeRoutingModule, SharedModule, ReactiveFormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

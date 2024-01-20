@@ -1,6 +1,10 @@
 <div *ngIf="label" class='label'>{{ label }}</div>
-<div *ngIf='textarea' class='textarea-wrapper'>
-  <textarea #textArea [class]='["input", "input_textarea"]' [formControl]="control" (input)="onChange()"></textarea>
+
+<div *ngIf='textarea; else input' class='textarea-wrapper'>
+  <textarea #textareaEl [class]='["input", "input_textarea"]' [placeholder]='placeholder' [formControl]="control" (input)="onChange()"></textarea>
   <span class='input__counter'>{{ length + '/' + max }}</span>
 </div>
-<input *ngIf='!textarea' class='input' [type]='type' [formControl]="control" on  (input)="onChange()"/>
+
+<ng-template #input>
+  <input [attr.appNumbersOnly]="type === 'number'" class='input' [type]='type' [placeholder]='placeholder' [formControl]="control" (input)="onChange()">
+</ng-template>

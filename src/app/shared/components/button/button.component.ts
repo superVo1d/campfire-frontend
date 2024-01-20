@@ -38,6 +38,10 @@ export class ButtonComponent implements IButtonProps {
     return this.active;
   }
 
+  @HostBinding('class.fill')
+  @Input()
+  public fill = false;
+
   get classNames(): any[] {
     return ['button', this.style || '', this.size && `size-${this.size}`];
   }

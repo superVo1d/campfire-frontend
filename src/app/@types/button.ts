@@ -18,4 +18,5 @@ export interface IButtonProps {
   darkMode?: boolean;
   style?: ButtonStyleType;
   size?: ButtonSizeType;
+  fill?: boolean;
 }

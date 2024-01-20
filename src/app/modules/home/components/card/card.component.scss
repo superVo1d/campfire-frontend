@@ -6,22 +6,21 @@
   flex-direction: column;
   height: 100%;
   overflow: hidden;
+  position: relative;
   width: 100%;
 
-  /*
   &::before {
-    background-color: rgba(253 37 0 / 50%);
-    border-radius: 50%;
-    content: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='350' height='585' viewBox='0 0 350 585' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg filter='url(%23filter0_f_678_250)'%3E%3Ccircle cx='69' cy='286' r='99' fill='%23FD2500' fill-opacity='0.5'/%3E%3C/g%3E%3Cdefs%3E%3Cfilter id='filter0_f_678_250' x='-230' y='-13' width='598' height='598' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeFlood flood-opacity='0' result='BackgroundImageFix'/%3E%3CfeBlend mode='normal' in='SourceGraphic' in2='BackgroundImageFix' result='shape'/%3E%3CfeGaussianBlur stdDeviation='100' result='effect1_foregroundBlur_678_250'/%3E%3C/filter%3E%3C/defs%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-size: contain;
+    content: "";
     display: block;
-    filter: blur(40px);
-    height: 20rem;
-    left: -10%;
+    height: 80%;
+    left: 0;
     position: absolute;
-    top: 18rem;
-    width: 20rem;
+    top: 10%;
+    width: min(28rem, 80%);
   }
-  */
 
   &__interface {
     display: flex;

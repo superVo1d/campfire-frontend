@@ -4,17 +4,17 @@ import { likeUser, loadUsers, loadUsersSuccess } from './users.actions';
 import { UsersInterface } from '../../@types/users';
 
 export const usersReducer = createReducer<UsersState>(
-  { users: [] },
+  { users: undefined, isLoaded: false },
   on(loadUsers, (state) => {
-    return { ...state };
+    return { ...state, isLoaded: false };
   }),
   on(loadUsersSuccess, (state, action) => {
-    return { ...state, users: action.users };
+    return { ...state, users: action.users, isLoaded: true };
   }),
   on(likeUser, (state, action) => {
     return {
       ...state,
-      users: state.users.map((user: UsersInterface) => {
+      users: state.users?.map((user: UsersInterface) => {
         return { ...user, like: user.id === action.id ? !user.like : user.like };
       })
     };

@@ -1,5 +1,5 @@
-<div class="find-yours">
-  <h1 class="title">Найти своих в&nbsp;{{ user.hub.hubName }}</h1>
+<div *ngIf="user?.hub" class="find-yours">
+  <h1 class="title">Найти своих в&nbsp;{{ user.hub?.hubName }}</h1>
   <swiper-container
     #swiper
     centered-slides="true"

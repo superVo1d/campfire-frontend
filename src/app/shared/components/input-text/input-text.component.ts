@@ -1,4 +1,5 @@
-import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostBinding, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-input-text',
@@ -14,9 +15,15 @@ export class InputTextComponent implements OnInit, OnChanges {
 
   @Input() max = 500;
 
+  @Input() placeholder = '';
+
   @Input() control;
 
-  @ViewChild('textArea') textArea: ElementRef<HTMLTextAreaElement>;
+  @ViewChild('textareaEl') textareaEl: ElementRef<HTMLTextAreaElement>;
+
+  @HostBinding('class.error') get error() {
+    return this.control.invalid && (this.control.dirty || this.control.touched);
+  }
 
   public length = 0;
 
@@ -26,15 +33,14 @@ export class InputTextComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['control']) {
-      console.log(changes);
       this.onChange();
     }
   }
 
   autoGrow() {
-    if (this.textarea) {
-      this.textArea.nativeElement.style.height = '1px';
-      this.textArea.nativeElement.style.height = this.textArea.nativeElement.scrollHeight + 'px';
+    if (this.textareaEl?.nativeElement) {
+      this.textareaEl.nativeElement.style.height = '1px';
+      this.textareaEl.nativeElement.style.height = this.textareaEl.nativeElement.scrollHeight + 'px';
     }
   }
 

@@ -2,7 +2,6 @@ import { Component, ElementRef, inject, Input, OnInit, ViewChild } from '@angula
 import { UsersInterface } from '../../../../@types/users';
 import { ButtonStyleType } from '../../../../@types/button';
 import { ActivatedRoute, Router } from '@angular/router';
-import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-cards-stack',

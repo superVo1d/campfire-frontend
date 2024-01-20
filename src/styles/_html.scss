@@ -45,6 +45,16 @@ input[type="reset"] {
   padding: 0;
 }
 
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  appearance: textfield;
+}
+
 a:link,
 a:visited {
   text-decoration: none;
@@ -53,6 +63,7 @@ a:visited {
 .light-theme {
   --background: #fff;
   --main-color: #000;
+  --main-color-30: rgb(0 0 0 / 30%);
   --main-color-50: rgb(0 0 0 / 50%);
   --separator: #{$cultured};
 }
@@ -60,7 +71,9 @@ a:visited {
 .dark-theme {
   --background: #000;
   --main-color: #fff;
+  --main-color-30: rgb(255 255 255 / 30%);
   --main-color-50: rgb(255 255 255 / 50%);
+  --placeholder: #abaaaa;
   --separator: #{$chinese-black};
 }
 

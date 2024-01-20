@@ -22,7 +22,7 @@
     @include mixins.font(typography.$font-caption);
 
     bottom: 2rem;
-    color: var(--main-color-50);
+    color: var(--main-color-30);
     position: absolute;
     right: 2rem;
   }
@@ -33,6 +33,10 @@
     padding-bottom: 3.6rem;
     resize: none;
   }
+
+  ::placeholder {
+    color: var(--main-color-50);
+  }
 }
 
 textarea {
@@ -41,4 +45,14 @@ textarea {
 
 .textarea-wrapper {
   position: relative;
+}
+
+:host(.error) {
+  .input {
+    border: 1px solid var(--acsent-color);
+
+    &__counter {
+      color: var(--acsent-color);
+    }
+  }
 }

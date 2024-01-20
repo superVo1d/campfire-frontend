@@ -7,6 +7,7 @@ import { selectUser } from '../../../../core/store';
 import { TelegramService } from '../../../../shared/services/telegram.service';
 import { Router } from '@angular/router';
 import { ApiService } from '../../../../core/services/api.service';
+import { placeholderText } from '../../../../mocks/profiles';
 
 @Component({
   selector: 'app-settings',
@@ -36,13 +37,22 @@ export class SettingsComponent implements OnInit {
 
       this.form = new FormGroup({
         name: new FormControl(this._user?.firstName, [Validators.required]),
-        about: new FormControl(this._user?.about, [Validators.maxLength(500)]),
+        about: new FormControl(this._user?.about, [Validators.required, Validators.maxLength(500)]),
         age: new FormControl(this._user?.age, [Validators.required, Validators.pattern(/[0-9]*/)])
       });
     });
 
     this.telegramService.setBackButton(() => {
-      this.router.navigate(['..']);
+      if (!this.form.dirty) {
+        this.router.navigate(['..']);
+        return;
+      }
+
+      this.telegramService.showConfirm('Данные не сохранены. Выйти?', (confirm) => {
+        if (confirm) {
+          this.router.navigate(['..']);
+        }
+      });
     });
   }
 
@@ -52,6 +62,10 @@ export class SettingsComponent implements OnInit {
 
   get user(): UserInterface {
     return this._user;
+  }
+
+  get placeholder(): string {
+    return placeholderText(this._user.firstName);
   }
 
   get userPreview(): UsersInterface {
@@ -83,8 +97,10 @@ export class SettingsComponent implements OnInit {
   };
 
   onSubmit = () => {
-    this.apiService.updateUser(this.form.value as UserEditable).subscribe((data) => {
-      console.log(data);
-    });
+    console.log(this.form.value);
+    this.router.navigate(['..']);
+    // this.apiService.updateUser(this.form.value as UserEditable).subscribe((data) => {
+    //   console.log(data);
+    // });
   };
 }

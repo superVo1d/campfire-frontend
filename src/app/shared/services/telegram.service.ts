@@ -75,7 +75,15 @@ export class TelegramService {
     this._backButton.hide();
   }
 
+  showConfirm(message: string, callback: (confirm: boolean) => void): void {
+    this._tg.showConfirm(message, callback);
+  }
+
   onEvent(eventType: TelegramWebApps.EventType, eventHandler: () => void) {
     this._tg?.onEvent(eventType, eventHandler);
+  }
+
+  close() {
+    this._tg?.close();
   }
 }

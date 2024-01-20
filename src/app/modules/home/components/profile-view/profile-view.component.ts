@@ -68,6 +68,8 @@ export class ProfileViewComponent {
   }
 
   openChat() {
-    console.log('openChat');
+    if (this.profile?.nickname) {
+      this.telegramService.openTelegramChat(this.profile.nickname);
+    }
   }
 }

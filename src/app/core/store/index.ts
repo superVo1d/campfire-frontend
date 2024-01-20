@@ -4,11 +4,13 @@ import { UsersInterface } from '../../@types/users';
 import { usersReducer } from './users.reducer';
 
 export interface UserState {
-  user: UserInterface | null;
+  user: UserInterface | undefined;
+  isLoaded: boolean;
 }
 
 export interface UsersState {
-  users: UsersInterface[];
+  users: UsersInterface[] | undefined;
+  isLoaded: boolean;
 }
 
 export const reducers = {
@@ -24,7 +26,11 @@ export const selectUser = (state) => {
 };
 
 export const selectUsers = (state) => {
-  return state.usersReducer.users.map((user) => {
+  return state.usersReducer.users?.map((user) => {
     return { ...user, photo: user.photo || '/assets/media/images/no-userpic.png' };
   });
+};
+
+export const isLoading = (state) => {
+  return !(state.usersReducer.isLoaded && state.userReducer.isLoaded);
 };

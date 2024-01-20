@@ -8,7 +8,7 @@ export interface UserViewInterface {
 
 export interface UserInterface extends UserViewInterface {
   id: number;
-  hub: {
+  hub?: {
     hubId: number;
     hubName: string;
   };

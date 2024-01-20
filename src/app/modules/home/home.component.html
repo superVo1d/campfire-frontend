@@ -1,1 +1,16 @@
-<router-outlet></router-outlet>
+<ng-container *ngIf="(isLoading$ | async); then loader; else content">
+</ng-container>
+
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>
+
+<ng-template #content>
+  <ng-container *ngIf="(user$ | async)?.hub; else noHub">
+    <router-outlet></router-outlet>
+  </ng-container>
+
+  <ng-template #noHub>
+    <app-error></app-error>
+  </ng-template>
+</ng-template>
