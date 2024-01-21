@@ -4,7 +4,7 @@
     <div [style.background-image]="'url(' + user.photo + ')'" class='match__photo'></div>
     <div [style.background-image]="'url(' + secondUser.photo + ')'" class='match__photo'></div>
   </div>
-  <p>{{ secondUser.firstName }} тоже хочет с тобой пообщаться!</p>
+  <p>{{ secondUser.workingName }} тоже хочет с тобой пообщаться!</p>
   <app-button [fill]='true' [style]='ButtonStyleType.primary' text='Написать' (clickEvent)='openChat($event)'/>
   <app-button [fill]='true' text='Продолжить поиск' (clickEvent)='close($event)'/>
 </div>

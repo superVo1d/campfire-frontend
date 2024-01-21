@@ -11,5 +11,6 @@ export const data: UserInterface = {
     hubId: 0,
     hubName: 'Setters'
   },
-  photo: '/assets/media/mocks/mock-user-photo.png'
+  photo: '/assets/media/mocks/mock-user-photo.png',
+  workingName: 'Женя'
 };

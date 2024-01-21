@@ -1,4 +1,4 @@
-import { loadUser, loadUserSuccess } from './user.actions';
+import { loadUser, loadUserSuccess, updateUserSuccess } from './user.actions';
 import { UserState } from './index';
 import { createReducer, on } from '@ngrx/store';
 
@@ -9,5 +9,11 @@ export const userReducer = createReducer<UserState>(
   }),
   on(loadUserSuccess, (state, action) => {
     return { ...state, user: action.user, isLoaded: true };
+  }),
+  on(updateUserSuccess, (state, action) => {
+    return {
+      ...state,
+      user: action.user
+    };
   })
 );

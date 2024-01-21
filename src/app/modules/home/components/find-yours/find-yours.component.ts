@@ -25,7 +25,7 @@ export class FindYoursComponent implements AfterViewInit {
   }
 
   cardTitle(card: UsersInterface) {
-    return card.firstName + (card.age ? `, ${card.age}` : '');
+    return card.workingName + (card.age ? `, ${card.age}` : '');
   }
 
   ngAfterViewInit(): void {

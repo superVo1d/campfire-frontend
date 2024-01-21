@@ -31,7 +31,7 @@ export class UsersEffects {
       ofType(UsersActions.LikeUser),
       switchMap((action) => {
         return this.apiService.likeUser(action.id).pipe(
-          map((data) => {
+          map(() => {
             return likeUserSuccess({ id: action.id });
           })
         );

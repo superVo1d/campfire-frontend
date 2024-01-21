@@ -45,7 +45,7 @@ export class CardComponent {
   private telegramService = inject(TelegramService);
 
   get title() {
-    return this.userCard.firstName + (this.userCard.age ? `, ${this.userCard.age}` : '');
+    return this.userCard.workingName + (this.userCard.age ? `, ${this.userCard.age}` : '');
   }
 
   get description() {

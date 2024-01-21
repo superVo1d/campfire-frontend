@@ -36,11 +36,7 @@ export class ProfileViewComponent {
   }
 
   get cardTitle() {
-    return (
-      this.profile.firstName +
-      (this.profile.lastName ? ` ${this.profile.lastName}` : '') +
-      (this.profile.age ? `, ${this.profile.age}` : '')
-    );
+    return this.profile.workingName + (this.profile.age ? `, ${this.profile.age}` : '');
   }
 
   onClickBack = (): void => {

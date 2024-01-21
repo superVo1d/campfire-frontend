@@ -11,7 +11,8 @@ export const data: UsersInterface[] = [
     about: 'Описание 1',
     lastName: 'Мыльников',
     age: 26,
-    nickname: 'supervoid'
+    nickname: 'supervoid',
+    workingName: 'Гриша'
   },
   {
     id: 2,
@@ -19,7 +20,8 @@ export const data: UsersInterface[] = [
     firstName: 'Миша',
     about: 'Описание 2',
     age: 16,
-    nickname: 'username'
+    nickname: 'username',
+    workingName: 'Миша'
   },
   {
     id: 3,
@@ -28,7 +30,8 @@ export const data: UsersInterface[] = [
     about: 'Описание 3',
     age: 17,
     nickname: 'username',
-    likesYou: true
+    likesYou: true,
+    workingName: 'Аня'
   },
   {
     id: 4,
@@ -38,7 +41,8 @@ export const data: UsersInterface[] = [
     age: 32,
     nickname: 'username',
     like: true,
-    likesYou: true
+    likesYou: true,
+    workingName: 'Лена'
   },
   {
     id: 5,
@@ -47,7 +51,8 @@ export const data: UsersInterface[] = [
     about: 'Описание 5',
     age: 33,
     nickname: 'username',
-    likesYou: true
+    likesYou: true,
+    workingName: 'Женя'
   },
   {
     id: 6,
@@ -57,7 +62,8 @@ export const data: UsersInterface[] = [
     age: 25,
     nickname: 'username',
     like: true,
-    likesYou: true
+    likesYou: true,
+    workingName: 'Лена'
   },
   {
     id: 6,
@@ -65,6 +71,7 @@ export const data: UsersInterface[] = [
     firstName: 'Катя',
     about: 'Описание 7',
     age: 24,
-    nickname: 'username'
+    nickname: 'username',
+    workingName: 'Катя'
   }
 ];

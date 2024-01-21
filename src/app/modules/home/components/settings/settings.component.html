@@ -9,12 +9,12 @@
           <div class='profile__name'>{{ '@' + user.nickname }}</div>
         </div>
         <div>
-          <app-button *ngIf="form.dirty" class='profile__submit' text='Сохранить' type='submit' [isDarkTheme]='true'/>
+          <app-button *ngIf="form.dirty && !isSubmitted" class='profile__submit' text='Сохранить' type='submit' [isDarkTheme]='true'/>
         </div>
       </div>
       <div class='settings__fields'>
-          <app-input-text class='settings__input' label="Имя" [control]='form.controls["name"]'></app-input-text>
-          <app-input-text class='settings__input' [placeholder]='placeholder' label="Обо мне" [textarea]='true' [control]='form.controls["about"]'></app-input-text>
+          <app-input-text class='settings__input' label="Имя" [control]='form.controls["name"]' [max]='20'></app-input-text>
+          <app-input-text class='settings__input' [placeholder]='placeholder' label="Обо мне" [textarea]='true' [control]='form.controls["about"]' [max]='500'></app-input-text>
           <app-input-text class='settings__input' type="number" label="Возраст" [control]='form.controls["age"]' [max]='2'></app-input-text>
       </div>
     </form>

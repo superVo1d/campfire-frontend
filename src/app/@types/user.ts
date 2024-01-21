@@ -3,6 +3,7 @@ export interface UserViewInterface {
   age: number;
   firstName: string;
   lastName?: string;
+  workingName: string;
   photo: string;
 }
 
@@ -17,6 +18,6 @@ export interface UserInterface extends UserViewInterface {
 
 export interface UserEditable {
   about: string;
-  name?: string;
+  name: string;
   age?: number;
 }

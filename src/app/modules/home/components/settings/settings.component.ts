@@ -8,6 +8,7 @@ import { TelegramService } from '../../../../shared/services/telegram.service';
 import { Router } from '@angular/router';
 import { ApiService } from '../../../../core/services/api.service';
 import { placeholderText } from '../../../../mocks/profiles';
+import { updateUser } from '../../../../core/store/user.actions';
 
 @Component({
   selector: 'app-settings',
@@ -27,6 +28,8 @@ export class SettingsComponent implements OnInit {
 
   form: FormGroup;
 
+  public isSubmitted = false;
+
   ngOnInit() {
     this.store.pipe(select(selectUser)).subscribe((user) => {
       if (!user) {
@@ -36,7 +39,7 @@ export class SettingsComponent implements OnInit {
       this._user = user;
 
       this.form = new FormGroup({
-        name: new FormControl(this._user?.firstName, [Validators.required]),
+        name: new FormControl(this._user?.workingName, [Validators.required, Validators.maxLength(20)]),
         about: new FormControl(this._user?.about, [Validators.required, Validators.maxLength(500)]),
         age: new FormControl(this._user?.age, [Validators.required, Validators.pattern(/[0-9]*/)])
       });
@@ -56,17 +59,17 @@ export class SettingsComponent implements OnInit {
   }
 
   get placeholder(): string {
-    return placeholderText(this._user.firstName);
+    return placeholderText(this._user.workingName);
   }
 
   get userPreview(): UsersInterface {
     return {
       id: this._user.id,
-      firstName: this.form.get('name')?.value,
       age: this.form.get('age')?.value,
       photo: this._user.photo,
       nickname: this._user.nickname,
-      about: this.form.get('about')?.value
+      about: this.form.get('about')?.value,
+      workingName: this.form.get('name')?.value
     };
   }
 
@@ -102,10 +105,7 @@ export class SettingsComponent implements OnInit {
   }
 
   onSubmit = () => {
-    console.log(this.form.value);
-    this.router.navigate(['..']);
-    // this.apiService.updateUser(this.form.value as UserEditable).subscribe((data) => {
-    //   console.log(data);
-    // });
+    this.isSubmitted = true;
+    this.store.dispatch(updateUser({ values: this.form.value as UserEditable }));
   };
 }

@@ -2,7 +2,7 @@
   <app-userpic class="profile__picture" [path]="user.photo"></app-userpic>
   <div class="profile__name">
     <a class="author" [routerLink]='"settings"'>
-      <span>{{ user.firstName }}</span>
+      <span>{{ user.workingName }}</span>
       <app-icon class="icon" [path]="'assets/media/icons/arrowRight.svg'"></app-icon>
     </a>
     <div *ngIf="user.hub" class="status">{{ user.hub.hubName }}</div>

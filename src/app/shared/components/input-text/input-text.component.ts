@@ -60,20 +60,20 @@ export class InputTextComponent implements OnInit, OnChanges {
   }
 
   onFocus() {
-    if (this.inputEl.nativeElement) {
-      this.inputEl.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    if (this.inputEl?.nativeElement) {
+      this.inputEl.nativeElement?.scrollIntoView({ behavior: 'smooth', block: 'end' });
     }
 
-    if (this.textareaEl.nativeElement) {
-      this.textareaEl.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    if (this.textareaEl?.nativeElement) {
+      this.textareaEl?.nativeElement?.scrollIntoView({ behavior: 'smooth', block: 'end' });
     }
   }
 
   onChange() {
     const value = this.control?.value;
 
-    if (this.type === 'number') {
-      this.control?.patchValue(value.replace(/[^0-9]/g, ''));
+    if (this.type === 'number' && value) {
+      this.control?.patchValue(value.toString().replace(/[^0-9]/g, ''));
     }
 
     this.length = value?.length || 0;

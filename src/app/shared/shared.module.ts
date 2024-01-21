@@ -12,7 +12,6 @@ import {
   UserpicComponent,
   InputTextComponent
 } from './components';
-import { NumbersOnlyDirective } from './directives';
 
 @NgModule({
   imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule],
@@ -24,8 +23,7 @@ import { NumbersOnlyDirective } from './directives';
     NavbarComponent,
     TabsComponent,
     UserpicComponent,
-    InputTextComponent,
-    NumbersOnlyDirective
+    InputTextComponent
   ],
   exports: [
     ButtonComponent,
@@ -35,8 +33,7 @@ import { NumbersOnlyDirective } from './directives';
     NavbarComponent,
     TabsComponent,
     UserpicComponent,
-    InputTextComponent,
-    NumbersOnlyDirective
+    InputTextComponent
   ]
 })
 export class SharedModule {}

@@ -30,7 +30,7 @@ export class CardsComponent implements OnInit {
   }
 
   cardTitle(card) {
-    return card.firstName + (card.age ? `, ${card.age}` : '');
+    return card.workingName + (card.age ? `, ${card.age}` : '');
   }
 
   get userCards() {

@@ -2,6 +2,7 @@ import { userReducer } from './user.reducer';
 import { UserInterface } from '../../@types/user';
 import { UsersInterface } from '../../@types/users';
 import { usersReducer } from './users.reducer';
+import { placeholderText } from '../../mocks/profiles';
 
 export interface UserState {
   user: UserInterface | undefined;
@@ -27,7 +28,11 @@ export const selectUser = (state) => {
 
 export const selectUsers = (state) => {
   return state.usersReducer.users?.map((user) => {
-    return { ...user, photo: user.photo || '/assets/media/images/no-userpic.png' };
+    return {
+      ...user,
+      photo: user.photo || '/assets/media/images/no-userpic.png',
+      about: user.about || placeholderText(user.workingName)
+    };
   });
 };
 
