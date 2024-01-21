@@ -26,12 +26,46 @@
     position: absolute;
     top: 0;
     width: 17.8rem;
+    z-index: 1;
+
+    &::before,
+    &::after {
+      background: url('/assets/media/icons/match-colored.png') no-repeat center;
+      background-size: contain;
+      content: '';
+      display: block;
+      height: 4.86rem;
+      position: absolute;
+      width: 4.3rem;
+      z-index: -1;
+    }
+
+    &::before {
+      right: -3.3rem;
+      top: -1.7rem;
+    }
+
+    &::after {
+      bottom: -2.2rem;
+      left: -3.7rem;
+      transform: rotate(180deg);
+    }
+
+    &:nth-child(1) {
+      &::after {
+        content: none;
+      }
+    }
 
     &:nth-child(2) {
       bottom: 0;
       left: initial;
       right: 0;
       top: initial;
+
+      &::before {
+        content: none;
+      }
     }
   }
 
