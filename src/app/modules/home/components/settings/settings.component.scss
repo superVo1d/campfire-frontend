@@ -11,14 +11,7 @@
 }
 
 .content {
-  height: 100%;
   min-height: 100vh;
-  overflow: scroll;
-
-  &_preview-opened {
-    height: 100vh;
-    overflow: hidden;
-  }
 }
 
 .interface {
@@ -41,11 +34,21 @@
 }
 
 .preview {
+  height: 100%;
   inset: 0;
   margin: 0 auto;
   max-width: global.$max-width;
+  overflow-y: scroll;
   position: fixed;
   z-index: 3;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  app-profile-view {
+    min-height: calc(var(--vh) * 100 + 1px);
+  }
 }
 
 .back {
@@ -57,7 +60,7 @@
 
 .settings {
   background: var(--background);
-  padding: 2rem 2rem global.$bottom-offset;
+  padding: 2rem 2rem calc(#{global.$bottom-offset} * 2);
   width: 100%;
   will-change: transform;
 

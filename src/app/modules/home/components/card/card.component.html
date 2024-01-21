@@ -1,4 +1,4 @@
-<a  [routerLink]="userCard.id.toString()" class="card" (swipe)="onSwipe($event)" (pan)='onPan($event)' #card>
+<a [routerLink]='this.userCard.id.toString()' class="card" (swipe)="onSwipe($event)" (pan)='onPan($event)' #card>
   <div class="card__background" [style.background-image]="'url(' + userCard.photo + ')'"></div>
   <div class="card__interface">
     <h1>{{title}}</h1>
@@ -8,4 +8,7 @@
       <app-button class="card__button-like" [appLikeButton]='userCard' (clickEvent)='like($event)'/>
     </div>
   </div>
+  <ng-container *ngIf="matchVisible">
+    <app-match [secondUser]='userCard' (closeEvent)='closeMatchPopup()'></app-match>
+  </ng-container>
 </a>

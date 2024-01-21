@@ -50,6 +50,10 @@ export class CardsStackComponent implements OnInit {
       .unsubscribe();
   }
 
+  trackByEmpCode(index: number, user: UsersInterface): string {
+    return user.id.toString();
+  }
+
   handleSwipe($event: HammerInput) {
     if (Math.abs($event.overallVelocity) < 0.5) {
       return;

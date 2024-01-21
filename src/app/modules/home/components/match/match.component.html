@@ -1,0 +1,10 @@
+<div class='match' *ngIf='(user$ | async) as user'>
+  <h1>У вас искра!</h1>
+  <div class='match__photos'>
+    <div [style.background-image]="'url(' + user.photo + ')'" class='match__photo'></div>
+    <div [style.background-image]="'url(' + secondUser.photo + ')'" class='match__photo'></div>
+  </div>
+  <p>{{ secondUser.firstName }} тоже хочет с тобой пообщаться!</p>
+  <app-button [fill]='true' [style]='ButtonStyleType.primary' text='Написать' (clickEvent)='openChat($event)'/>
+  <app-button [fill]='true' text='Продолжить поиск' (clickEvent)='close($event)'/>
+</div>

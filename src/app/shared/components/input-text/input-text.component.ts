@@ -1,5 +1,16 @@
-import { Component, ElementRef, HostBinding, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostBinding,
+  inject,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  ViewChild
+} from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { BodyClassService } from '../../services/body-class.service';
 
 @Component({
   selector: 'app-input-text',
@@ -19,6 +30,8 @@ export class InputTextComponent implements OnInit, OnChanges {
 
   @Input() control;
 
+  @ViewChild('input') inputEl: ElementRef<HTMLInputElement>;
+
   @ViewChild('textareaEl') textareaEl: ElementRef<HTMLTextAreaElement>;
 
   @HostBinding('class.error') get error() {
@@ -26,6 +39,8 @@ export class InputTextComponent implements OnInit, OnChanges {
   }
 
   public length = 0;
+
+  private bodyClassService = inject(BodyClassService);
 
   ngOnInit() {
     this.length = this.control.value?.length || 0;
@@ -44,8 +59,24 @@ export class InputTextComponent implements OnInit, OnChanges {
     }
   }
 
+  onFocus() {
+    if (this.inputEl.nativeElement) {
+      this.inputEl.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
+
+    if (this.textareaEl.nativeElement) {
+      this.textareaEl.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
+  }
+
   onChange() {
-    this.length = this.control?.value?.length || 0;
+    const value = this.control?.value;
+
+    if (this.type === 'number') {
+      this.control?.patchValue(value.replace(/[^0-9]/g, ''));
+    }
+
+    this.length = value?.length || 0;
 
     this.autoGrow();
   }

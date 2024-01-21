@@ -6,7 +6,7 @@
       (panEvent)='handlePan($event)'
       (swipeEvent)='handleSwipe($event)'
       [userCard]='user'
-      *ngFor="let user of userCards; index as i"
+      *ngFor="let user of userCards; index as i; trackBy: trackByEmpCode"
     />
   </div>
 </div>

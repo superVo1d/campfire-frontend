@@ -1,10 +1,27 @@
 <div *ngIf="label" class='label'>{{ label }}</div>
 
 <div *ngIf='textarea; else input' class='textarea-wrapper'>
-  <textarea #textareaEl [class]='["input", "input_textarea"]' [placeholder]='placeholder' [formControl]="control" (input)="onChange()"></textarea>
+  <textarea #textareaEl
+            [class]='["input", "input_textarea"]'
+            [formControl]="control"
+            [maxlength]='max'
+            (focus)='onFocus()'
+            (input)="onChange()"
+            [placeholder]='placeholder'
+  ></textarea>
   <span class='input__counter'>{{ length + '/' + max }}</span>
 </div>
 
 <ng-template #input>
-  <input [attr.appNumbersOnly]="type === 'number'" class='input' [type]='type' [placeholder]='placeholder' [formControl]="control" (input)="onChange()">
+  <input class='input'
+         type='text'
+         [maxlength]='max'
+         [formControl]="control"
+         (input)="onChange()"
+         (focus)='onFocus()'
+          [placeholder]='placeholder'
+         [attr.inputmode]="type === 'number' ? 'numeric' : null"
+         [attr.pattern]="type === 'number' ? '[0-9]*' : null"
+  />
+
 </ng-template>

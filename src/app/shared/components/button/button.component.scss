@@ -2,7 +2,7 @@
   align-items: center;
   background-color: transparent;
   border-radius: 2.4rem;
-  color: #000;
+  color: var(--main-color);
   display: flex;
   height: 4.8rem;
   justify-content: center;
@@ -17,6 +17,7 @@
 
   &.secondary {
     background: #fff;
+    color: #000;
   }
 
   &.size-large {

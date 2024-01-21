@@ -16,3 +16,7 @@
     </div>
   </div>
 </div>
+
+<ng-container *ngIf="matchVisible">
+  <app-match [secondUser]='profile' (closeEvent)='closeMatchPopup()'></app-match>
+</ng-container>

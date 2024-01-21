@@ -43,16 +43,7 @@ export class SettingsComponent implements OnInit {
     });
 
     this.telegramService.setBackButton(() => {
-      if (!this.form.dirty) {
-        this.router.navigate(['..']);
-        return;
-      }
-
-      this.telegramService.showConfirm('Данные не сохранены. Выйти?', (confirm) => {
-        if (confirm) {
-          this.router.navigate(['..']);
-        }
-      });
+      this.exit();
     });
   }
 
@@ -74,6 +65,7 @@ export class SettingsComponent implements OnInit {
       firstName: this.form.get('name')?.value,
       age: this.form.get('age')?.value,
       photo: this._user.photo,
+      nickname: this._user.nickname,
       about: this.form.get('about')?.value
     };
   }
@@ -91,10 +83,23 @@ export class SettingsComponent implements OnInit {
 
     setTimeout(() => {
       this.telegramService.setBackButton(() => {
-        this.router.navigate(['..']);
+        this.exit();
       });
     }, 0);
   };
+
+  exit() {
+    if (!this.form.dirty) {
+      this.router.navigate(['..']);
+      return;
+    }
+
+    this.telegramService.showConfirm('Данные не сохранены. Выйти?', (confirm) => {
+      if (confirm) {
+        this.router.navigate(['..']);
+      }
+    });
+  }
 
   onSubmit = () => {
     console.log(this.form.value);

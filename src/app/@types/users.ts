@@ -5,7 +5,7 @@ export interface UsersInterface {
   lastName?: string;
   age?: number;
   photo?: string;
-  nickname?: string;
+  nickname: string;
   like?: boolean;
   likesYou?: boolean;
 }

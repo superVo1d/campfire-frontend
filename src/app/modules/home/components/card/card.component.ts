@@ -13,6 +13,7 @@ import { likeUser } from '../../../../core/store/users.actions';
 import { Store } from '@ngrx/store';
 import { ButtonSizeType, ButtonStyleType } from '../../../../@types/button';
 import { TelegramService } from '../../../../shared/services/telegram.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card',
@@ -35,7 +36,11 @@ export class CardComponent {
 
   @Input() maxLength = 105;
 
+  public matchVisible = false;
+
   private store = inject(Store);
+
+  private router = inject(Router);
 
   private telegramService = inject(TelegramService);
 
@@ -57,6 +62,10 @@ export class CardComponent {
     $event.stopPropagation();
 
     this.store.dispatch(likeUser({ id: this.userCard.id }));
+
+    if (this.userCard.likesYou && !this.userCard.like) {
+      this.matchVisible = true;
+    }
   }
 
   openChat($event: Event): void {
@@ -74,5 +83,9 @@ export class CardComponent {
 
   onPan($event: Event): void {
     this.panEvent.emit(Object.assign($event as unknown as HammerInput, { target: this.card.nativeElement }));
+  }
+
+  closeMatchPopup() {
+    this.matchVisible = false;
   }
 }

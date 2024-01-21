@@ -22,6 +22,8 @@ export class ProfileViewComponent {
 
   @Output() clickBackEvent = new EventEmitter();
 
+  public matchVisible = false;
+
   private store = inject(Store);
 
   constructor(
@@ -31,10 +33,6 @@ export class ProfileViewComponent {
     this.telegramService.setBackButton(() => {
       this.close();
     });
-  }
-
-  get liked() {
-    return this.profile.like;
   }
 
   get cardTitle() {
@@ -65,6 +63,14 @@ export class ProfileViewComponent {
 
   like() {
     this.store.dispatch(likeUser({ id: this.profile.id }));
+
+    if (this.profile.likesYou && !this.profile.like) {
+      this.matchVisible = true;
+    }
+  }
+
+  closeMatchPopup() {
+    this.matchVisible = false;
   }
 
   openChat() {

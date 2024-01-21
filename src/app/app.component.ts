@@ -7,6 +7,8 @@ import { Store } from '@ngrx/store';
 import { loadUser } from './core/store/user.actions';
 import { loadUsers } from './core/store/users.actions';
 import { initDataMock } from './mocks/telegram';
+import { Observable } from 'rxjs';
+import { isLoading } from './core/store';
 
 @Component({
   selector: 'app-root',
@@ -23,6 +25,8 @@ export class AppComponent implements OnInit {
   private store = inject(Store);
 
   private apiService = inject(ApiService);
+
+  isLoading$: Observable<boolean> = this.store.select(isLoading);
 
   private theme = inject(ThemeService);
 
@@ -47,7 +51,8 @@ export class AppComponent implements OnInit {
     this.apiService.auth(initData).subscribe(() => {
       this.store.dispatch(loadUser());
       this.store.dispatch(loadUsers());
-      this.telegramService.ready();
     });
+
+    this.isLoading$.subscribe(() => this.telegramService.ready());
   }
 }

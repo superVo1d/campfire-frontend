@@ -24,6 +24,7 @@ import { SwiperDirective } from './directives/swiper.directive';
 import { CardComponent } from './components/card/card.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { ErrorComponent } from './components/error/error.component';
+import { MatchComponent } from './components/match/match.component';
 
 register();
 
@@ -49,7 +50,8 @@ register();
     SwiperDirective,
     CardComponent,
     LoaderComponent,
-    ErrorComponent
+    ErrorComponent,
+    MatchComponent
   ],
   imports: [CommonModule, HomeRoutingModule, SharedModule, ReactiveFormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
