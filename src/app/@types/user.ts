@@ -1,6 +1,6 @@
 export interface UserViewInterface {
   about?: string;
-  age: number;
+  age?: number;
   firstName: string;
   lastName?: string;
   workingName: string;

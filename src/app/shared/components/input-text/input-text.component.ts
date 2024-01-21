@@ -1,4 +1,5 @@
 import {
+  AfterViewChecked,
   Component,
   ElementRef,
   HostBinding,
@@ -9,7 +10,6 @@ import {
   SimpleChanges,
   ViewChild
 } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { BodyClassService } from '../../services/body-class.service';
 
 @Component({
@@ -17,7 +17,7 @@ import { BodyClassService } from '../../services/body-class.service';
   templateUrl: './input-text.component.html',
   styleUrls: ['./input-text.component.scss']
 })
-export class InputTextComponent implements OnInit, OnChanges {
+export class InputTextComponent implements OnInit, OnChanges, AfterViewChecked {
   @Input() type: 'text' | 'number' = 'text';
 
   @Input() textarea = false;
@@ -44,6 +44,10 @@ export class InputTextComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.length = this.control.value?.length || 0;
+  }
+
+  ngAfterViewChecked() {
+    this.autoGrow();
   }
 
   ngOnChanges(changes: SimpleChanges) {

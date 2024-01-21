@@ -28,8 +28,6 @@ export class SettingsComponent implements OnInit {
 
   form: FormGroup;
 
-  public isSubmitted = false;
-
   ngOnInit() {
     this.store.pipe(select(selectUser)).subscribe((user) => {
       if (!user) {
@@ -41,7 +39,7 @@ export class SettingsComponent implements OnInit {
       this.form = new FormGroup({
         name: new FormControl(this._user?.workingName, [Validators.required, Validators.maxLength(20)]),
         about: new FormControl(this._user?.about, [Validators.required, Validators.maxLength(500)]),
-        age: new FormControl(this._user?.age, [Validators.required, Validators.pattern(/[0-9]*/)])
+        age: new FormControl(this._user?.age, [Validators.pattern(/[0-9]*/)])
       });
     });
 
@@ -104,8 +102,15 @@ export class SettingsComponent implements OnInit {
     });
   }
 
-  onSubmit = () => {
-    this.isSubmitted = true;
+  onSubmit = ($event: Event) => {
+    $event.preventDefault();
+
+    if (!this.form.valid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+
+    this.form.markAsTouched();
     this.store.dispatch(updateUser({ values: this.form.value as UserEditable }));
   };
 }

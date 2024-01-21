@@ -12,11 +12,11 @@ export class LikesLayoutComponent implements AfterViewInit {
   public tabs: TabsInterface = [
     {
       path: '/likes',
-      name: 'Вас заметили'
+      name: 'Вы понравились'
     },
     {
       path: '/likes/you',
-      name: 'Вы заметили'
+      name: 'Вам понравились'
     }
   ];
 

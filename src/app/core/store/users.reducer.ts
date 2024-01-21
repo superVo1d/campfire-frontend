@@ -1,6 +1,6 @@
 import { UsersState } from './index';
 import { createReducer, on } from '@ngrx/store';
-import { likeUserSuccess, loadUsers, loadUsersSuccess } from './users.actions';
+import { likeUser, loadUsers, loadUsersSuccess } from './users.actions';
 import { UsersInterface } from '../../@types/users';
 
 export const usersReducer = createReducer<UsersState>(
@@ -11,7 +11,7 @@ export const usersReducer = createReducer<UsersState>(
   on(loadUsersSuccess, (state, action) => {
     return { ...state, users: action.users, isLoaded: true };
   }),
-  on(likeUserSuccess, (state, action) => {
+  on(likeUser, (state, action) => {
     return {
       ...state,
       users: state.users?.map((user: UsersInterface) => {
