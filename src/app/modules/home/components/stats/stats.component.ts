@@ -1,7 +1,7 @@
 import { Component, HostBinding, inject, Input, OnInit } from '@angular/core';
 import { ModalService } from '../../../../shared/services/modal.service';
 import { SettingsComponent } from '../settings/settings.component';
-import { data } from '../../../../mocks/user';
+import { UserInterface } from '../../../../@types/user';
 
 @Component({
   selector: 'app-stats',
@@ -11,7 +11,7 @@ import { data } from '../../../../mocks/user';
 export class StatsComponent implements OnInit {
   private modalService = inject(ModalService);
 
-  private user = data;
+  @Input() user: UserInterface;
 
   @HostBinding('style.--percentage')
   private _percentage!: number;
@@ -21,7 +21,7 @@ export class StatsComponent implements OnInit {
   }
 
   ngOnInit() {
-    const fieldsToCount = ['name', 'photo', 'about', 'age'];
+    const fieldsToCount = ['workingName', 'photo', 'about', 'age'];
 
     this._percentage = Math.ceil(
       fieldsToCount.reduce((value, key) => {

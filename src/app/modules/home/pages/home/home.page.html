@@ -2,7 +2,7 @@
   <ng-container *ngIf="(user$ | async) as user">
     <div class="home-page">
       <app-profile [user]='user'/>
-      <app-stats/>
+      <app-stats [user]='user'/>
       <app-find-yours *ngIf="cards.length > 0" [cards]='cards' [user]='user' />
       <app-about/>
     </div>
