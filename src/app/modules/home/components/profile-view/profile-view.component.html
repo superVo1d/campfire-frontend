@@ -1,7 +1,7 @@
 <div class='interface'>
   <div>
     <div class='interface__buttons-container'>
-      <app-button *ngIf="profile.like && profile.likesYou" class="card__button-message" [style]='ButtonStyleType.primary' [darkMode]='true' [size]='ButtonSizeType.large' [iconPath]="'assets/media/icons/message.png'" (clickEvent)='openChat()'/>
+      <app-button *ngIf="profile.like" class="card__button-message" [style]='ButtonStyleType.invert' [size]='ButtonSizeType.large' [iconPath]="'assets/media/icons/message.png'" (clickEvent)='openChat()'/>
       <app-button *ngIf="!previewMode" [appLikeButton]='profile' class="like-button" (clickEvent)='like()'/>
     </div>
   </div>

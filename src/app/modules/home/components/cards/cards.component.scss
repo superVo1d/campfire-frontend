@@ -1,13 +1,53 @@
 @use 'mixins' as *;
 @use 'variables/colors' as *;
+@use 'variables/global';
 @use 'variables/typography' as *;
 
+:host {
+  display: block;
+  height: 100%;
+}
+
 .cards {
+  height: 100%;
+}
+
+.cards-container {
   display: grid;
   gap: 0.8rem;
   grid-template-columns: repeat(2, 1fr);
   margin: 1.5rem 2rem;
 }
+
+.cards-description {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  padding: 0 2rem;
+  text-align: center;
+
+  p {
+    margin-bottom: 4.2rem;
+  }
+}
+
+/*
+:host-context(.dark-theme) {
+  .cards-description::before {
+    background: url('/assets/media/images/background-no-cards.png') no-repeat center;
+    background-size: cover;
+    content: '';
+    height: 100%;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+  }
+}
+*/
 
 .card {
   background-color: var(--separator);

@@ -2,6 +2,7 @@ import { Component, inject, Input, OnInit } from '@angular/core';
 import { data } from '../../../../mocks/profiles';
 import { UsersInterface } from '../../../../@types/users';
 import { NavigationEnd, Router } from '@angular/router';
+import { ButtonStyleType } from '../../../../@types/button';
 
 @Component({
   selector: 'app-cards',
@@ -9,6 +10,8 @@ import { NavigationEnd, Router } from '@angular/router';
   styleUrls: ['./cards.component.scss']
 })
 export class CardsComponent implements OnInit {
+  ButtonStyleType = ButtonStyleType;
+
   private _cards: UsersInterface[] = data;
 
   private displayYouLike: boolean;
@@ -16,7 +19,8 @@ export class CardsComponent implements OnInit {
   private router = inject(Router);
 
   @Input() set cards(_cards: UsersInterface[]) {
-    this._cards = _cards;
+    // this._cards = _cards;
+    this._cards = [];
   }
 
   ngOnInit() {

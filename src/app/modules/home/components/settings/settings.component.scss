@@ -117,5 +117,9 @@
     display: inline-block;
     margin-left: auto;
     pointer-events: all;
+
+    button {
+      padding-right: 2rem;
+    }
   }
 }

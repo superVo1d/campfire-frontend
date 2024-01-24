@@ -11,8 +11,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CardsStackComponent implements OnInit {
   ButtonStyleType = ButtonStyleType;
 
-  @Input() initialUserId;
-
   @Input()
   set cards(_cards: UsersInterface[]) {
     this.userCards = _cards;

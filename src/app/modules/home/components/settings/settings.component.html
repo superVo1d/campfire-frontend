@@ -1,7 +1,7 @@
 <form [formGroup]="form" (submit)="onSubmit($event)">
   <div class='interface'>
     <div>
-      <app-button *ngIf="form.dirty" class='profile__submit' text='Сохранить' type='submit' [isDarkTheme]='true'/>
+      <app-button *ngIf="form.dirty" class='profile__submit' text='Сохранить' [size]='ButtonSizeType.small' type='submit' [darkMode]='true'/>
     </div>
   </div>
 

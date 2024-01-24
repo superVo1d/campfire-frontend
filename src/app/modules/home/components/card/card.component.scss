@@ -37,6 +37,10 @@
       text-overflow: ellipsis;
       white-space: nowrap;
     }
+
+    p {
+      white-space: pre-line;
+    }
   }
 
   &__background {

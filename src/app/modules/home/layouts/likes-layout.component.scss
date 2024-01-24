@@ -8,6 +8,7 @@
 
 .cards-container {
   flex-grow: 1;
+  height: 100%;
   overflow: scroll;
   padding-bottom: global.$bottom-offset;
   position: relative;

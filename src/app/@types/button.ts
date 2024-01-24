@@ -1,9 +1,11 @@
 export enum ButtonStyleType {
   primary = 'primary',
-  secondary = 'secondary'
+  secondary = 'secondary',
+  invert = 'invert'
 }
 
 export enum ButtonSizeType {
+  small = 'small',
   normal = 'normal',
   large = 'large'
 }

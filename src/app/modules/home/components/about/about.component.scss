@@ -9,6 +9,11 @@
   margin: 2rem;
   padding: 2rem 1.6rem;
 
+  &:link,
+  &:visited {
+    color: inherit;
+  }
+
   &__button {
     align-self: flex-end;
     margin-bottom: -0.3rem;

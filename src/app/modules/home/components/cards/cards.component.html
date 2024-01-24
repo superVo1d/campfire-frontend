@@ -1,13 +1,27 @@
 <div class="cards">
-  <ng-container *ngFor="let card of userCards">
-    <a class="card" [routerLink]="'/navigator/' + card.id">
-      <div class="card__content">
-        <div class="card__title">{{ cardTitle(card) }}</div>
-        <div *ngIf="card.like && card.likesYou" class="card__label">
-          <app-icon [path]="'assets/media/icons/match.png'"/>
-        </div>
-      </div>
-      <div class="card__background" [style.background-image]="'url(' + card.photo + ')'"></div>
-    </a>
+  <ng-container *ngIf='userCards.length > 0; else empty'>
+    <div class="cards-container">
+      <ng-container *ngFor="let card of userCards">
+        <a class="card" [routerLink]="'/navigator/' + card.id">
+          <div class="card__content">
+            <div class="card__title">{{ cardTitle(card) }}</div>
+            <div *ngIf="card.like && card.likesYou" class="card__label">
+              <app-icon [path]="'assets/media/icons/match.png'"/>
+            </div>
+          </div>
+          <div class="card__background" [style.background-image]="'url(' + card.photo + ')'"></div>
+        </a>
+      </ng-container>
+    </div>
   </ng-container>
+
+  <ng-template #empty>
+    <div class="cards-description">
+      <div>
+        <h1>Пока тут никого нет</h1>
+        <p>Когда ты кому‑то приглянёшься, их профили появятся тут</p>
+        <app-button [style]='ButtonStyleType.primary' [fill]='true' class='button' text='Искать собеседника' [link]='["/navigator"]'></app-button>
+      </div>
+    </div>
+  </ng-template>
 </div>

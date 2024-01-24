@@ -1,10 +1,14 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   EventEmitter,
   inject,
   Input,
+  OnDestroy,
+  OnInit,
   Output,
   ViewChild
 } from '@angular/core';
@@ -21,7 +25,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CardComponent {
+export class CardComponent implements OnInit, AfterViewInit, OnDestroy {
   ButtonSizeType = ButtonSizeType;
 
   ButtonStyleType = ButtonStyleType;
@@ -34,7 +38,7 @@ export class CardComponent {
 
   @Output() panEvent = new EventEmitter<HammerInput>();
 
-  @Input() maxLength = 105;
+  @ViewChild('cardDescription') cardDescription: ElementRef<HTMLParagraphElement>;
 
   public matchVisible = false;
 
@@ -44,17 +48,52 @@ export class CardComponent {
 
   private telegramService = inject(TelegramService);
 
+  private cd = inject(ChangeDetectorRef);
+
+  public description: string;
+
+  private el = ElementRef;
+
   get title() {
     return this.userCard.workingName + (this.userCard.age ? `, ${this.userCard.age}` : '');
   }
 
-  get description() {
-    return (
-      this.userCard.about &&
-      (this.userCard.about?.length > this.maxLength + 3
-        ? this.userCard.about?.slice(0, this.maxLength) + '...'
-        : this.userCard.about)
-    );
+  updateDescription(): void {
+    const cardHeight = this.card.nativeElement.clientHeight;
+
+    let length;
+
+    if (cardHeight > 580) {
+      length = 300;
+    } else if (cardHeight > 490) {
+      length = 200;
+    } else if (cardHeight > 400) {
+      length = 150;
+    } else {
+      length = 105;
+    }
+
+    this.description = this.userCard.about
+      ? this.userCard.about?.length > length + 3
+        ? this.userCard.about?.slice(0, length) + '...'
+        : this.userCard.about
+      : '';
+
+    this.cd.detectChanges();
+  }
+
+  ngOnInit(): void {
+    window.addEventListener('resize', () => this.updateDescription());
+  }
+
+  ngOnDestroy(): void {
+    window.removeEventListener('resize', () => this.updateDescription());
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.updateDescription();
+    }, 0);
   }
 
   like($event: Event): void {

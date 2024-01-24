@@ -10,6 +10,7 @@ const slideTo = (direction) => {
           position: 'absolute',
           top: 0,
           [direction]: 0,
+          height: 'calc(100% - 135px)',
           width: '100%'
         })
       ],

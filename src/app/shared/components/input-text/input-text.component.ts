@@ -40,8 +40,6 @@ export class InputTextComponent implements OnInit, OnChanges, AfterViewChecked {
 
   public length = 0;
 
-  private bodyClassService = inject(BodyClassService);
-
   ngOnInit() {
     this.length = this.control.value?.length || 0;
   }
@@ -60,16 +58,6 @@ export class InputTextComponent implements OnInit, OnChanges, AfterViewChecked {
     if (this.textareaEl?.nativeElement) {
       this.textareaEl.nativeElement.style.height = '1px';
       this.textareaEl.nativeElement.style.height = this.textareaEl.nativeElement.scrollHeight + 'px';
-    }
-  }
-
-  onFocus() {
-    if (this.inputEl?.nativeElement) {
-      this.inputEl.nativeElement?.scrollIntoView({ behavior: 'smooth', block: 'end' });
-    }
-
-    if (this.textareaEl?.nativeElement) {
-      this.textareaEl?.nativeElement?.scrollIntoView({ behavior: 'smooth', block: 'end' });
     }
   }
 

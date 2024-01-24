@@ -25,6 +25,17 @@
     background: #fff;
     color: #000;
   }
+  
+  &.invert {
+    background-color: var(--main-color);
+    color: var(--background);
+  }
+
+  &.size-small {
+    font-weight: 500;
+    height: unset;
+    padding: 0.8rem 1.6rem;
+  }
 
   &.size-large {
     border-radius: 3rem;

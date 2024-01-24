@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { ApiService } from '../../../../core/services/api.service';
 import { placeholderText } from '../../../../mocks/profiles';
 import { updateUser } from '../../../../core/store/user.actions';
+import { ButtonSizeType } from '../../../../@types/button';
 
 @Component({
   selector: 'app-settings',
@@ -16,6 +17,8 @@ import { updateUser } from '../../../../core/store/user.actions';
   styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
+  ButtonSizeType = ButtonSizeType;
+
   private _user: UserInterface;
 
   private store = inject(Store);

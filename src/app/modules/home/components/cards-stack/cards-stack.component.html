@@ -2,7 +2,9 @@
   <div class="cards-stack__container" #slider>
     <app-card
       class="cards-stack__card"
-      [class]="{'prev': i === prevIndex, 'active' : i === activeIndex, 'next' : i === nextIndex }"
+      [class.prev]="i === prevIndex"
+      [class.active]="i === activeIndex"
+      [class.next]="i === nextIndex"
       (panEvent)='handlePan($event)'
       (swipeEvent)='handleSwipe($event)'
       [userCard]='user'

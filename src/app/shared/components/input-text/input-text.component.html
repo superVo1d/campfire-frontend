@@ -5,7 +5,6 @@
             [class]='["input", "input_textarea"]'
             [formControl]="control"
             [maxlength]='max'
-            (focus)='onFocus()'
             (input)="onChange()"
             [placeholder]='placeholder'
   ></textarea>
@@ -18,7 +17,6 @@
          [maxlength]='max'
          [formControl]="control"
          (input)="onChange()"
-         (focus)='onFocus()'
           [placeholder]='placeholder'
          [attr.inputmode]="type === 'number' ? 'numeric' : null"
          [attr.pattern]="type === 'number' ? '[0-9]*' : null"
