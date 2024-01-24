@@ -83,6 +83,10 @@ export class TelegramService {
     this._tg?.onEvent(eventType, eventHandler);
   }
 
+  openLink(url: string): void {
+    this._tg?.openLink(url);
+  }
+
   close() {
     this._tg?.close();
   }
