@@ -19,8 +19,7 @@ export class CardsComponent implements OnInit {
   private router = inject(Router);
 
   @Input() set cards(_cards: UsersInterface[]) {
-    // this._cards = _cards;
-    this._cards = [];
+    this._cards = _cards;
   }
 
   ngOnInit() {
