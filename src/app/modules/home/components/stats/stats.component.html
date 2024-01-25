@@ -1,6 +1,6 @@
-<a class="stats" [routerLink]='"settings"'>
+<a *ngIf="percentage < 100" class="stats" [routerLink]='"settings"'>
   <div class="stats__title">
-    <span>Заполните профиль</span>
+    <span>Зажги профиль</span>
     <app-icon class="icon" [path]="'assets/media/icons/arrowRight.svg'"></app-icon>
   </div>
   <div class="stats__description">
