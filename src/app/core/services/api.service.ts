@@ -34,8 +34,8 @@ export class ApiService {
     return { headers };
   }
 
-  public auth(initData: string): Observable<any> {
-    if (this._demo) {
+  public auth(initData?: string): Observable<any> {
+    if (this._demo || !initData) {
       return of({});
     }
 

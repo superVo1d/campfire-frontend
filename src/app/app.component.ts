@@ -44,10 +44,6 @@ export class AppComponent implements OnInit {
 
     const initData = isDevMode() ? initDataMock : this.telegramService.initData;
 
-    if (!initData) {
-      return;
-    }
-
     this.apiService.auth(initData).subscribe(() => {
       this.store.dispatch(loadUser());
       this.store.dispatch(loadUsers());

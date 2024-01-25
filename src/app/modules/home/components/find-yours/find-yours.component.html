@@ -11,7 +11,7 @@
     init="false"
   >
     <swiper-slide *ngFor="let card of userCards; index as i" [class]="{ 'swiper-slide-active': i === 1}">
-      <a [routerLink]="[ '/navigator']" [queryParams]="{id: 'card.id'}" class="card">
+      <a [routerLink]="[ '/navigator']" [queryParams]="{id: card.id}" class="card">
         <div class="card__interface">
           <div class="name">
             <h3>{{cardTitle(card)}}</h3>
