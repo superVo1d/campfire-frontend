@@ -1,10 +1,12 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
 import { UserEditable, UserInterface } from '../../@types/user';
 import { UsersInterface } from '../../@types/users';
 import { LikeInterface } from '../../@types/like';
-// import { initData as initDataMock } from '../../mocks/telegram';
+import { ActivatedRoute } from '@angular/router';
+import { userMock } from '../../mocks/user';
+import { usersMock } from '../../mocks/profiles';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +16,14 @@ export class ApiService {
 
   private _token!: string;
 
+  private _demo = false;
+
   private http = inject(HttpClient);
+
+  constructor() {
+    const urlParams = new URLSearchParams(window.location.search);
+    this._demo = urlParams.has('demo');
+  }
 
   get authOptions() {
     const headers = new HttpHeaders({
@@ -26,6 +35,10 @@ export class ApiService {
   }
 
   public auth(initData: string): Observable<any> {
+    if (this._demo) {
+      return of({});
+    }
+
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${initData}`
@@ -41,18 +54,22 @@ export class ApiService {
   }
 
   public getUser(): Observable<UserInterface> {
-    return this.http.get<UserInterface>(`${this._apiBaseUrl}/user`, this.authOptions);
+    return this._demo ? of(userMock) : this.http.get<UserInterface>(`${this._apiBaseUrl}/user`, this.authOptions);
   }
 
   public getUsers(): Observable<UsersInterface[]> {
-    return this.http.get<UsersInterface[]>(`${this._apiBaseUrl}/users`, this.authOptions);
+    return this._demo ? of(usersMock) : this.http.get<UsersInterface[]>(`${this._apiBaseUrl}/users`, this.authOptions);
   }
 
   public likeUser(id: number): Observable<LikeInterface> {
-    return this.http.post<LikeInterface>(`${this._apiBaseUrl}/like?id=${id}`, null, this.authOptions);
+    return this._demo
+      ? of({ mutual: true })
+      : this.http.post<LikeInterface>(`${this._apiBaseUrl}/like?id=${id}`, null, this.authOptions);
   }
 
   public updateUser(values: UserEditable): Observable<UserInterface> {
-    return this.http.patch<UserInterface>(`${this._apiBaseUrl}/user`, { ...values }, this.authOptions);
+    return this._demo
+      ? of({ ...userMock, workingName: values.name, age: values.age, about: values.about })
+      : this.http.patch<UserInterface>(`${this._apiBaseUrl}/user`, { ...values }, this.authOptions);
   }
 }

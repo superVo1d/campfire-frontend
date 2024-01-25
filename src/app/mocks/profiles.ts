@@ -3,7 +3,7 @@ import { UsersInterface } from '../@types/users';
 export const placeholderText = (name) =>
   `Привет, я ${name}. Живя в ритме мегаполиса, я часто скучаю по разговорам у костра и душевности – за этим я тут. Жду приятных знакомств для тёплых разговоров. Cкоро подробнее расскажу о своих занятиях, работе и хобби, ценностях в общении – а пока можешь спросить, что тебе интересно!`;
 
-export const data: UsersInterface[] = [
+export const usersMock: UsersInterface[] = [
   {
     id: 1,
     photo: '/assets/media/images/no-userpic.png',

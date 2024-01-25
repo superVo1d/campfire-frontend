@@ -11,15 +11,15 @@
     init="false"
   >
     <swiper-slide *ngFor="let card of userCards; index as i" [class]="{ 'swiper-slide-active': i === 1}">
-      <div class="card">
+      <a [routerLink]="[ '/navigator']" [queryParams]="{id: 'card.id'}" class="card">
         <div class="card__interface">
           <div class="name">
             <h3>{{cardTitle(card)}}</h3>
           </div>
-          <app-button class="card__button" [style]="ButtonStyleType.secondary" [iconPath]="'assets/media/icons/arrowRightLarge.svg'" [link]="[ '/navigator', card.id]"></app-button>
+          <app-button class="card__button" [style]="ButtonStyleType.secondary" [iconPath]="'assets/media/icons/arrowRightLarge.svg'"></app-button>
         </div>
         <div class="card__background" [style.background-image]="'url(' + card.photo + ')'"></div>
-      </div>
+      </a>
     </swiper-slide>
   </swiper-container>
 </div>

@@ -44,14 +44,19 @@ swiper-container {
 
 .card {
   border-radius: 1.2rem;
-  height: 160px;
+  height: 16rem;
   left: 50%;
   overflow: hidden;
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
   transition: height 0.2s ease-in-out, width 0.2s ease-in-out;
-  width: 160px;
+  width: 16rem;
+
+  &:link,
+  &:visited {
+    color: initial;
+  }
 
   .name {
     color: #fff;

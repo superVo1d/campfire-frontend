@@ -1,5 +1,5 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
-import { data } from '../../../../mocks/profiles';
+import { usersMock } from '../../../../mocks/profiles';
 import { UsersInterface } from '../../../../@types/users';
 import { NavigationEnd, Router } from '@angular/router';
 import { ButtonStyleType } from '../../../../@types/button';
@@ -12,7 +12,7 @@ import { ButtonStyleType } from '../../../../@types/button';
 export class CardsComponent implements OnInit {
   ButtonStyleType = ButtonStyleType;
 
-  private _cards: UsersInterface[] = data;
+  private _cards: UsersInterface[] = usersMock;
 
   private displayYouLike: boolean;
 
