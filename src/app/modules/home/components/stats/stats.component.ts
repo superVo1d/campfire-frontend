@@ -25,7 +25,7 @@ export class StatsComponent implements OnInit {
 
     this._percentage = Math.ceil(
       fieldsToCount.reduce((value, key) => {
-        return this.user[key] === '' ? value : (value / 100 + 1 / fieldsToCount.length) * 100;
+        return !this.user[key] || this.user[key] === '' ? value : (value / 100 + 1 / fieldsToCount.length) * 100;
       }, 0)
     );
   }
