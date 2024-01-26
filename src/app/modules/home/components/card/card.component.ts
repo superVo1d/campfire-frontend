@@ -73,10 +73,12 @@ export class CardComponent implements OnInit, AfterViewInit, OnDestroy {
       length = 105;
     }
 
-    this.description = this.userCard.about
-      ? this.userCard.about?.length > length + 3
-        ? this.userCard.about?.slice(0, length) + '...'
-        : this.userCard.about
+    const linebreaksTrimmed = this.userCard.about?.split('\n\n').slice(0, 2).join('\n\n');
+
+    this.description = linebreaksTrimmed
+      ? linebreaksTrimmed?.length > length + 3
+        ? linebreaksTrimmed?.slice(0, length) + '...'
+        : linebreaksTrimmed
       : '';
 
     this.cd.detectChanges();
