@@ -29,6 +29,7 @@
     "@ngrx/store": "^17.0.1",
     "hammerjs": "^2.0.8",
     "lodash": "^4.17.21",
+    "ng-yandex-metrika": "^17.1.2",
     "ngx-device-detector": "^6.0.2",
     "rxjs": "~7.8.0",
     "stylelint-scss": "^5.3.1",

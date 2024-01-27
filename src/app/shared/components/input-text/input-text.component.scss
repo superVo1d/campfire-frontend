@@ -30,12 +30,8 @@
   &_textarea {
     min-height: 11rem;
     overflow: hidden;
-    padding-bottom: 0;
+    padding: 0;
     resize: none;
-
-    &::placeholder {
-      padding-bottom: 3.6rem;
-    }
   }
 
   ::placeholder {
@@ -48,7 +44,16 @@ textarea {
 }
 
 .textarea-wrapper {
+  background-color: var(--separator);
+  border: none;
+  border-radius: 0.6rem;
+  padding: 2rem 2rem 3.6rem;
   position: relative;
+
+  .input {
+    background: none;
+    border: none;
+  }
 }
 
 :host(.error) {
@@ -57,6 +62,14 @@ textarea {
 
     &__counter {
       color: var(--acsent-color);
+    }
+  }
+
+  .textarea-wrapper {
+    border: 1px solid var(--acsent-color);
+
+    .input {
+      border: none;
     }
   }
 }

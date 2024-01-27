@@ -13,6 +13,7 @@ import { UserEffects } from './core/store/user.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { UsersEffects } from './core/store/users.effects';
 import * as Hammer from 'hammerjs';
+import { MetrikaModule } from 'ng-yandex-metrika';
 
 @Injectable()
 export class MyHammerConfig extends HammerGestureConfig {
@@ -31,6 +32,15 @@ export class MyHammerConfig extends HammerGestureConfig {
     SharedModule,
     CoreModule,
     HttpClientModule,
+    MetrikaModule.forRoot([
+      {
+        id: 96268445,
+        clickmap: true,
+        trackLinks: true,
+        accurateTrackBounce: true,
+        webvisor: true
+      }
+    ]),
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([UserEffects, UsersEffects]),
     StoreDevtoolsModule.instrument({
