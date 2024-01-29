@@ -27,15 +27,13 @@ export const selectUser = (state) => {
 };
 
 export const selectUsers = (state) => {
-  return state.usersReducer.users
-    ?.map((user) => {
-      return {
-        ...user,
-        photo: user.photo || '/assets/media/images/no-userpic.png',
-        about: user.about || placeholderText(user.workingName)
-      };
-    })
-    .sort(() => Math.random() - 0.5);
+  return state.usersReducer.users?.map((user) => {
+    return {
+      ...user,
+      photo: user.photo || '/assets/media/images/no-userpic.png',
+      about: user.about || placeholderText(user.workingName)
+    };
+  });
 };
 
 export const isLoading = (state) => {

@@ -57,21 +57,14 @@ export class CardsStackComponent implements OnInit {
       return;
     }
 
-    switch ($event.direction) {
-      case 2:
-        this.prevIndex = this.activeIndex;
-        this.activeIndex = (this.activeIndex + 1) % this.totalUsers;
-        this.nextIndex = (this.activeIndex + 1) % this.totalUsers;
-
-        break;
-      case 4:
-        this.nextIndex = this.activeIndex;
-        this.activeIndex = (((this.activeIndex - 1) % this.totalUsers) + this.totalUsers) % this.totalUsers;
-        this.prevIndex = (((this.activeIndex - 1) % this.totalUsers) + this.totalUsers) % this.totalUsers;
-
-        break;
-      default:
-        return;
+    if ($event.deltaY > 0) {
+      this.prevIndex = this.activeIndex;
+      this.activeIndex = (this.activeIndex + 1) % this.totalUsers;
+      this.nextIndex = (this.activeIndex + 1) % this.totalUsers;
+    } else {
+      this.nextIndex = this.activeIndex;
+      this.activeIndex = (((this.activeIndex - 1) % this.totalUsers) + this.totalUsers) % this.totalUsers;
+      this.prevIndex = (((this.activeIndex - 1) % this.totalUsers) + this.totalUsers) % this.totalUsers;
     }
 
     this.router.navigate([], {
@@ -87,8 +80,10 @@ export class CardsStackComponent implements OnInit {
       'transform',
       `translate3d(${$event.velocityX * 100}%, ${$event.velocityY * 100}%, 0) rotate(0) scale(1)`
     );
+    target.style.setProperty('pointer-events', 'none');
 
     setTimeout(() => {
+      target.style.removeProperty('pointer-events');
       target.style.removeProperty('transform');
     }, 300);
   }
@@ -101,8 +96,10 @@ export class CardsStackComponent implements OnInit {
     if ($event.isFinal) {
       $event.target.style.setProperty('transition', 'transform 0.3s ease-in-out');
       $event.target.style.removeProperty('transform');
+      $event.target.style.setProperty('pointer-events', 'none');
 
       setTimeout(() => {
+        $event.target.style.removeProperty('pointer-events');
         $event.target.style.removeProperty('transition');
       }, 300);
     }

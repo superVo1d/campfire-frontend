@@ -9,7 +9,7 @@ export const usersReducer = createReducer<UsersState>(
     return { ...state, isLoaded: false };
   }),
   on(loadUsersSuccess, (state, action) => {
-    return { ...state, users: action.users, isLoaded: true };
+    return { ...state, users: Array.from(action.users).sort(() => Math.random() - 0.5), isLoaded: true };
   }),
   on(likeUser, (state, action) => {
     return {
