@@ -1,4 +1,4 @@
 <app-tabs [paths]="tabs"></app-tabs>
-<div class='cards-container' [@routeAnimations]="prepareRoute(outlet)" >
+<div class='cards-container' [@routeAnimations]="prepareRoute(outlet)" #container>
   <router-outlet #outlet="outlet"></router-outlet>
 </div>

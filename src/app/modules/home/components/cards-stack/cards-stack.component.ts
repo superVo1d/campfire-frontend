@@ -57,7 +57,7 @@ export class CardsStackComponent implements OnInit {
       return;
     }
 
-    if ($event.deltaY > 0) {
+    if ($event.deltaX < 0) {
       this.prevIndex = this.activeIndex;
       this.activeIndex = (this.activeIndex + 1) % this.totalUsers;
       this.nextIndex = (this.activeIndex + 1) % this.totalUsers;

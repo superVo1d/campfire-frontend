@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, inject, Input, OnInit, ViewChild } from '@angular/core';
 import { usersMock } from '../../../../mocks/profiles';
 import { UsersInterface } from '../../../../@types/users';
 import { NavigationEnd, Router } from '@angular/router';
